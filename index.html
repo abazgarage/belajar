@@ -1,44 +1,912 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f34b1b">
-  <title>AB Garage — Belajar Otomotif</title>
+  <title>AB Garage - Belajar Otomotif</title>
+
   <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
-:root{--orange:#f34b1b;--orange-dark:#d93b12;--bg:#3c3c3c;--panel:#464646;--panel2:#505050;--text:#f7f4f0;--muted:#c4c0bc;--line:#5d5d5d;--lime:#c7f36a}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',Arial,sans-serif;line-height:1.6}.site-header{background:var(--orange);padding:20px 5vw 0;box-shadow:0 9px 24px #1c1c1c55;position:sticky;top:0;z-index:10}.brand{display:flex;align-items:center;justify-content:center;gap:14px;color:#fff;text-decoration:none;margin:0 auto 20px;width:max-content}.brand-mark{width:54px;height:54px;border:2px solid #fff;border-radius:4px;display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:'Space Grotesk';font-weight:700;font-size:19px;line-height:.9;letter-spacing:-2px}.brand-mark span:last-child{font-size:17px}.brand-name{font-family:'Space Grotesk';font-size:clamp(30px,5vw,48px);font-weight:700;letter-spacing:2px;line-height:1}.main-nav{display:flex;justify-content:center;align-items:center;gap:clamp(10px,5vw,58px);padding:16px 0 22px;flex-wrap:wrap}.nav-btn{border:0;border-radius:100px;background:transparent;color:white;font:600 15px 'DM Sans';padding:9px 19px;cursor:pointer;transition:.2s}.nav-btn:hover,.nav-btn.active{background:#fff;color:var(--orange);box-shadow:0 4px 12px #8d250d35}.container{width:min(1120px,90%);margin:0 auto;min-height:68vh}.page{display:none;padding:58px 0 76px;animation:fade .25s ease}.page.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}.hero{padding:52px clamp(22px,6vw,72px);border:1px solid var(--line);border-radius:24px;background:radial-gradient(ellipse at 100% 0%,#f34b1b26,transparent 42%),linear-gradient(135deg,#484848,#383838);position:relative;overflow:hidden}.eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--orange);margin:0 0 12px}.hero h1,.page-intro h1{font-family:'Space Grotesk';font-size:clamp(38px,6vw,66px);line-height:1.05;letter-spacing:-2px;margin:0 0 22px}.hero h1 span,.page-intro h1 span{color:var(--orange)}.hero-copy{max-width:560px;color:var(--muted);font-size:17px;margin:0 0 27px}.primary-btn{background:var(--orange);color:white;border:0;border-radius:9px;padding:13px 20px;font:700 14px 'DM Sans';cursor:pointer;transition:.2s}.primary-btn:hover{background:var(--orange-dark);transform:translateY(-1px)}.primary-btn span{margin-left:12px}.hero-note{margin-top:25px;color:var(--muted);font-size:12px}.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--lime);margin-right:7px}.section-heading{margin:44px 0 20px}.section-heading h2{font:600 25px 'Space Grotesk';margin:0}.section-heading .eyebrow{margin-bottom:4px}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.feature-card,.topic-card,.tool-panel,.simulation-main,.safety-panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;color:var(--text)}.feature-card{text-align:left;display:flex;flex-direction:column;align-items:flex-start;cursor:pointer;min-height:220px;transition:.2s}.feature-card:hover,.topic-card:hover{border-color:var(--orange);transform:translateY(-3px)}.feature-icon{display:grid;place-items:center;width:43px;height:43px;background:#f34b1b20;border-radius:12px;color:var(--orange);font-size:25px;margin-bottom:19px}.feature-title{font:600 19px 'Space Grotesk';margin-bottom:7px}.feature-copy{font-size:13px;color:var(--muted)}.card-arrow{color:var(--orange);font-weight:700;font-size:12px;margin-top:auto;padding-top:20px}.tip-panel{display:flex;gap:16px;margin-top:20px;padding:21px;border-radius:14px;background:#c7f36a12;border:1px solid #c7f36a3d}.tip-icon{color:var(--lime);font-size:22px}.tip-panel strong{font-size:14px}.tip-panel p{margin:3px 0 0;color:var(--muted);font-size:13px}.page-intro{margin-bottom:30px}.page-intro h1{font-size:clamp(36px,5vw,52px);margin-bottom:12px}.page-intro>p:last-child{color:var(--muted);margin:0}.search-box{display:flex;align-items:center;gap:12px;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:0 15px;margin-bottom:22px;color:var(--muted)}.search-box span{font-size:25px}.search-box input{background:transparent;border:0;outline:0;color:var(--text);width:100%;padding:15px 0;font:14px 'DM Sans'}.search-box input::placeholder{color:#aaa}.topic-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.topic-card{position:relative;min-height:220px;transition:.2s}.topic-number{position:absolute;right:22px;top:12px;font:700 34px 'Space Grotesk';color:#ffffff12}.topic-tag{display:inline-block;color:var(--orange);font-size:10px;letter-spacing:1.5px;font-weight:700;margin-bottom:12px}.topic-card h3,.tool-panel h2,.safety-panel h3{font:600 21px 'Space Grotesk';margin:0 0 8px}.topic-card p,.muted{color:var(--muted);font-size:13px}.text-btn{border:0;background:none;color:var(--orange);font:700 13px 'DM Sans';padding:0;cursor:pointer;margin-top:12px}.lesson-panel{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px}.lesson-panel h2{font:600 28px 'Space Grotesk'}.lesson-panel li{margin:7px 0;color:var(--muted)}.back-btn{margin:0 0 25px}.calculator-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.tool-panel h2{margin-bottom:5px}.tool-panel .muted{margin-top:0;margin-bottom:22px}.tool-panel label{display:block;font-size:12px;color:var(--muted);margin:14px 0}.tool-panel input{display:block;width:100%;margin-top:7px;background:#353535;color:white;border:1px solid #626262;border-radius:8px;padding:12px;font:15px 'DM Sans';outline:none}.tool-panel input:focus{border-color:var(--orange)}.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.result-box{background:#353535;border:1px solid #5c5c5c;border-radius:12px;padding:17px;margin-top:20px;display:flex;flex-direction:column}.result-box span,.conversion-results span{font-size:12px;color:var(--muted)}.result-box strong{font:700 31px 'Space Grotesk';color:var(--lime);margin:4px 0}.result-box small{color:var(--muted);font-size:11px}.formula{font-size:11px;color:#a9a5a1;margin:12px 0 0}.conversion-results{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.conversion-results div{background:#353535;padding:16px;border-radius:10px;display:flex;flex-direction:column}.conversion-results strong{font:700 27px 'Space Grotesk';color:var(--lime)}.simulation-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(250px,1fr);gap:16px}.simulation-step{display:flex;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--orange)}.step-pill{color:var(--lime);background:#c7f36a18;border-radius:30px;padding:5px 10px;letter-spacing:0}.simulation-main h2{font:600 28px 'Space Grotesk';line-height:1.2;margin:24px 0 10px}.case-visual{display:flex;align-items:center;gap:16px;background:#353535;padding:18px;border-radius:12px;margin:22px 0}.battery-icon{width:49px;height:34px;border:3px solid var(--orange);border-radius:5px;display:flex;align-items:center;justify-content:space-around;position:relative;font-weight:700;color:var(--orange);flex-shrink:0}.battery-icon:before{content:"";position:absolute;width:15px;height:5px;background:var(--orange);top:-7px;left:5px;border-radius:2px}.case-visual p{font-size:12px;color:var(--muted);margin:3px 0 0}.simulation-main h3{font:600 16px 'Space Grotesk';margin:24px 0 14px}.answer-list{display:grid;gap:9px;margin-bottom:20px}.answer-option{display:flex;align-items:center;gap:12px;text-align:left;padding:12px;border:1px solid var(--line);border-radius:9px;background:#414141;color:var(--text);font:13px 'DM Sans';cursor:pointer}.answer-option>span{display:grid;place-items:center;width:27px;height:27px;border-radius:7px;background:#555;font-weight:700}.answer-option:hover{border-color:var(--orange)}.answer-option.correct{border-color:var(--lime);background:#c7f36a12}.answer-option.wrong{border-color:#ff765b;background:#f34b1b12}.feedback{padding:14px;border-radius:10px;background:#c7f36a12;border:1px solid #c7f36a44;font-size:13px;margin:0 0 18px}.feedback.incorrect{background:#f34b1b12;border-color:#f34b1b66}.safety-panel{align-self:start}.safety-panel .feature-icon{margin-bottom:8px}.safety-panel h3{margin-bottom:7px}.safety-panel p,.safety-panel li{font-size:12px;color:var(--muted)}.safety-divider{height:1px;background:var(--line);margin:20px 0}.safety-panel strong{font-size:13px}.safety-panel ol{padding-left:20px}footer{border-top:1px solid var(--line);padding:24px 5%;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#aaa;font-size:11px}.footer-brand{color:var(--orange);font-weight:700;letter-spacing:1px}
-@media(max-width:720px){.site-header{padding:17px 12px 0}.brand{margin-bottom:12px}.brand-mark{width:43px;height:43px;font-size:16px}.brand-mark span:last-child{font-size:14px}.brand-name{font-size:32px}.main-nav{gap:7px;padding:12px 0 17px;justify-content:space-around}.nav-btn{font-size:12px;padding:8px 12px}.container{width:91%}.page{padding:32px 0 48px}.hero{padding:35px 24px}.hero-copy{font-size:15px}.feature-grid{grid-template-columns:1fr}.feature-card{min-height:175px}.topic-grid,.calculator-grid,.simulation-layout{grid-template-columns:1fr}.topic-card{min-height:190px}.tool-panel{padding:20px}.simulation-main{padding:20px}.page-intro h1{letter-spacing:-1.5px}.field-row{gap:8px}.field-row label{font-size:11px}footer{flex-direction:column;gap:5px}.section-heading{margin-top:32px}}
-@media(max-width:360px){.brand-name{font-size:27px}.nav-btn{padding:7px 9px;font-size:11px}.field-row{grid-template-columns:1fr}}
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
-/* Tahap 2: jalur belajar dan rangkaian virtual */
-.learning-path,.circuit-panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;margin:0 0 24px}
-.learning-path h2,.section-heading h2{font:600 24px 'Space Grotesk';margin:0}
-.learning-path .muted,.circuit-panel>.muted{margin:6px 0 18px}
-.path-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.path-step{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:14px;background:#383838;border:1px solid var(--line);border-radius:10px;color:var(--text);cursor:pointer}
-.path-step span{font:700 11px 'Space Grotesk';color:var(--orange)}.path-step strong{font:600 15px 'Space Grotesk'}.path-step small{font-size:11px;color:var(--muted)}
-.path-step.selected{border-color:var(--orange);background:#f34b1b12}.path-description{font-size:13px;color:var(--muted);margin:15px 0 0}
-.circuit-panel{margin-top:25px}.circuit-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.switch-row{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#383838;border:1px solid var(--line);border-radius:10px;padding:13px}
-.switch-row span{display:flex;flex-direction:column}.switch-row strong{font-size:12px}.switch-row small{font-size:10px;color:var(--muted);margin-top:3px}
-.switch-row input{width:20px;height:20px;accent-color:var(--orange)}
-.circuit-flow{display:flex;align-items:center;justify-content:center;margin:28px 0 18px}
-.circuit-node{border:1px solid var(--line);background:#383838;border-radius:9px;padding:15px 18px;font-size:11px;font-weight:700;letter-spacing:1px;min-width:82px;text-align:center}
-.circuit-node.powered{border-color:var(--lime);color:var(--lime);box-shadow:0 0 18px #c7f36a20}
-.circuit-wire{height:3px;width:clamp(18px,7vw,75px);background:var(--line)}.circuit-wire.powered{background:var(--lime);box-shadow:0 0 8px #c7f36a55}
-.circuit-status{background:#353535;border-radius:9px;padding:14px;font-size:13px;color:var(--muted)}
-@media(max-width:720px){.learning-path,.circuit-panel{padding:18px}.path-steps{grid-template-columns:1fr}.path-step{display:grid;grid-template-columns:30px 1fr;align-items:center}.path-step small{grid-column:2}.circuit-controls{grid-template-columns:1fr}.circuit-node{padding:11px 8px;min-width:65px;font-size:9px}.circuit-wire{width:clamp(12px,5vw,32px)}}
+    :root {
+      --orange: #f34b1b;
+      --orange-dark: #d93b12;
+      --bg: #3c3c3c;
+      --panel: #464646;
+      --text: #f7f4f0;
+      --muted: #c4c0bc;
+      --line: #5d5d5d;
+      --lime: #c7f36a;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    .site-header {
+      background: var(--orange);
+      padding: 20px 5vw 0;
+      box-shadow: 0 9px 24px #1c1c1c55;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    /* LOGO HEADER */
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin: 0 auto 20px;
+      text-decoration: none;
+    }
+
+    .header-logo {
+      display: block;
+      width: auto;
+      height: 60px;
+      max-width: 90%;
+      object-fit: contain;
+    }
+
+    .main-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(10px, 5vw, 58px);
+      padding: 16px 0 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      border: 0;
+      border-radius: 100px;
+      background: transparent;
+      color: white;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 9px 19px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .nav-btn:hover,
+    .nav-btn.active {
+      background: white;
+      color: var(--orange);
+      box-shadow: 0 4px 12px #8d250d35;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: 0 auto;
+      min-height: 68vh;
+    }
+
+    .page {
+      display: none;
+      padding: 48px 0 70px;
+      animation: fade .25s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.2;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--orange);
+      margin: 0 0 12px;
+    }
+
+    .hero {
+      padding: 52px clamp(22px, 6vw, 72px);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background:
+        radial-gradient(ellipse at 100% 0%, #f34b1b26, transparent 42%),
+        linear-gradient(135deg, #484848, #383838);
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 66px);
+      letter-spacing: -2px;
+      margin: 0 0 22px;
+    }
+
+    .hero h1 span,
+    .page-intro h1 span {
+      color: var(--orange);
+    }
+
+    .hero-copy {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 27px;
+    }
+
+    .primary-btn {
+      background: var(--orange);
+      color: white;
+      border: 0;
+      border-radius: 9px;
+      padding: 13px 20px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .primary-btn:hover {
+      background: var(--orange-dark);
+      transform: translateY(-1px);
+    }
+
+    .primary-btn span {
+      margin-left: 12px;
+    }
+
+    .hero-note {
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--lime);
+      margin-right: 7px;
+    }
+
+    .section-heading {
+      margin: 40px 0 20px;
+    }
+
+    .section-heading h2 {
+      font-size: 25px;
+      margin: 0;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .feature-card,
+    .topic-card,
+    .tool-panel,
+    .simulation-main,
+    .safety-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+      color: var(--text);
+    }
+
+    .feature-card {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      cursor: pointer;
+      min-height: 210px;
+      transition: .2s;
+    }
+
+    .feature-card:hover,
+    .topic-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-3px);
+    }
+
+    .feature-icon {
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      background: #f34b1b20;
+      border-radius: 12px;
+      color: var(--orange);
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+
+    .feature-title {
+      font-size: 19px;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+
+    .feature-copy,
+    .muted {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .card-arrow {
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 12px;
+      margin-top: auto;
+      padding-top: 18px;
+    }
+
+    .tip-panel {
+      display: flex;
+      gap: 16px;
+      margin-top: 20px;
+      padding: 21px;
+      border-radius: 14px;
+      background: #c7f36a12;
+      border: 1px solid #c7f36a3d;
+    }
+
+    .tip-icon {
+      color: var(--lime);
+      font-size: 22px;
+    }
+
+    .tip-panel p {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .page-intro {
+      margin-bottom: 30px;
+    }
+
+    .page-intro h1 {
+      font-size: clamp(36px, 5vw, 52px);
+      margin: 0 0 12px;
+    }
+
+    .page-intro > p:last-child {
+      color: var(--muted);
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 10px;
+      padding: 0 15px;
+      margin-bottom: 22px;
+      color: var(--muted);
+    }
+
+    .search-box input {
+      background: transparent;
+      border: 0;
+      outline: 0;
+      color: var(--text);
+      width: 100%;
+      padding: 15px 0;
+    }
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .topic-card {
+      position: relative;
+      min-height: 210px;
+      transition: .2s;
+    }
+
+    .topic-card[hidden] {
+      display: none;
+    }
+
+    .topic-number {
+      position: absolute;
+      right: 22px;
+      top: 12px;
+      font-size: 34px;
+      font-weight: 700;
+      color: #ffffff12;
+    }
+
+    .topic-tag {
+      display: inline-block;
+      color: var(--orange);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .topic-card h3 {
+      font-size: 21px;
+      margin: 0 0 8px;
+    }
+
+    .text-btn {
+      border: 0;
+      background: none;
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 0;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+
+    .lesson-panel {
+      margin-top: 22px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 26px;
+    }
+
+    .lesson-panel h2 {
+      font-size: 28px;
+    }
+
+    .lesson-panel li {
+      margin: 7px 0;
+      color: var(--muted);
+    }
+
+    .back-btn {
+      margin: 0 0 25px;
+    }
+
+    .learning-path,
+    .circuit-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .learning-path h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .path-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .path-step {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      text-align: left;
+      padding: 14px;
+      background: #383838;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .path-step span {
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .path-step small {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .path-step.selected {
+      border-color: var(--orange);
+      background: #f34b1b12;
+    }
+
+    .path-description {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 15px;
+    }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .tool-panel h2 {
+      font-size: 21px;
+      margin: 0 0 8px;
+    }
+
+    .tool-panel label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin: 14px 0;
+    }
+
+    .tool-panel input {
+      display: block;
+      width: 100%;
+      margin-top: 7px;
+      background: #353535;
+      color: white;
+      border: 1px solid #626262;
+      border-radius: 8px;
+      padding: 12px;
+      outline: none;
+    }
+
+    .tool-panel input:focus {
+      border-color: var(--orange);
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .result-box {
+      background: #353535;
+      border: 1px solid #5c5c5c;
+      border-radius: 12px;
+      padding: 17px;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .result-box span,
+    .conversion-results span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .result-box strong {
+      font-size: 31px;
+      color: var(--lime);
+      margin: 4px 0;
+    }
+
+    .result-box small {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .formula {
+      font-size: 11px;
+      color: #a9a5a1;
+      margin-top: 12px;
+    }
+
+    .conversion-results {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .conversion-results div {
+      background: #353535;
+      padding: 16px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .conversion-results strong {
+      font-size: 27px;
+      color: var(--lime);
+    }
+
+    .simulation-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(250px, 1fr);
+      gap: 16px;
+    }
+
+    .simulation-step {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--orange);
+    }
+
+    .step-pill {
+      color: var(--lime);
+      background: #c7f36a18;
+      border-radius: 30px;
+      padding: 5px 10px;
+    }
+
+    .simulation-main h2 {
+      font-size: 28px;
+      margin: 24px 0 10px;
+    }
+
+    .case-visual {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #353535;
+      padding: 18px;
+      border-radius: 12px;
+      margin: 22px 0;
+    }
+
+    .battery-icon {
+      width: 49px;
+      height: 34px;
+      border: 3px solid var(--orange);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      position: relative;
+      font-weight: 700;
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+
+    .battery-icon:before {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 5px;
+      background: var(--orange);
+      top: -7px;
+      left: 5px;
+      border-radius: 2px;
+    }
+
+    .case-visual p {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 3px 0 0;
+    }
+
+    .simulation-main h3 {
+      font-size: 16px;
+      margin: 24px 0 14px;
+    }
+
+    .answer-list {
+      display: grid;
+      gap: 9px;
+      margin-bottom: 20px;
+    }
+
+    .answer-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: #414141;
+      color: var(--text);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .answer-option > span {
+      display: grid;
+      place-items: center;
+      width: 27px;
+      height: 27px;
+      border-radius: 7px;
+      background: #555;
+      font-weight: 700;
+    }
+
+    .answer-option.correct {
+      border-color: var(--lime);
+      background: #c7f36a12;
+    }
+
+    .answer-option.wrong {
+      border-color: #ff765b;
+      background: #f34b1b12;
+    }
+
+    .feedback {
+      padding: 14px;
+      border-radius: 10px;
+      background: #c7f36a12;
+      border: 1px solid #c7f36a44;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .feedback.incorrect {
+      background: #f34b1b12;
+      border-color: #f34b1b66;
+    }
+
+    .safety-panel {
+      align-self: start;
+    }
+
+    .safety-panel p,
+    .safety-panel li {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .safety-divider {
+      height: 1px;
+      background: var(--line);
+      margin: 20px 0;
+    }
+
+    .safety-panel ol {
+      padding-left: 20px;
+    }
+
+    .circuit-panel {
+      margin-top: 25px;
+    }
+
+    .circuit-controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .switch-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      background: #383838;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 13px;
+    }
+
+    .switch-row span {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .switch-row strong {
+      font-size: 12px;
+    }
+
+    .switch-row small {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .switch-row input {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--orange);
+    }
+
+    .circuit-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 28px 0 18px;
+    }
+
+    .circuit-node {
+      border: 1px solid var(--line);
+      background: #383838;
+      border-radius: 9px;
+      padding: 15px 18px;
+      font-size: 11px;
+      font-weight: 700;
+      min-width: 82px;
+      text-align: center;
+    }
+
+    .circuit-node.powered {
+      border-color: var(--lime);
+      color: var(--lime);
+      box-shadow: 0 0 18px #c7f36a20;
+    }
+
+    .circuit-wire {
+      height: 3px;
+      width: clamp(18px, 7vw, 75px);
+      background: var(--line);
+    }
+
+    .circuit-wire.powered {
+      background: var(--lime);
+      box-shadow: 0 0 8px #c7f36a55;
+    }
+
+    .circuit-status {
+      background: #353535;
+      border-radius: 9px;
+      padding: 14px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 5%;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: #aaa;
+      font-size: 11px;
+    }
+
+    .footer-brand {
+      color: var(--orange);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 720px) {
+      .site-header {
+        padding: 17px 12px 0;
+      }
+
+      .brand {
+        margin-bottom: 12px;
+      }
+
+      .header-logo {
+        height: 48px;
+        max-width: 85%;
+      }
+
+      .main-nav {
+        gap: 7px;
+        padding: 12px 0 17px;
+        justify-content: space-around;
+      }
+
+      .nav-btn {
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+
+      .container {
+        width: 91%;
+      }
+
+      .page {
+        padding: 32px 0 48px;
+      }
+
+      .hero {
+        padding: 35px 24px;
+      }
+
+      .feature-grid,
+      .topic-grid,
+      .calculator-grid,
+      .simulation-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        min-height: 175px;
+      }
+
+      .field-row {
+        gap: 8px;
+      }
+
+      .path-steps,
+      .circuit-controls {
+        grid-template-columns: 1fr;
+      }
+
+      .path-step {
+        display: grid;
+        grid-template-columns: 30px 1fr;
+        align-items: center;
+      }
+
+      .path-step small {
+        grid-column: 2;
+      }
+
+      .circuit-node {
+        padding: 11px 8px;
+        min-width: 65px;
+        font-size: 9px;
+      }
+
+      .circuit-wire {
+        width: clamp(12px, 5vw, 32px);
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .nav-btn {
+        padding: 7px 9px;
+        font-size: 11px;
+      }
+
+      .field-row {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
+
 <body>
+
+  <!-- HEADER DAN NAVIGASI -->
   <header class="site-header">
-    <a class="brand" href="#" aria-label="AB Garage, beranda" data-tab-link="beranda">
-      <span class="brand-mark"><span>AB</span><span>AZ</span></span>
-      <span class="brand-name">GARAGE</span>
+    <a class="brand"
+       href="#"
+       aria-label="AB Garage, beranda"
+       data-tab-link="beranda">
+      <img
+        src="header-logo.png"
+        alt="AB Garage"
+        class="header-logo">
     </a>
+
     <nav class="main-nav" aria-label="Navigasi utama">
       <button class="nav-btn active" data-tab="beranda">Beranda</button>
       <button class="nav-btn" data-tab="materi">Materi</button>
@@ -48,250 +916,852 @@
   </header>
 
   <main class="container">
+
+    <!-- HALAMAN BERANDA -->
     <section class="page active" id="beranda">
       <div class="hero">
         <p class="eyebrow">PUSAT BELAJAR OTOMOTIF MOBIL</p>
+
         <h1>Pahami mobil.<br><span>Mulai dari dasar.</span></h1>
-        <p class="hero-copy">Belajar sistem kendaraan, memahami komponen, menghitung spesifikasi, dan berlatih diagnosis kerusakan dalam satu tempat.</p>
-        <button class="primary-btn" data-go="materi">Mulai Belajar <span aria-hidden="true">→</span></button>
-        <div class="hero-note"><span class="status-dot"></span> Belajar mandiri • Gratis • Ramah HP</div>
+
+        <p class="hero-copy">
+          Belajar sistem kendaraan, memahami komponen, menghitung
+          spesifikasi, dan berlatih diagnosis kerusakan dalam satu tempat.
+        </p>
+
+        <button class="primary-btn" data-go="materi">
+          Mulai Belajar <span>→</span>
+        </button>
+
+        <div class="hero-note">
+          <span class="status-dot"></span>
+          Belajar mandiri • Gratis • Ramah HP
+        </div>
       </div>
+
       <div class="section-heading">
-        <div><p class="eyebrow">JELAJAHI AB GARAGE</p><h2>Mau belajar apa hari ini?</h2></div>
+        <p class="eyebrow">JELAJAHI AB GARAGE</p>
+        <h2>Mau belajar apa hari ini?</h2>
       </div>
+
       <div class="feature-grid">
         <button class="feature-card" data-go="materi">
-          <span class="feature-icon">⚙</span><span class="feature-title">Materi Otomotif</span>
-          <span class="feature-copy">Pelajari sistem dan komponen mobil secara bertahap.</span><span class="card-arrow">Buka materi ↗</span>
+          <span class="feature-icon">⚙</span>
+          <span class="feature-title">Materi Otomotif</span>
+          <span class="feature-copy">
+            Pelajari sistem dan komponen mobil secara bertahap.
+          </span>
+          <span class="card-arrow">Buka materi ↗</span>
         </button>
+
         <button class="feature-card" data-go="kalkulator">
-          <span class="feature-icon">∑</span><span class="feature-title">Kalkulator Teknik</span>
-          <span class="feature-copy">Hitung kapasitas mesin, rasio kompresi, dan satuan.</span><span class="card-arrow">Buka kalkulator ↗</span>
+          <span class="feature-icon">∑</span>
+          <span class="feature-title">Kalkulator Teknik</span>
+          <span class="feature-copy">
+            Hitung kapasitas mesin, rasio kompresi, dan satuan.
+          </span>
+          <span class="card-arrow">Buka kalkulator ↗</span>
         </button>
+
         <button class="feature-card" data-go="simulasi">
-          <span class="feature-icon">⌁</span><span class="feature-title">Simulasi Diagnosis</span>
-          <span class="feature-copy">Latih cara berpikir saat menemukan gangguan kendaraan.</span><span class="card-arrow">Mulai simulasi ↗</span>
+          <span class="feature-icon">⌁</span>
+          <span class="feature-title">Simulasi Diagnosis</span>
+          <span class="feature-copy">
+            Latih cara berpikir saat menemukan gangguan kendaraan.
+          </span>
+          <span class="card-arrow">Mulai simulasi ↗</span>
         </button>
       </div>
-      <div class="tip-panel"><span class="tip-icon">✦</span><div><strong>Tips belajar</strong><p>Mulailah dari fungsi komponen, pahami cara kerjanya, lalu lanjutkan ke pengukuran dan diagnosis. Selalu utamakan keselamatan saat praktik.</p></div></div>
-    </section>
 
-    <section class="page" id="materi">
-      <div class="page-intro"><p class="eyebrow">PERPUSTAKAAN TEKNIK</p><h1>Materi <span>Otomotif</span></h1><p>Pilih topik untuk melihat ringkasan pembelajaran.</p></div>
-      <div class="learning-path">
-        <p class="eyebrow">JALUR BELAJAR</p><h2>Belajar bertahap</h2>
-        <p class="muted">Pilih tingkat belajar untuk melihat panduan berikutnya.</p>
-        <div class="path-steps">
-          <button class="path-step selected" data-level="pemula"><span>01</span><strong>Pemula</strong><small>Dasar & keselamatan</small></button>
-          <button class="path-step" data-level="menengah"><span>02</span><strong>Menengah</strong><small>Sistem & pengukuran</small></button>
-          <button class="path-step" data-level="lanjut"><span>03</span><strong>Lanjutan</strong><small>Diagnosis & analisis</small></button>
+      <div class="tip-panel">
+        <span class="tip-icon">✦</span>
+        <div>
+          <strong>Tips belajar</strong>
+          <p>
+            Mulailah dari fungsi komponen, pahami cara kerjanya,
+            lalu lanjutkan ke pengukuran dan diagnosis.
+            Selalu utamakan keselamatan saat praktik.
+          </p>
         </div>
-        <p class="path-description" id="pathDescription">Mulai dari dasar otomotif, fungsi komponen, dan keselamatan kerja sebelum praktik.</p>
       </div>
-      <label class="search-box"><span>⌕</span><input id="materiSearch" type="search" placeholder="Cari materi, misalnya sistem bahan bakar..." aria-label="Cari materi"></label>
+    </section>
+
+    <!-- HALAMAN MATERI -->
+    <section class="page" id="materi">
+      <div class="page-intro">
+        <p class="eyebrow">PERPUSTAKAAN TEKNIK</p>
+        <h1>Materi <span>Otomotif</span></h1>
+        <p>Pilih topik untuk melihat ringkasan pembelajaran.</p>
+      </div>
+
+      <div class="learning-path">
+        <p class="eyebrow">JALUR BELAJAR</p>
+        <h2>Belajar bertahap</h2>
+        <p class="muted">
+          Pilih tingkat belajar untuk melihat panduan berikutnya.
+        </p>
+
+        <div class="path-steps">
+          <button class="path-step selected" data-level="pemula">
+            <span>01</span>
+            <strong>Pemula</strong>
+            <small>Dasar dan keselamatan</small>
+          </button>
+
+          <button class="path-step" data-level="menengah">
+            <span>02</span>
+            <strong>Menengah</strong>
+            <small>Sistem dan pengukuran</small>
+          </button>
+
+          <button class="path-step" data-level="lanjut">
+            <span>03</span>
+            <strong>Lanjutan</strong>
+            <small>Diagnosis dan analisis</small>
+          </button>
+        </div>
+
+        <p class="path-description" id="pathDescription">
+          Mulai dari dasar otomotif, fungsi komponen, dan keselamatan kerja.
+        </p>
+      </div>
+
+      <label class="search-box">
+        <span>⌕</span>
+        <input
+          id="materiSearch"
+          type="search"
+          placeholder="Cari materi, misalnya sistem bahan bakar..."
+          aria-label="Cari materi">
+      </label>
+
       <div class="topic-grid" id="topicGrid">
-        <article class="topic-card" data-search="dasar otomotif pengenalan kendaraan"><span class="topic-number">01</span><span class="topic-tag">DASAR</span><h3>Dasar Otomotif</h3><p>Jenis kendaraan, prinsip kerja, keselamatan kerja, dan pengenalan sistem mobil.</p><button class="text-btn" data-topic="dasar">Pelajari topik →</button></article>
-        <article class="topic-card" data-search="mesin pembakaran piston silinder katup"><span class="topic-number">02</span><span class="topic-tag">MESIN</span><h3>Mesin Kendaraan</h3><p>Komponen utama, langkah kerja 4-tak, pelumasan, pendinginan, dan kompresi.</p><button class="text-btn" data-topic="mesin">Pelajari topik →</button></article>
-        <article class="topic-card" data-search="pemindah tenaga transmisi kopling diferensial"><span class="topic-number">03</span><span class="topic-tag">DRIVETRAIN</span><h3>Pemindah Tenaga</h3><p>Kopling, transmisi, poros propeller, diferensial, dan poros penggerak.</p><button class="text-btn" data-topic="tenaga">Pelajari topik →</button></article>
-        <article class="topic-card" data-search="kelistrikan aki baterai starter alternator sensor"><span class="topic-number">04</span><span class="topic-tag">ELEKTRIKAL</span><h3>Kelistrikan Mobil</h3><p>Aki, starter, alternator, sekring, relay, sensor, dan dasar membaca diagram.</p><button class="text-btn" data-topic="listrik">Pelajari topik →</button></article>
-        <article class="topic-card" data-search="bahan bakar injeksi EFI udara pembakaran"><span class="topic-number">05</span><span class="topic-tag">BAHAN BAKAR</span><h3>Sistem Bahan Bakar</h3><p>Aliran udara dan bahan bakar, injektor, throttle body, serta sensor EFI.</p><button class="text-btn" data-topic="bahanbakar">Pelajari topik →</button></article>
-        <article class="topic-card" data-search="tools alat ukur multimeter jangka sorong mikrometer"><span class="topic-number">06</span><span class="topic-tag">PERALATAN</span><h3>Tools & Alat Ukur</h3><p>Penggunaan kunci, torque wrench, multimeter, jangka sorong, dan mikrometer.</p><button class="text-btn" data-topic="tools">Pelajari topik →</button></article>
-        <article class="topic-card" data-search="rem suspensi kemudi roda kaki kaki"><span class="topic-number">07</span><span class="topic-tag">CHASSIS</span><h3>Rem, Kemudi & Suspensi</h3><p>Prinsip kerja sistem pengereman, steering, roda, dan suspensi.</p><button class="text-btn" data-topic="chassis">Pelajari topik →</button></article>
-        <article class="topic-card" data-search="diagnosis kerusakan troubleshooting OBD-II"><span class="topic-number">08</span><span class="topic-tag">DIAGNOSIS</span><h3>Diagnosis Kerusakan</h3><p>Keluhan pelanggan, inspeksi awal, pengukuran, dan penentuan penyebab.</p><button class="text-btn" data-topic="diagnosis">Pelajari topik →</button></article>
+
+        <article class="topic-card"
+          data-search="dasar otomotif pengenalan kendaraan">
+          <span class="topic-number">01</span>
+          <span class="topic-tag">DASAR</span>
+          <h3>Dasar Otomotif</h3>
+          <p>
+            Jenis kendaraan, prinsip kerja, keselamatan kerja,
+            dan pengenalan sistem mobil.
+          </p>
+          <button class="text-btn" data-topic="dasar">Pelajari topik →</button>
+        </article>
+
+        <article class="topic-card"
+          data-search="mesin pembakaran piston silinder katup">
+          <span class="topic-number">02</span>
+          <span class="topic-tag">MESIN</span>
+          <h3>Mesin Kendaraan</h3>
+          <p>
+            Komponen utama, langkah kerja 4-tak, pelumasan,
+            pendinginan, dan kompresi.
+          </p>
+          <button class="text-btn" data-topic="mesin">Pelajari topik →</button>
+        </article>
+
+        <article class="topic-card"
+          data-search="pemindah tenaga transmisi kopling diferensial">
+          <span class="topic-number">03</span>
+          <span class="topic-tag">DRIVETRAIN</span>
+          <h3>Pemindah Tenaga</h3>
+          <p>
+            Kopling, transmisi, poros propeller, diferensial,
+            dan poros penggerak.
+          </p>
+          <button class="text-btn" data-topic="tenaga">Pelajari topik →</button>
+        </article>
+
+        <article class="topic-card"
+          data-search="kelistrikan aki baterai starter alternator sensor">
+          <span class="topic-number">04</span>
+          <span class="topic-tag">ELEKTRIKAL</span>
+          <h3>Kelistrikan Mobil</h3>
+          <p>
+            Aki, starter, alternator, sekring, relay, sensor,
+            dan dasar membaca diagram.
+          </p>
+          <button class="text-btn" data-topic="listrik">Pelajari topik →</button>
+        </article>
+
+        <article class="topic-card"
+          data-search="bahan bakar injeksi EFI udara pembakaran">
+          <span class="topic-number">05</span>
+          <span class="topic-tag">BAHAN BAKAR</span>
+          <h3>Sistem Bahan Bakar</h3>
+          <p>
+            Aliran udara dan bahan bakar, injektor,
+            throttle body, serta sensor EFI.
+          </p>
+          <button class="text-btn" data-topic="bahanbakar">Pelajari topik →</button>
+        </article>
+
+        <article class="topic-card"
+          data-search="tools alat ukur multimeter jangka sorong mikrometer">
+          <span class="topic-number">06</span>
+          <span class="topic-tag">PERALATAN</span>
+          <h3>Tools dan Alat Ukur</h3>
+          <p>
+            Kunci, torque wrench, multimeter, jangka sorong,
+            dan mikrometer.
+          </p>
+          <button class="text-btn" data-topic="tools">Pelajari topik →</button>
+        </article>
+
+        <article class="topic-card"
+          data-search="rem suspensi kemudi roda kaki kaki">
+          <span class="topic-number">07</span>
+          <span class="topic-tag">CHASSIS</span>
+          <h3>Rem, Kemudi dan Suspensi</h3>
+          <p>
+            Prinsip kerja sistem pengereman, steering,
+            roda, dan suspensi.
+          </p>
+          <button class="text-btn" data-topic="chassis">Pelajari topik →</button>
+        </article>
+
+        <article class="topic-card"
+          data-search="diagnosis kerusakan troubleshooting OBD-II">
+          <span class="topic-number">08</span>
+          <span class="topic-tag">DIAGNOSIS</span>
+          <h3>Diagnosis Kerusakan</h3>
+          <p>
+            Keluhan pelanggan, inspeksi awal, pengukuran,
+            dan penentuan penyebab.
+          </p>
+          <button class="text-btn" data-topic="diagnosis">Pelajari topik →</button>
+        </article>
+
       </div>
+
       <div class="lesson-panel" id="lessonPanel" hidden>
-        <button class="text-btn back-btn" id="closeLesson">← Kembali ke daftar materi</button>
-        <p class="eyebrow" id="lessonTag">RINGKASAN MATERI</p><h2 id="lessonTitle"></h2><div id="lessonBody"></div>
+        <button class="text-btn back-btn" id="closeLesson">
+          ← Kembali ke daftar materi
+        </button>
+        <p class="eyebrow" id="lessonTag">RINGKASAN MATERI</p>
+        <h2 id="lessonTitle"></h2>
+        <div id="lessonBody"></div>
       </div>
     </section>
 
+    <!-- HALAMAN KALKULATOR -->
     <section class="page" id="kalkulator">
-      <div class="page-intro"><p class="eyebrow">ALAT BANTU PERHITUNGAN</p><h1>Kalkulator <span>Teknik</span></h1><p>Masukkan nilai untuk menghitung hasil secara otomatis.</p></div>
+      <div class="page-intro">
+        <p class="eyebrow">ALAT BANTU PERHITUNGAN</p>
+        <h1>Kalkulator <span>Teknik</span></h1>
+        <p>Masukkan nilai untuk menghitung hasil secara otomatis.</p>
+      </div>
+
       <div class="calculator-grid">
+
         <article class="tool-panel">
-          <span class="topic-tag">KALKULATOR 01</span><h2>Kapasitas Mesin</h2><p class="muted">Menghitung volume satu silinder dan total kapasitas mesin.</p>
-          <div class="field-row"><label>Diameter silinder / bore (mm)<input id="bore" type="number" min="0" step="0.1" value="80"></label><label>Langkah piston / stroke (mm)<input id="stroke" type="number" min="0" step="0.1" value="90"></label></div>
-          <label>Jumlah silinder<input id="cylinders" type="number" min="1" step="1" value="4"></label>
-          <div class="result-box"><span>Total kapasitas mesin</span><strong id="ccResult">— cc</strong><small id="literResult">— liter</small></div>
-          <p class="formula">Rumus: π ÷ 4 × bore² × stroke × jumlah silinder</p>
+          <span class="topic-tag">KALKULATOR 01</span>
+          <h2>Kapasitas Mesin</h2>
+          <p class="muted">
+            Menghitung volume satu silinder dan total kapasitas mesin.
+          </p>
+
+          <div class="field-row">
+            <label>
+              Diameter silinder / bore (mm)
+              <input id="bore" type="number" min="0" step="0.1" value="80">
+            </label>
+
+            <label>
+              Langkah piston / stroke (mm)
+              <input id="stroke" type="number" min="0" step="0.1" value="90">
+            </label>
+          </div>
+
+          <label>
+            Jumlah silinder
+            <input id="cylinders" type="number" min="1" step="1" value="4">
+          </label>
+
+          <div class="result-box">
+            <span>Total kapasitas mesin</span>
+            <strong id="ccResult">— cc</strong>
+            <small id="literResult">— liter</small>
+          </div>
+
+          <p class="formula">
+            Rumus: π ÷ 4 × bore² × stroke × jumlah silinder
+          </p>
         </article>
+
         <article class="tool-panel">
-          <span class="topic-tag">KALKULATOR 02</span><h2>Rasio Kompresi</h2><p class="muted">Menghitung rasio dari volume langkah dan volume ruang bakar.</p>
-          <label>Volume langkah per silinder (cc)<input id="swept" type="number" min="0" step="0.1" value="400"></label>
-          <label>Volume ruang bakar (cc)<input id="chamber" type="number" min="0" step="0.1" value="40"></label>
-          <div class="result-box"><span>Rasio kompresi</span><strong id="compressionResult">— : 1</strong><small>(volume langkah + volume ruang bakar) ÷ volume ruang bakar</small></div>
-          <p class="formula">Hasil adalah estimasi matematis; gunakan spesifikasi pabrikan untuk servis.</p>
+          <span class="topic-tag">KALKULATOR 02</span>
+          <h2>Rasio Kompresi</h2>
+          <p class="muted">
+            Menghitung rasio dari volume langkah dan volume ruang bakar.
+          </p>
+
+          <label>
+            Volume langkah per silinder (cc)
+            <input id="swept" type="number" min="0" step="0.1" value="400">
+          </label>
+
+          <label>
+            Volume ruang bakar (cc)
+            <input id="chamber" type="number" min="0" step="0.1" value="40">
+          </label>
+
+          <div class="result-box">
+            <span>Rasio kompresi</span>
+            <strong id="compressionResult">— : 1</strong>
+            <small>
+              (volume langkah + volume ruang bakar) ÷ volume ruang bakar
+            </small>
+          </div>
+
+          <p class="formula">
+            Untuk servis nyata, gunakan spesifikasi pabrikan.
+          </p>
         </article>
+
         <article class="tool-panel">
-          <span class="topic-tag">KALKULATOR 03</span><h2>Konversi Tekanan</h2><p class="muted">Konversi nilai bar ke kilopascal (kPa) dan psi.</p>
-          <label>Tekanan (bar)<input id="barValue" type="number" min="0" step="0.1" value="2.2"></label>
-          <div class="conversion-results"><div><span>kPa</span><strong id="kpaResult">220</strong></div><div><span>psi</span><strong id="psiResult">31.9</strong></div></div>
+          <span class="topic-tag">KALKULATOR 03</span>
+          <h2>Konversi Tekanan</h2>
+          <p class="muted">
+            Konversi tekanan bar ke kilopascal dan psi.
+          </p>
+
+          <label>
+            Tekanan (bar)
+            <input id="barValue" type="number" min="0" step="0.1" value="2.2">
+          </label>
+
+          <div class="conversion-results">
+            <div>
+              <span>kPa</span>
+              <strong id="kpaResult">220</strong>
+            </div>
+            <div>
+              <span>psi</span>
+              <strong id="psiResult">31.9</strong>
+            </div>
+          </div>
         </article>
+
       </div>
     </section>
 
+    <!-- HALAMAN SIMULASI -->
     <section class="page" id="simulasi">
-      <div class="page-intro"><p class="eyebrow">LATIHAN INTERAKTIF</p><h1>Simulasi <span>Diagnosis</span></h1><p>Pilih gejala kendaraan, tentukan pemeriksaan awal, lalu lihat pembahasannya.</p></div>
+      <div class="page-intro">
+        <p class="eyebrow">LATIHAN INTERAKTIF</p>
+        <h1>Simulasi <span>Diagnosis</span></h1>
+        <p>
+          Pilih gejala kendaraan, tentukan pemeriksaan awal,
+          lalu lihat pembahasannya.
+        </p>
+      </div>
+
       <div class="simulation-layout">
         <div class="simulation-main">
-          <div class="simulation-step"><span>STUDI KASUS 01</span><span class="step-pill">Pemula</span></div>
-          <h2>Mesin tidak bisa distarter</h2>
-          <p class="muted">Pengemudi memutar kunci ke posisi START, tetapi mesin tidak berputar. Lampu indikator dashboard terlihat redup.</p>
-          <div class="case-visual"><div class="battery-icon"><span>+</span><span>−</span></div><div><strong>Petunjuk gejala</strong><p>Periksa sumber daya listrik sebelum membongkar komponen lain.</p></div></div>
-          <h3>Apa pemeriksaan pertama yang paling tepat?</h3>
-          <div class="answer-list" id="answerList">
-            <button class="answer-option" data-answer="a"><span>A</span> Langsung mengganti motor starter</button>
-            <button class="answer-option" data-answer="b"><span>B</span> Memeriksa kondisi aki dan kekencangan terminal</button>
-            <button class="answer-option" data-answer="c"><span>C</span> Membongkar kepala silinder</button>
-            <button class="answer-option" data-answer="d"><span>D</span> Mengganti busi tanpa pemeriksaan</button>
+          <div class="simulation-step">
+            <span>STUDI KASUS 01</span>
+            <span class="step-pill">Pemula</span>
           </div>
+
+          <h2>Mesin tidak bisa distarter</h2>
+
+          <p class="muted">
+            Pengemudi memutar kunci ke posisi START, tetapi mesin
+            tidak berputar. Lampu indikator dashboard terlihat redup.
+          </p>
+
+          <div class="case-visual">
+            <div class="battery-icon">
+              <span>+</span><span>−</span>
+            </div>
+            <div>
+              <strong>Petunjuk gejala</strong>
+              <p>
+                Periksa sumber daya listrik sebelum membongkar
+                komponen lain.
+              </p>
+            </div>
+          </div>
+
+          <h3>Apa pemeriksaan pertama yang paling tepat?</h3>
+
+          <div class="answer-list" id="answerList">
+            <button class="answer-option" data-answer="a">
+              <span>A</span> Langsung mengganti motor starter
+            </button>
+
+            <button class="answer-option" data-answer="b">
+              <span>B</span> Memeriksa kondisi aki dan terminal
+            </button>
+
+            <button class="answer-option" data-answer="c">
+              <span>C</span> Membongkar kepala silinder
+            </button>
+
+            <button class="answer-option" data-answer="d">
+              <span>D</span> Mengganti busi tanpa pemeriksaan
+            </button>
+          </div>
+
           <div class="feedback" id="feedback" aria-live="polite" hidden></div>
-          <button class="primary-btn" id="resetSimulation">Ulangi simulasi</button>
+
+          <button class="primary-btn" id="resetSimulation">
+            Ulangi simulasi
+          </button>
         </div>
-        <aside class="safety-panel"><span class="feature-icon">⚠</span><h3>Ingat keselamatan</h3><p>Simulasi ini untuk pembelajaran. Saat praktik, aktifkan rem parkir, pilih posisi P atau netral, jauhkan tangan dari komponen bergerak, dan ikuti prosedur pabrikan.</p><div class="safety-divider"></div><strong>Urutan diagnosis dasar</strong><ol><li>Konfirmasi keluhan</li><li>Inspeksi visual</li><li>Lakukan pengukuran</li><li>Bandingkan spesifikasi</li><li>Perbaiki dan uji ulang</li></ol></aside>
+
+        <aside class="safety-panel">
+          <span class="feature-icon">⚠</span>
+          <h3>Ingat keselamatan</h3>
+
+          <p>
+            Simulasi ini untuk pembelajaran. Saat praktik, aktifkan
+            rem parkir, pilih posisi P atau netral, dan ikuti prosedur
+            pabrikan.
+          </p>
+
+          <div class="safety-divider"></div>
+
+          <strong>Urutan diagnosis dasar</strong>
+          <ol>
+            <li>Konfirmasi keluhan</li>
+            <li>Inspeksi visual</li>
+            <li>Lakukan pengukuran</li>
+            <li>Bandingkan spesifikasi</li>
+            <li>Perbaiki dan uji ulang</li>
+          </ol>
+        </aside>
       </div>
+
+      <!-- SIMULASI RANGKAIAN STARTER -->
       <div class="circuit-panel">
-        <div class="section-heading"><div><p class="eyebrow">PRAKTIK VIRTUAL</p><h2>Simulasi rangkaian starter</h2></div></div>
-        <p class="muted">Aktifkan komponen untuk memahami alur daya listrik. Ini model belajar sederhana, bukan diagram servis kendaraan tertentu.</p>
-        <div class="circuit-controls">
-          <label class="switch-row"><span><strong>Aki terhubung</strong><small>Sumber tegangan tersedia</small></span><input id="batterySwitch" type="checkbox" checked></label>
-          <label class="switch-row"><span><strong>Sekring baik</strong><small>Jalur perlindungan tidak putus</small></span><input id="fuseSwitch" type="checkbox" checked></label>
-          <label class="switch-row"><span><strong>Sakelar START</strong><small>Permintaan menghidupkan mesin</small></span><input id="startSwitch" type="checkbox"></label>
+        <div class="section-heading">
+          <p class="eyebrow">PRAKTIK VIRTUAL</p>
+          <h2>Simulasi Rangkaian Starter</h2>
         </div>
-        <div class="circuit-flow"><div class="circuit-node" id="nodeBattery">AKI</div><span class="circuit-wire"></span><div class="circuit-node" id="nodeFuse">SEKRING</div><span class="circuit-wire"></span><div class="circuit-node" id="nodeStarter">STARTER</div></div>
-        <div class="circuit-status" id="circuitStatus" aria-live="polite">Sistem siap. Tekan sakelar START untuk melihat alur daya.</div>
+
+        <p class="muted">
+          Aktifkan komponen untuk memahami alur daya listrik.
+          Ini adalah model pembelajaran sederhana, bukan diagram
+          servis untuk kendaraan tertentu.
+        </p>
+
+        <div class="circuit-controls">
+          <label class="switch-row">
+            <span>
+              <strong>Aki terhubung</strong>
+              <small>Sumber tegangan tersedia</small>
+            </span>
+            <input id="batterySwitch" type="checkbox" checked>
+          </label>
+
+          <label class="switch-row">
+            <span>
+              <strong>Sekring baik</strong>
+              <small>Jalur perlindungan tidak putus</small>
+            </span>
+            <input id="fuseSwitch" type="checkbox" checked>
+          </label>
+
+          <label class="switch-row">
+            <span>
+              <strong>Sakelar START</strong>
+              <small>Permintaan menghidupkan mesin</small>
+            </span>
+            <input id="startSwitch" type="checkbox">
+          </label>
+        </div>
+
+        <div class="circuit-flow">
+          <div class="circuit-node" id="nodeBattery">AKI</div>
+          <span class="circuit-wire"></span>
+          <div class="circuit-node" id="nodeFuse">SEKRING</div>
+          <span class="circuit-wire"></span>
+          <div class="circuit-node" id="nodeStarter">STARTER</div>
+        </div>
+
+        <div class="circuit-status" id="circuitStatus" aria-live="polite">
+          Sistem siap. Tekan sakelar START untuk melihat alur daya.
+        </div>
       </div>
     </section>
+
   </main>
 
-  <footer><span class="footer-brand">AB GARAGE</span><span>Belajar otomotif, selangkah demi selangkah.</span><span>© <span id="year"></span> AB Garage</span></footer>
+  <footer>
+    <span class="footer-brand">AB GARAGE</span>
+    <span>Belajar otomotif, selangkah demi selangkah.</span>
+    <span>© <span id="year"></span> AB Garage</span>
+  </footer>
+
   <script>
-const navButtons = [...document.querySelectorAll('.nav-btn')];
-const pages = [...document.querySelectorAll('.page')];
+    // NAVIGASI ANTAR TAB
+    const navButtons = [...document.querySelectorAll('.nav-btn')];
+    const pages = [...document.querySelectorAll('.page')];
 
-function showTab(tabId) {
-  if (!document.getElementById(tabId)) return;
-  pages.forEach(page => page.classList.toggle('active', page.id === tabId));
-  navButtons.forEach(button => {
-    const active = button.dataset.tab === tabId;
-    button.classList.toggle('active', active);
-    button.setAttribute('aria-current', active ? 'page' : 'false');
-  });
-  document.getElementById(tabId).scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-navButtons.forEach(button => button.addEventListener('click', () => showTab(button.dataset.tab)));
-document.querySelectorAll('[data-go]').forEach(button => button.addEventListener('click', () => showTab(button.dataset.go)));
-document.querySelectorAll('[data-tab-link]').forEach(link => link.addEventListener('click', event => {
-  event.preventDefault(); showTab(link.dataset.tabLink);
-}));
+    function showTab(tabId) {
+      if (!document.getElementById(tabId)) return;
 
-// Materi: pencarian dan ringkasan tiap topik.
-const lessons = {
-  dasar: {title:'Dasar Otomotif', tag:'PENGENALAN', points:['Mobil mengubah energi bahan bakar atau listrik menjadi gerak.','Sistem utama mobil meliputi mesin, pemindah tenaga, chassis, kelistrikan, dan bodi.','Sebelum bekerja: gunakan APD, amankan kendaraan, dan ikuti prosedur kerja.'], task:'Latihan: sebutkan tiga sistem kendaraan dan jelaskan fungsi dasarnya.'},
-  mesin: {title:'Mesin Kendaraan', tag:'SISTEM MESIN', points:['Piston bergerak di dalam silinder dan meneruskan gaya ke poros engkol.','Mesin bensin 4-tak menjalani langkah hisap, kompresi, usaha, dan buang.','Sistem pendukung meliputi pelumasan, pendinginan, pemasukan udara, dan pembuangan gas.'], task:'Latihan: urutkan empat langkah kerja mesin 4-tak.'},
-  tenaga: {title:'Sistem Pemindah Tenaga', tag:'DRIVETRAIN', points:['Kopling menghubungkan atau memutus tenaga mesin ke transmisi.','Transmisi mengubah perbandingan gigi sesuai kebutuhan torsi dan kecepatan.','Diferensial memungkinkan roda kiri dan kanan berputar dengan kecepatan berbeda saat berbelok.'], task:'Latihan: jelaskan mengapa kendaraan membutuhkan beberapa rasio gigi.'},
-  listrik: {title:'Kelistrikan Mobil', tag:'ELEKTRIKAL', points:['Aki menyimpan energi listrik untuk membantu menghidupkan kendaraan.','Motor starter memutar mesin saat proses starting.','Alternator mengisi aki dan menyuplai sistem listrik ketika mesin hidup.','Multimeter digunakan untuk mengukur tegangan, resistansi, dan arus sesuai prosedur.'], task:'Latihan: sebelum mengukur resistansi, pastikan rangkaian tidak bertegangan.'},
-  bahanbakar: {title:'Sistem Bahan Bakar & EFI', tag:'ENGINE MANAGEMENT', points:['Sistem EFI mengatur jumlah bahan bakar berdasarkan kondisi mesin.','ECU mengolah sinyal sensor dan mengendalikan aktuator seperti injektor.','Gangguan harus diperiksa melalui gejala, inspeksi, data, dan pengukuran; jangan langsung mengganti komponen.'], task:'Latihan: sebutkan fungsi sensor suhu mesin dan sensor posisi throttle.'},
-  tools: {title:'Tools & Alat Ukur', tag:'PERALATAN BENGKEL', points:['Gunakan ukuran kunci yang tepat agar baut dan mur tidak rusak.','Torque wrench digunakan untuk mengencangkan baut dengan torsi sesuai spesifikasi.','Multimeter: pilih mode dan rentang yang sesuai; jangan mengukur resistansi pada rangkaian aktif.','Jangka sorong dan mikrometer dipakai untuk pengukuran dimensi dengan ketelitian berbeda.'], task:'Latihan: tentukan alat yang tepat untuk mengukur diameter poros dan tegangan aki.'},
-  chassis: {title:'Rem, Kemudi & Suspensi', tag:'CHASSIS', points:['Rem mengubah energi gerak menjadi panas melalui gesekan.','Sistem kemudi mengarahkan roda sesuai input pengemudi.','Suspensi membantu menjaga kontak ban dengan jalan dan meredam guncangan.','Pemeriksaan rem adalah pekerjaan keselamatan; ikuti prosedur servis pabrikan.'], task:'Latihan: apa dampak kampas rem yang aus atau minyak rem yang kurang?' },
-  diagnosis: {title:'Diagnosis Kerusakan', tag:'TROUBLESHOOTING', points:['Konfirmasi keluhan dan kapan gejala muncul.','Lakukan inspeksi visual serta periksa hal sederhana terlebih dahulu.','Buat dugaan penyebab, lakukan pengukuran, lalu bandingkan dengan spesifikasi.','Setelah perbaikan, lakukan pengujian ulang dan pastikan keluhan teratasi.'], task:'Latihan: tulis urutan pemeriksaan saat mesin sulit dihidupkan.'}
-};
-document.getElementById('materiSearch').addEventListener('input', event => {
-  const query = event.target.value.toLowerCase().trim();
-  document.querySelectorAll('.topic-card').forEach(card => {
-    card.hidden = !(`${card.dataset.search} ${card.innerText}`.toLowerCase().includes(query));
-  });
-});
-document.querySelectorAll('[data-topic]').forEach(button => button.addEventListener('click', () => {
-  const lesson = lessons[button.dataset.topic];
-  document.getElementById('lessonTag').textContent = lesson.tag;
-  document.getElementById('lessonTitle').textContent = lesson.title;
-  document.getElementById('lessonBody').innerHTML = `<ul>${lesson.points.map(point => `<li>${point}</li>`).join('')}</ul><p><strong>Aktivitas belajar:</strong> ${lesson.task}</p>`;
-  document.getElementById('lessonPanel').hidden = false;
-  document.getElementById('lessonPanel').scrollIntoView({behavior:'smooth', block:'start'});
-}));
-document.getElementById('closeLesson').addEventListener('click', () => {
-  document.getElementById('lessonPanel').hidden = true;
-  document.getElementById('topicGrid').scrollIntoView({behavior:'smooth', block:'start'});
-});
+      pages.forEach(page => {
+        page.classList.toggle('active', page.id === tabId);
+      });
 
-// Kalkulator kapasitas mesin, rasio kompresi, dan konversi tekanan.
-function numberFrom(id) { return Number.parseFloat(document.getElementById(id).value); }
-function calculateDisplacement() {
-  const bore = numberFrom('bore'), stroke = numberFrom('stroke'), cylinders = numberFrom('cylinders');
-  const valid = bore > 0 && stroke > 0 && Number.isInteger(cylinders) && cylinders > 0;
-  const cc = valid ? Math.PI / 4 * bore * bore * stroke * cylinders / 1000 : NaN;
-  document.getElementById('ccResult').textContent = Number.isFinite(cc) ? `${cc.toFixed(1)} cc` : 'Periksa input';
-  document.getElementById('literResult').textContent = Number.isFinite(cc) ? `${(cc / 1000).toFixed(3)} liter` : 'Masukkan nilai positif';
-}
-function calculateCompression() {
-  const swept = numberFrom('swept'), chamber = numberFrom('chamber');
-  const ratio = swept > 0 && chamber > 0 ? (swept + chamber) / chamber : NaN;
-  document.getElementById('compressionResult').textContent = Number.isFinite(ratio) ? `${ratio.toFixed(2)} : 1` : 'Periksa input';
-}
-function calculatePressure() {
-  const bar = numberFrom('barValue');
-  document.getElementById('kpaResult').textContent = bar >= 0 && Number.isFinite(bar) ? (bar * 100).toFixed(1) : '—';
-  document.getElementById('psiResult').textContent = bar >= 0 && Number.isFinite(bar) ? (bar * 14.5038).toFixed(2) : '—';
-}
-['bore','stroke','cylinders'].forEach(id => document.getElementById(id).addEventListener('input', calculateDisplacement));
-['swept','chamber'].forEach(id => document.getElementById(id).addEventListener('input', calculateCompression));
-document.getElementById('barValue').addEventListener('input', calculatePressure);
-calculateDisplacement(); calculateCompression(); calculatePressure();
+      navButtons.forEach(button => {
+        const active = button.dataset.tab === tabId;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-current', active ? 'page' : 'false');
+      });
 
-// Simulasi diagnosis dengan umpan balik.
-const answers = document.querySelectorAll('.answer-option');
-answers.forEach(button => button.addEventListener('click', () => {
-  answers.forEach(option => { option.disabled = true; option.classList.remove('correct','wrong'); });
-  const feedback = document.getElementById('feedback');
-  feedback.hidden = false;
-  if (button.dataset.answer === 'b') {
-    button.classList.add('correct');
-    feedback.className = 'feedback';
-    feedback.innerHTML = '<strong>Benar!</strong> Aki lemah atau terminal yang longgar dapat menyebabkan lampu redup dan starter tidak berputar. Periksa kondisi aki, terminal, dan tegangan sesuai prosedur sebelum melanjutkan diagnosis.';
-  } else {
-    button.classList.add('wrong');
-    document.querySelector('[data-answer="b"]').classList.add('correct');
-    feedback.className = 'feedback incorrect';
-    feedback.innerHTML = '<strong>Belum tepat.</strong> Mulailah dari pemeriksaan dasar: kondisi aki dan terminal. Lanjutkan ke rangkaian starter bila sumber daya dan sambungan sudah dipastikan baik.';
-  }
-}));
-document.getElementById('resetSimulation').addEventListener('click', () => {
-  answers.forEach(option => { option.disabled = false; option.classList.remove('correct','wrong'); });
-  const feedback = document.getElementById('feedback'); feedback.hidden = true; feedback.className = 'feedback'; feedback.textContent = '';
-});
-document.getElementById('year').textContent = new Date().getFullYear();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-// Jalur belajar bertahap.
-const learningLevels = {
- pemula: 'Mulai dari dasar otomotif, fungsi komponen, dan keselamatan kerja sebelum praktik.',
- menengah: 'Pelajari cara kerja sistem, penggunaan alat ukur, dan cara membaca hasil pengukuran.',
- lanjut: 'Latih diagnosis berbasis gejala, pengujian terarah, interpretasi data, dan verifikasi perbaikan.'
-};
-document.querySelectorAll('[data-level]').forEach(button => button.addEventListener('click', () => {
- document.querySelectorAll('[data-level]').forEach(item => item.classList.toggle('selected', item === button));
- document.getElementById('pathDescription').textContent = learningLevels[button.dataset.level];
-}));
+    navButtons.forEach(button => {
+      button.addEventListener('click', () => showTab(button.dataset.tab));
+    });
 
-// Simulasi logika rangkaian starter sederhana untuk belajar.
-function updateCircuit() {
- const battery = document.getElementById('batterySwitch').checked;
- const fuse = document.getElementById('fuseSwitch').checked;
- const start = document.getElementById('startSwitch').checked;
- const active = battery && fuse && start;
- document.getElementById('nodeBattery').classList.toggle('powered', battery);
- document.getElementById('nodeFuse').classList.toggle('powered', battery && fuse);
- document.getElementById('nodeStarter').classList.toggle('powered', active);
- document.querySelectorAll('.circuit-wire').forEach((wire, i) => wire.classList.toggle('powered', i === 0 ? battery && fuse : active));
- const status = document.getElementById('circuitStatus');
- if (!battery) status.textContent = 'Sumber daya tidak tersedia. Periksa aki dan sambungan utama.';
- else if (!fuse) status.textContent = 'Jalur terputus pada sekring. Cari penyebab sekring putus sebelum menggantinya.';
- else if (!start) status.textContent = 'Daya tersedia pada model rangkaian. Aktifkan sakelar START untuk melihat starter bekerja.';
- else status.textContent = 'Alur daya aktif pada model ini. Kendaraan nyata dapat memiliki relay, interlock, dan kontrol ECU.';
-}
-['batterySwitch','fuseSwitch','startSwitch'].forEach(id => document.getElementById(id).addEventListener('change', updateCircuit));
-updateCircuit();
+    document.querySelectorAll('[data-go]').forEach(button => {
+      button.addEventListener('click', () => showTab(button.dataset.go));
+    });
 
+    document.querySelectorAll('[data-tab-link]').forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        showTab(link.dataset.tabLink);
+      });
+    });
+
+    // DATA MATERI
+    const lessons = {
+      dasar: {
+        title: 'Dasar Otomotif',
+        tag: 'PENGENALAN',
+        points: [
+          'Mobil mengubah energi bahan bakar atau listrik menjadi gerak.',
+          'Sistem utama mobil meliputi mesin, pemindah tenaga, chassis, kelistrikan, dan bodi.',
+          'Sebelum bekerja, gunakan APD, amankan kendaraan, dan ikuti prosedur kerja.'
+        ],
+        task: 'Sebutkan tiga sistem kendaraan dan jelaskan fungsi dasarnya.'
+      },
+
+      mesin: {
+        title: 'Mesin Kendaraan',
+        tag: 'SISTEM MESIN',
+        points: [
+          'Piston bergerak di dalam silinder dan meneruskan gaya ke poros engkol.',
+          'Mesin bensin 4-tak menjalani langkah hisap, kompresi, usaha, dan buang.',
+          'Sistem pendukung meliputi pelumasan, pendinginan, pemasukan udara, dan pembuangan gas.'
+        ],
+        task: 'Urutkan empat langkah kerja mesin 4-tak.'
+      },
+
+      tenaga: {
+        title: 'Sistem Pemindah Tenaga',
+        tag: 'DRIVETRAIN',
+        points: [
+          'Kopling menghubungkan atau memutus tenaga mesin ke transmisi.',
+          'Transmisi mengubah perbandingan gigi sesuai kebutuhan torsi dan kecepatan.',
+          'Diferensial memungkinkan roda kiri dan kanan berputar dengan kecepatan berbeda saat berbelok.'
+        ],
+        task: 'Jelaskan mengapa kendaraan membutuhkan beberapa rasio gigi.'
+      },
+
+      listrik: {
+        title: 'Kelistrikan Mobil',
+        tag: 'ELEKTRIKAL',
+        points: [
+          'Aki menyimpan energi listrik untuk membantu menghidupkan kendaraan.',
+          'Motor starter memutar mesin saat proses starting.',
+          'Alternator mengisi aki dan menyuplai sistem listrik ketika mesin hidup.',
+          'Multimeter digunakan untuk mengukur tegangan, resistansi, dan arus sesuai prosedur.'
+        ],
+        task: 'Sebelum mengukur resistansi, pastikan rangkaian tidak bertegangan.'
+      },
+
+      bahanbakar: {
+        title: 'Sistem Bahan Bakar dan EFI',
+        tag: 'ENGINE MANAGEMENT',
+        points: [
+          'Sistem EFI mengatur jumlah bahan bakar berdasarkan kondisi mesin.',
+          'ECU mengolah sinyal sensor dan mengendalikan aktuator seperti injektor.',
+          'Gangguan harus diperiksa melalui gejala, inspeksi, data, dan pengukuran.'
+        ],
+        task: 'Sebutkan fungsi sensor suhu mesin dan sensor posisi throttle.'
+      },
+
+      tools: {
+        title: 'Tools dan Alat Ukur',
+        tag: 'PERALATAN BENGKEL',
+        points: [
+          'Gunakan ukuran kunci yang tepat agar baut dan mur tidak rusak.',
+          'Torque wrench digunakan untuk mengencangkan baut sesuai spesifikasi torsi.',
+          'Jangan mengukur resistansi pada rangkaian yang masih bertegangan.',
+          'Jangka sorong dan mikrometer digunakan untuk mengukur dimensi.'
+        ],
+        task: 'Tentukan alat yang tepat untuk mengukur diameter poros dan tegangan aki.'
+      },
+
+      chassis: {
+        title: 'Rem, Kemudi dan Suspensi',
+        tag: 'CHASSIS',
+        points: [
+          'Rem mengubah energi gerak menjadi panas melalui gesekan.',
+          'Sistem kemudi mengarahkan roda sesuai input pengemudi.',
+          'Suspensi membantu menjaga kontak ban dengan jalan dan meredam guncangan.',
+          'Pemeriksaan rem harus mengikuti prosedur servis pabrikan.'
+        ],
+        task: 'Apa dampak kampas rem aus atau minyak rem yang kurang?'
+      },
+
+      diagnosis: {
+        title: 'Diagnosis Kerusakan',
+        tag: 'TROUBLESHOOTING',
+        points: [
+          'Konfirmasi keluhan dan kapan gejala muncul.',
+          'Lakukan inspeksi visual dan periksa hal sederhana terlebih dahulu.',
+          'Lakukan pengukuran lalu bandingkan dengan spesifikasi.',
+          'Setelah perbaikan, lakukan pengujian ulang.'
+        ],
+        task: 'Tuliskan urutan pemeriksaan saat mesin sulit dihidupkan.'
+      }
+    };
+
+    // PENCARIAN MATERI
+    document.getElementById('materiSearch').addEventListener('input', event => {
+      const query = event.target.value.toLowerCase().trim();
+
+      document.querySelectorAll('.topic-card').forEach(card => {
+        const content = (card.dataset.search + ' ' + card.innerText).toLowerCase();
+        card.hidden = !content.includes(query);
+      });
+    });
+
+    // MEMBUKA RINGKASAN MATERI
+    document.querySelectorAll('[data-topic]').forEach(button => {
+      button.addEventListener('click', () => {
+        const lesson = lessons[button.dataset.topic];
+
+        document.getElementById('lessonTag').textContent = lesson.tag;
+        document.getElementById('lessonTitle').textContent = lesson.title;
+
+        const body = document.getElementById('lessonBody');
+        body.replaceChildren();
+
+        const list = document.createElement('ul');
+
+        lesson.points.forEach(point => {
+          const item = document.createElement('li');
+          item.textContent = point;
+          list.appendChild(item);
+        });
+
+        const task = document.createElement('p');
+        const strong = document.createElement('strong');
+        strong.textContent = 'Aktivitas belajar: ';
+        task.appendChild(strong);
+        task.appendChild(document.createTextNode(lesson.task));
+
+        body.append(list, task);
+
+        document.getElementById('lessonPanel').hidden = false;
+        document.getElementById('lessonPanel').scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    });
+
+    document.getElementById('closeLesson').addEventListener('click', () => {
+      document.getElementById('lessonPanel').hidden = true;
+      document.getElementById('topicGrid').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    });
+
+    // JALUR BELAJAR BERTAHAP
+    const learningLevels = {
+      pemula: 'Mulai dari dasar otomotif, fungsi komponen, dan keselamatan kerja sebelum praktik.',
+      menengah: 'Pelajari cara kerja sistem, penggunaan alat ukur, dan cara membaca hasil pengukuran.',
+      lanjut: 'Latih diagnosis berbasis gejala, pengujian terarah, interpretasi data, dan verifikasi perbaikan.'
+    };
+
+    document.querySelectorAll('[data-level]').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('[data-level]').forEach(item => {
+          item.classList.toggle('selected', item === button);
+        });
+
+        document.getElementById('pathDescription').textContent =
+          learningLevels[button.dataset.level];
+      });
+    });
+
+    // KALKULATOR KAPASITAS MESIN
+    function numberFrom(id) {
+      return Number.parseFloat(document.getElementById(id).value);
+    }
+
+    function calculateDisplacement() {
+      const bore = numberFrom('bore');
+      const stroke = numberFrom('stroke');
+      const cylinders = numberFrom('cylinders');
+
+      const valid =
+        bore > 0 &&
+        stroke > 0 &&
+        Number.isInteger(cylinders) &&
+        cylinders > 0;
+
+      const cc = valid
+        ? Math.PI / 4 * bore * bore * stroke * cylinders / 1000
+        : NaN;
+
+      document.getElementById('ccResult').textContent =
+        Number.isFinite(cc) ? cc.toFixed(1) + ' cc' : 'Periksa input';
+
+      document.getElementById('literResult').textContent =
+        Number.isFinite(cc)
+          ? (cc / 1000).toFixed(3) + ' liter'
+          : 'Masukkan nilai positif';
+    }
+
+    // KALKULATOR RASIO KOMPRESI
+    function calculateCompression() {
+      const swept = numberFrom('swept');
+      const chamber = numberFrom('chamber');
+
+      const ratio = swept > 0 && chamber > 0
+        ? (swept + chamber) / chamber
+        : NaN;
+
+      document.getElementById('compressionResult').textContent =
+        Number.isFinite(ratio)
+          ? ratio.toFixed(2) + ' : 1'
+          : 'Periksa input';
+    }
+
+    // KONVERSI TEKANAN
+    function calculatePressure() {
+      const bar = numberFrom('barValue');
+
+      document.getElementById('kpaResult').textContent =
+        bar >= 0 && Number.isFinite(bar)
+          ? (bar * 100).toFixed(1)
+          : '—';
+
+      document.getElementById('psiResult').textContent =
+        bar >= 0 && Number.isFinite(bar)
+          ? (bar * 14.5038).toFixed(2)
+          : '—';
+    }
+
+    ['bore', 'stroke', 'cylinders'].forEach(id => {
+      document.getElementById(id).addEventListener('input', calculateDisplacement);
+    });
+
+    ['swept', 'chamber'].forEach(id => {
+      document.getElementById(id).addEventListener('input', calculateCompression);
+    });
+
+    document.getElementById('barValue').addEventListener('input', calculatePressure);
+
+    calculateDisplacement();
+    calculateCompression();
+    calculatePressure();
+
+    // KUIS DIAGNOSIS STARTER
+    const answers = document.querySelectorAll('.answer-option');
+
+    answers.forEach(button => {
+      button.addEventListener('click', () => {
+        answers.forEach(option => {
+          option.disabled = true;
+          option.classList.remove('correct', 'wrong');
+        });
+
+        const feedback = document.getElementById('feedback');
+        feedback.hidden = false;
+
+        if (button.dataset.answer === 'b') {
+          button.classList.add('correct');
+          feedback.className = 'feedback';
+          feedback.textContent =
+            'Benar! Aki lemah atau terminal longgar dapat menyebabkan lampu redup dan starter tidak berputar. Periksa kondisi aki, terminal, dan tegangan sesuai prosedur.';
+        } else {
+          button.classList.add('wrong');
+
+          document.querySelector('[data-answer="b"]').classList.add('correct');
+
+          feedback.className = 'feedback incorrect';
+          feedback.textContent =
+            'Belum tepat. Mulailah dari pemeriksaan kondisi aki dan terminal. Lanjutkan ke rangkaian starter bila sumber daya dan sambungan sudah dipastikan baik.';
+        }
+      });
+    });
+
+    document.getElementById('resetSimulation').addEventListener('click', () => {
+      answers.forEach(option => {
+        option.disabled = false;
+        option.classList.remove('correct', 'wrong');
+      });
+
+      const feedback = document.getElementById('feedback');
+      feedback.hidden = true;
+      feedback.className = 'feedback';
+      feedback.textContent = '';
+    });
+
+    // SIMULASI RANGKAIAN STARTER
+    function updateCircuit() {
+      const battery = document.getElementById('batterySwitch').checked;
+      const fuse = document.getElementById('fuseSwitch').checked;
+      const start = document.getElementById('startSwitch').checked;
+      const active = battery && fuse && start;
+
+      document.getElementById('nodeBattery')
+        .classList.toggle('powered', battery);
+
+      document.getElementById('nodeFuse')
+        .classList.toggle('powered', battery && fuse);
+
+      document.getElementById('nodeStarter')
+        .classList.toggle('powered', active);
+
+      document.querySelectorAll('.circuit-wire').forEach((wire, index) => {
+        wire.classList.toggle(
+          'powered',
+          index === 0 ? battery && fuse : active
+        );
+      });
+
+      const status = document.getElementById('circuitStatus');
+
+      if (!battery) {
+        status.textContent =
+          'Sumber daya tidak tersedia. Periksa aki dan sambungan utama.';
+      } else if (!fuse) {
+        status.textContent =
+          'Jalur terputus pada sekring. Cari penyebab sekring putus sebelum menggantinya.';
+      } else if (!start) {
+        status.textContent =
+          'Daya tersedia pada model rangkaian. Aktifkan sakelar START untuk melihat starter bekerja.';
+      } else {
+        status.textContent =
+          'Alur daya aktif pada model ini. Kendaraan nyata dapat memiliki relay, interlock, dan kontrol ECU.';
+      }
+    }
+
+    ['batterySwitch', 'fuseSwitch', 'startSwitch'].forEach(id => {
+      document.getElementById(id).addEventListener('change', updateCircuit);
+    });
+
+    updateCircuit();
+
+    // TAHUN FOOTER
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
