@@ -62,7 +62,6 @@
     .header-logo {
       display: block;
       width: auto;
-      /* Memperbesar ukuran logo agar pas dan dominan */
       height: clamp(65px, 8vw, 95px);
       max-width: 95%;
       object-fit: contain;
@@ -384,25 +383,59 @@
       margin-top: 12px;
     }
 
-    .lesson-panel {
-      margin-top: 22px;
+    /* HALAMAN DETAIL MATERI KHUSUS */
+    .lesson-container {
       background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 26px;
+      border-radius: 20px;
+      padding: 36px;
     }
 
-    .lesson-panel h2 {
-      font-size: 28px;
+    .lesson-container h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      margin: 10px 0 20px;
     }
 
-    .lesson-panel li {
-      margin: 7px 0;
-      color: var(--muted);
+    .lesson-content-box {
+      background: #353535;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .lesson-content-box ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .lesson-content-box li {
+      margin: 12px 0;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .task-box {
+      background: #c7f36a10;
+      border: 1px solid #c7f36a40;
+      border-radius: 12px;
+      padding: 20px;
+      color: var(--text);
+    }
+
+    .task-box strong {
+      color: var(--lime);
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
     }
 
     .back-btn {
-      margin: 0 0 25px;
+      margin: 0 0 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
     }
 
     .learning-path,
@@ -879,6 +912,10 @@
         width: clamp(12px, 5vw, 32px);
       }
 
+      .lesson-container {
+        padding: 22px;
+      }
+
       footer {
         flex-direction: column;
         gap: 5px;
@@ -914,7 +951,7 @@
 
     <nav class="main-nav" aria-label="Navigasi utama">
       <button class="nav-btn active" data-tab="beranda">Beranda</button>
-      <button class="nav-btn" data-tab="materi">Materi</button>
+      <button class="nav-btn" data-tab="materi">Pilihan Materi</button>
       <button class="nav-btn" data-tab="kalkulator">Kalkulator</button>
       <button class="nav-btn" data-tab="simulasi">Simulasi</button>
     </nav>
@@ -991,12 +1028,12 @@
       </div>
     </section>
 
-    <!-- HALAMAN MATERI -->
+    <!-- HALAMAN PILIHAN MATERI -->
     <section class="page" id="materi">
       <div class="page-intro">
         <p class="eyebrow">PERPUSTAKAAN TEKNIK</p>
-        <h1>Materi <span>Otomotif</span></h1>
-        <p>Pilih topik untuk melihat ringkasan pembelajaran.</p>
+        <h1>Daftar <span>Materi</span></h1>
+        <p>Pilih topik di bawah ini untuk masuk ke halaman modul pembelajaran lengkap.</p>
       </div>
 
       <div class="learning-path">
@@ -1139,14 +1176,25 @@
         </article>
 
       </div>
+    </section>
 
-      <div class="lesson-panel" id="lessonPanel" hidden>
-        <button class="text-btn back-btn" id="closeLesson">
-          ← Kembali ke daftar materi
-        </button>
-        <p class="eyebrow" id="lessonTag">RINGKASAN MATERI</p>
-        <h2 id="lessonTitle"></h2>
-        <div id="lessonBody"></div>
+    <!-- HALAMAN DETIL MATERI LENGKAP (TAB TERPISAH) -->
+    <section class="page" id="detail-materi">
+      <button class="text-btn back-btn" id="backToMateri">
+        ← Kembali ke daftar pilihan materi
+      </button>
+
+      <div class="lesson-container">
+        <p class="eyebrow" id="lessonTag">MODUL PEMBELAJARAN</p>
+        <h2 id="lessonTitle">Materi Otomotif</h2>
+        
+        <div class="lesson-content-box" id="lessonBody">
+          <!-- Isi materi otomatis dirender lewat JavaScript -->
+        </div>
+
+        <div class="task-box" id="lessonTask">
+          <!-- Tugas/Aktivitas pembelajaran -->
+        </div>
       </div>
     </section>
 
@@ -1402,7 +1450,7 @@
   </footer>
 
   <script>
-    // NAVIGASI ANTAR TAB
+    // NAVIGASI ANTAR TAB & PAGE
     const navButtons = [...document.querySelectorAll('.nav-btn')];
     const pages = [...document.querySelectorAll('.page')];
 
@@ -1437,98 +1485,102 @@
       });
     });
 
-    // DATA MATERI
+    // DATA MATERI LENGKAP
     const lessons = {
       dasar: {
         title: 'Dasar Otomotif',
-        tag: 'PENGENALAN',
+        tag: 'MODUL 01 • PENGENALAN',
         points: [
-          'Mobil mengubah energi bahan bakar atau listrik menjadi gerak.',
-          'Sistem utama mobil meliputi mesin, pemindah tenaga, chassis, kelistrikan, dan bodi.',
-          'Sebelum bekerja, gunakan APD, amankan kendaraan, dan ikuti prosedur kerja.'
+          'Mobil mengubah energi bahan bakar atau listrik menjadi gerak mekanis.',
+          'Sistem utama mobil meliputi mesin, pemindah tenaga (drivetrain), chassis, kelistrikan, dan bodi.',
+          'Prinsip kerja keselamatan kerja (K3) wajib diterapkan sebelum menyentuh komponen fisik kendaraan.',
+          'Penggunaan APD (Alat Pelindung Diri) seperti sepatu safety, kacamata pelindung, dan sarung tangan sangat krusial.'
         ],
-        task: 'Sebutkan tiga sistem kendaraan dan jelaskan fungsi dasarnya.'
+        task: 'Sebutkan tiga sistem kendaraan dan jelaskan fungsi dasarnya masing-masing.'
       },
 
       mesin: {
         title: 'Mesin Kendaraan',
-        tag: 'SISTEM MESIN',
+        tag: 'MODUL 02 • SISTEM MESIN',
         points: [
-          'Piston bergerak di dalam silinder dan meneruskan gaya ke poros engkol.',
-          'Mesin bensin 4-tak menjalani langkah hisap, kompresi, usaha, dan buang.',
-          'Sistem pendukung meliputi pelumasan, pendinginan, pemasukan udara, dan pembuangan gas.'
+          'Piston bergerak naik-turun di dalam silinder dan meneruskan gaya hasil pembakaran ke poros engkol (crankshaft).',
+          'Mesin bensin 4-tak menjalani empat siklus: Langkah Hisap, Kompresi, Usaha (Pembakaran), dan Buang.',
+          'Sistem pelumasan mencegah keausan antar gesekan logam dengan mengalirkan oli bermutu.',
+          'Sistem pendinginan menyerap panas berlebih dari mesin menggunakan radiator dan coolant agar tidak overheat.'
         ],
-        task: 'Urutkan empat langkah kerja mesin 4-tak.'
+        task: 'Urutkan empat langkah kerja mesin 4-tak beserta kondisi katup masuk dan buang pada tiap langkahnya.'
       },
 
       tenaga: {
         title: 'Sistem Pemindah Tenaga',
-        tag: 'DRIVETRAIN',
+        tag: 'MODUL 03 • DRIVETRAIN',
         points: [
-          'Kopling menghubungkan atau memutus tenaga mesin ke transmisi.',
-          'Transmisi mengubah perbandingan gigi sesuai kebutuhan torsi dan kecepatan.',
-          'Diferensial memungkinkan roda kiri dan kanan berputar dengan kecepatan berbeda saat berbelok.'
+          'Kopling (Clutch) berfungsi menghubungkan dan memutus aliran tenaga dari mesin ke transmisi secara halus.',
+          'Transmisi mengubah perbandingan rasio gigi untuk menyesuaikan torsi dan kecepatan kendaraan.',
+          'Poros Propeller merubah dan meneruskan putaran dari transmisi depan ke gardan/diferensial belakang.',
+          'Diferensial (Gardan) membagi putaran roda kiri dan kanan agar dapat berputar dengan kecepatan berbeda saat berbelok.'
         ],
-        task: 'Jelaskan mengapa kendaraan membutuhkan beberapa rasio gigi.'
+        task: 'Jelaskan alasan teknis mengapa kendaraan membutuhkan variasi perbandingan rasio gigi transmisi.'
       },
 
       listrik: {
         title: 'Kelistrikan Mobil',
-        tag: 'ELEKTRIKAL',
+        tag: 'MODUL 04 • ELEKTRIKAL',
         points: [
-          'Aki menyimpan energi listrik untuk membantu menghidupkan kendaraan.',
-          'Motor starter memutar mesin saat proses starting.',
-          'Alternator mengisi aki dan menyuplai sistem listrik ketika mesin hidup.',
-          'Multimeter digunakan untuk mengukur tegangan, resistansi, dan arus sesuai prosedur.'
+          'Aki (Baterai) menyimpan energi kimia yang diubah menjadi listrik untuk kebutuhan daya awal starting.',
+          'Motor starter berfungsi memutar poros engkol pertama kali saat mesin dihidupkan.',
+          'Alternator menyuplai seluruh listrik kendaraan sekaligus menguji dan mengisi kembali arus ke aki saat mesin beroperasi.',
+          'Penggunaan multimeter wajib dikuasai untuk mengukur tegangan (Volt), resistansi (Ohm), dan arus (Ampere).'
         ],
-        task: 'Sebelum mengukur resistansi, pastikan rangkaian tidak bertegangan.'
+        task: 'Tuliskan prosedur yang benar sebelum melakukan pengukuran resistansi hambatan menggunakan multimeter.'
       },
 
       bahanbakar: {
         title: 'Sistem Bahan Bakar dan EFI',
-        tag: 'ENGINE MANAGEMENT',
+        tag: 'MODUL 05 • ENGINE MANAGEMENT',
         points: [
-          'Sistem EFI mengatur jumlah bahan bakar berdasarkan kondisi mesin.',
-          'ECU mengolah sinyal sensor dan mengendalikan aktuator seperti injektor.',
-          'Gangguan harus diperiksa melalui gejala, inspeksi, data, dan pengukuran.'
+          'Sistem EFI (Electronic Fuel Injection) menyemprotkan bahan bakar secara presisi sesuai kebutuhan ruang bakar.',
+          'ECU (Engine Control Unit) bertindak sebagai otak yang mengolah data dari berbagai sensor.',
+          'Sensor posisi throttle (TPS) dan sensor suhu air pendingin (ECT) memberikan input variabel real-time.',
+          'Diagnosis kerusakan EFI dapat dianalisis lewat data live stream scanner OBD-II.'
         ],
-        task: 'Sebutkan fungsi sensor suhu mesin dan sensor posisi throttle.'
+        task: 'Sebutkan fungsi dari sensor suhu mesin (ECT) dan dampaknya jika sensor tersebut rusak.'
       },
 
       tools: {
         title: 'Tools dan Alat Ukur',
-        tag: 'PERALATAN BENGKEL',
+        tag: 'MODUL 06 • PERALATAN BENGKEL',
         points: [
-          'Gunakan ukuran kunci yang tepat agar baut dan mur tidak rusak.',
-          'Torque wrench digunakan untuk mengencangkan baut sesuai spesifikasi torsi.',
-          'Jangan mengukur resistansi pada rangkaian yang masih bertegangan.',
-          'Jangka sorong dan mikrometer digunakan untuk mengukur dimensi.'
+          'Pemilihan ukuran kunci (pass, ring, socket) yang pas mencegah kerusakan pada kepala baut/mur.',
+          'Kunci Momen (Torque Wrench) digunakan untuk mengencangkan baut sesuai standar spesifikasi kekencangan pabrik.',
+          'Jangka Sorong (Vernier Caliper) digunakan untuk mengukur diameter luar, diameter dalam, dan kedalaman.',
+          'Mikrometer (Micrometer) memberikan tingkat ketelitian tinggi hingga 0.01 mm untuk komponen mesin.'
         ],
-        task: 'Tentukan alat yang tepat untuk mengukur diameter poros dan tegangan aki.'
+        task: 'Tentukan alat ukur yang paling tepat untuk mengukur ketebalan pasak dan diameter jurnal poros engkol.'
       },
 
       chassis: {
         title: 'Rem, Kemudi dan Suspensi',
-        tag: 'CHASSIS',
+        tag: 'MODUL 07 • CHASSIS',
         points: [
-          'Rem mengubah energi gerak menjadi panas melalui gesekan.',
-          'Sistem kemudi mengarahkan roda sesuai input pengemudi.',
-          'Suspensi membantu menjaga kontak ban dengan jalan dan meredam guncangan.',
-          'Pemeriksaan rem harus mengikuti prosedur servis pabrikan.'
+          'Sistem rem mengubah energi kinetik gerak menjadi energi panas melalui gesekan gesek.',
+          'Sistem kemudi (steering system) mentransfer putaran roda kemudi ke roda depan kendaraan.',
+          'Suspensi meredam kejutan dari permukaan jalan dan menjaga kestabilan daya cengkeram ban.',
+          'Sistem rem hidrolik memanfaatkan fluida minyak rem berdasarkan Hukum Pascal.'
         ],
-        task: 'Apa dampak kampas rem aus atau minyak rem yang kurang?'
+        task: 'Jelaskan dampak keselamatan jika terjadi kebocoran angin/udara atau minyak rem pada sistem hidrolik.'
       },
 
       diagnosis: {
         title: 'Diagnosis Kerusakan',
-        tag: 'TROUBLESHOOTING',
+        tag: 'MODUL 08 • TROUBLESHOOTING',
         points: [
-          'Konfirmasi keluhan dan kapan gejala muncul.',
-          'Lakukan inspeksi visual dan periksa hal sederhana terlebih dahulu.',
-          'Lakukan pengukuran lalu bandingkan dengan spesifikasi.',
-          'Setelah perbaikan, lakukan pengujian ulang.'
+          'Prosedur diagnosis diawali dari konfirmasi keluhan pengguna dan analisis kondisi munculnya masalah.',
+          'Lakukan pemeriksaan visual menyeluruh sebelum melakukan pengujian lanjutan.',
+          'Gunakan logika sistematis: periksa pasokan listrik, aliran bahan bakar, kompresi, dan pengapian.',
+          'Bandingkan hasil pengukuran alat ukur dengan spesifikasi buku manual servis resmi.'
         ],
-        task: 'Tuliskan urutan pemeriksaan saat mesin sulit dihidupkan.'
+        task: 'Tuliskan bagan urutan langkah pemeriksaan dasar saat mesin mengalami indikasi mogok/sulit dihidupkan.'
       }
     };
 
@@ -1542,47 +1594,49 @@
       });
     });
 
-    // MEMBUKA RINGKASAN MATERI
+    // MEMBUKA HALAMAN DETAIL MATERI KHUSUS
     document.querySelectorAll('[data-topic]').forEach(button => {
       button.addEventListener('click', () => {
-        const lesson = lessons[button.dataset.topic];
+        const topicKey = button.dataset.topic;
+        const lesson = lessons[topicKey];
 
+        if (!lesson) return;
+
+        // Setel Konten
         document.getElementById('lessonTag').textContent = lesson.tag;
         document.getElementById('lessonTitle').textContent = lesson.title;
 
-        const body = document.getElementById('lessonBody');
-        body.replaceChildren();
+        const bodyContainer = document.getElementById('lessonBody');
+        bodyContainer.replaceChildren();
 
         const list = document.createElement('ul');
-
         lesson.points.forEach(point => {
           const item = document.createElement('li');
           item.textContent = point;
           list.appendChild(item);
         });
+        bodyContainer.appendChild(list);
 
-        const task = document.createElement('p');
-        const strong = document.createElement('strong');
-        strong.textContent = 'Aktivitas belajar: ';
-        task.appendChild(strong);
-        task.appendChild(document.createTextNode(lesson.task));
+        const taskContainer = document.getElementById('lessonTask');
+        taskContainer.replaceChildren();
 
-        body.append(list, task);
+        const taskTitle = document.createElement('strong');
+        taskTitle.textContent = 'Aktivitas & Evaluasi Belajar:';
+        
+        const taskDesc = document.createElement('p');
+        taskDesc.style.margin = '0';
+        taskDesc.textContent = lesson.task;
 
-        document.getElementById('lessonPanel').hidden = false;
-        document.getElementById('lessonPanel').scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+        taskContainer.append(taskTitle, taskDesc);
+
+        // Pindah Halaman ke Detail Materi
+        showTab('detail-materi');
       });
     });
 
-    document.getElementById('closeLesson').addEventListener('click', () => {
-      document.getElementById('lessonPanel').hidden = true;
-      document.getElementById('topicGrid').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+    // TOMBOL KEMBALI DARI DETAIL MATERI
+    document.getElementById('backToMateri').addEventListener('click', () => {
+      showTab('materi');
     });
 
     // JALUR BELAJAR BERTAHAP
