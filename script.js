@@ -36,7 +36,7 @@ document.querySelectorAll('[data-tab-link]').forEach(link => {
 // DATA MATERI LENGKAP
 const lessons = {
   dasar: {
-    title: 'Dasar Otomotif & K3 Dalam Dunia Otomotif Mobil',
+    title: 'Keselamatan dan Kesehatan kerja (K3) Dalam Dunia Otomotif Mobil',
     tag: 'MODUL 01 • KURIKULUM LENGKAP K3 BENGKEL',
     sections: [
       {
