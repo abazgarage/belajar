@@ -1040,7 +1040,7 @@
         <p class="eyebrow">JALUR BELAJAR</p>
         <h2>Belajar bertahap</h2>
         <p class="muted">
-          Pilih tingkat belajar untuk melihat panduan berikutnya.
+          Pilih tingkat belajar untuk memfilter daftar materi sesuai level Anda.
         </p>
 
         <div class="path-steps">
@@ -1080,6 +1080,7 @@
       <div class="topic-grid" id="topicGrid">
 
         <article class="topic-card"
+          data-level="pemula"
           data-search="dasar otomotif pengenalan kendaraan">
           <span class="topic-number">01</span>
           <span class="topic-tag">DASAR</span>
@@ -1092,6 +1093,7 @@
         </article>
 
         <article class="topic-card"
+          data-level="menengah"
           data-search="mesin pembakaran piston silinder katup">
           <span class="topic-number">02</span>
           <span class="topic-tag">MESIN</span>
@@ -1104,6 +1106,7 @@
         </article>
 
         <article class="topic-card"
+          data-level="menengah"
           data-search="pemindah tenaga transmisi kopling diferensial">
           <span class="topic-number">03</span>
           <span class="topic-tag">DRIVETRAIN</span>
@@ -1116,6 +1119,7 @@
         </article>
 
         <article class="topic-card"
+          data-level="menengah"
           data-search="kelistrikan aki baterai starter alternator sensor">
           <span class="topic-number">04</span>
           <span class="topic-tag">ELEKTRIKAL</span>
@@ -1128,6 +1132,7 @@
         </article>
 
         <article class="topic-card"
+          data-level="menengah"
           data-search="bahan bakar injeksi EFI udara pembakaran">
           <span class="topic-number">05</span>
           <span class="topic-tag">BAHAN BAKAR</span>
@@ -1140,6 +1145,7 @@
         </article>
 
         <article class="topic-card"
+          data-level="pemula"
           data-search="tools alat ukur multimeter jangka sorong mikrometer">
           <span class="topic-number">06</span>
           <span class="topic-tag">PERALATAN</span>
@@ -1152,6 +1158,7 @@
         </article>
 
         <article class="topic-card"
+          data-level="menengah"
           data-search="rem suspensi kemudi roda kaki kaki">
           <span class="topic-number">07</span>
           <span class="topic-tag">CHASSIS</span>
@@ -1164,6 +1171,7 @@
         </article>
 
         <article class="topic-card"
+          data-level="lanjut"
           data-search="diagnosis kerusakan troubleshooting OBD-II">
           <span class="topic-number">08</span>
           <span class="topic-tag">DIAGNOSIS</span>
@@ -1584,14 +1592,45 @@
       }
     };
 
-    // PENCARIAN MATERI
-    document.getElementById('materiSearch').addEventListener('input', event => {
-      const query = event.target.value.toLowerCase().trim();
+    // JALUR BELAJAR BERTAHAP & FILTER MATERI
+    let currentLevel = 'pemula';
+
+    const learningLevels = {
+      pemula: 'Mulai dari dasar otomotif, fungsi komponen, dan keselamatan kerja sebelum praktik.',
+      menengah: 'Pelajari cara kerja sistem, penggunaan alat ukur, dan cara membaca hasil pengukuran.',
+      lanjut: 'Latih diagnosis berbasis gejala, pengujian terarah, interpretasi data, dan verifikasi perbaikan.'
+    };
+
+    function filterTopics() {
+      const searchInput = document.getElementById('materiSearch');
+      const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
 
       document.querySelectorAll('.topic-card').forEach(card => {
+        const matchesLevel = card.dataset.level === currentLevel;
         const content = (card.dataset.search + ' ' + card.innerText).toLowerCase();
-        card.hidden = !content.includes(query);
+        const matchesSearch = content.includes(query);
+
+        // Hanya tampilkan jika cocok dengan level aktif DAN kata kunci pencarian
+        card.hidden = !(matchesLevel && matchesSearch);
       });
+    }
+
+    document.querySelectorAll('[data-level]').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('[data-level]').forEach(item => {
+          item.classList.toggle('selected', item === button);
+        });
+
+        currentLevel = button.dataset.level;
+        document.getElementById('pathDescription').textContent = learningLevels[currentLevel];
+
+        filterTopics();
+      });
+    });
+
+    // PENCARIAN MATERI (TERINTEGRASI DENGAN FILTER LEVEL)
+    document.getElementById('materiSearch').addEventListener('input', () => {
+      filterTopics();
     });
 
     // MEMBUKA HALAMAN DETAIL MATERI KHUSUS
@@ -1639,23 +1678,8 @@
       showTab('materi');
     });
 
-    // JALUR BELAJAR BERTAHAP
-    const learningLevels = {
-      pemula: 'Mulai dari dasar otomotif, fungsi komponen, dan keselamatan kerja sebelum praktik.',
-      menengah: 'Pelajari cara kerja sistem, penggunaan alat ukur, dan cara membaca hasil pengukuran.',
-      lanjut: 'Latih diagnosis berbasis gejala, pengujian terarah, interpretasi data, dan verifikasi perbaikan.'
-    };
-
-    document.querySelectorAll('[data-level]').forEach(button => {
-      button.addEventListener('click', () => {
-        document.querySelectorAll('[data-level]').forEach(item => {
-          item.classList.toggle('selected', item === button);
-        });
-
-        document.getElementById('pathDescription').textContent =
-          learningLevels[button.dataset.level];
-      });
-    });
+    // Jalankan filter pertama kali untuk menyaring materi 'pemula'
+    filterTopics();
 
     // KALKULATOR KAPASITAS MESIN
     function numberFrom(id) {
