@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f34b1b">
+  <title>AB Garage — Belajar Otomotif</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="AB Garage, beranda" data-tab-link="beranda">
+      <span class="brand-mark"><span>AB</span><span>AZ</span></span>
+      <span class="brand-name">GARAGE</span>
+    </a>
+    <nav class="main-nav" aria-label="Navigasi utama">
+      <button class="nav-btn active" data-tab="beranda">Beranda</button>
+      <button class="nav-btn" data-tab="materi">Materi</button>
+      <button class="nav-btn" data-tab="kalkulator">Kalkulator</button>
+      <button class="nav-btn" data-tab="simulasi">Simulasi</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="page active" id="beranda">
+      <div class="hero">
+        <p class="eyebrow">PUSAT BELAJAR OTOMOTIF MOBIL</p>
+        <h1>Pahami mobil.<br><span>Mulai dari dasar.</span></h1>
+        <p class="hero-copy">Belajar sistem kendaraan, memahami komponen, menghitung spesifikasi, dan berlatih diagnosis kerusakan dalam satu tempat.</p>
+        <button class="primary-btn" data-go="materi">Mulai Belajar <span aria-hidden="true">→</span></button>
+        <div class="hero-note"><span class="status-dot"></span> Belajar mandiri • Gratis • Ramah HP</div>
+      </div>
+      <div class="section-heading">
+        <div><p class="eyebrow">JELAJAHI AB GARAGE</p><h2>Mau belajar apa hari ini?</h2></div>
+      </div>
+      <div class="feature-grid">
+        <button class="feature-card" data-go="materi">
+          <span class="feature-icon">⚙</span><span class="feature-title">Materi Otomotif</span>
+          <span class="feature-copy">Pelajari sistem dan komponen mobil secara bertahap.</span><span class="card-arrow">Buka materi ↗</span>
+        </button>
+        <button class="feature-card" data-go="kalkulator">
+          <span class="feature-icon">∑</span><span class="feature-title">Kalkulator Teknik</span>
+          <span class="feature-copy">Hitung kapasitas mesin, rasio kompresi, dan satuan.</span><span class="card-arrow">Buka kalkulator ↗</span>
+        </button>
+        <button class="feature-card" data-go="simulasi">
+          <span class="feature-icon">⌁</span><span class="feature-title">Simulasi Diagnosis</span>
+          <span class="feature-copy">Latih cara berpikir saat menemukan gangguan kendaraan.</span><span class="card-arrow">Mulai simulasi ↗</span>
+        </button>
+      </div>
+      <div class="tip-panel"><span class="tip-icon">✦</span><div><strong>Tips belajar</strong><p>Mulailah dari fungsi komponen, pahami cara kerjanya, lalu lanjutkan ke pengukuran dan diagnosis. Selalu utamakan keselamatan saat praktik.</p></div></div>
+    </section>
+
+    <section class="page" id="materi">
+      <div class="page-intro"><p class="eyebrow">PERPUSTAKAAN TEKNIK</p><h1>Materi <span>Otomotif</span></h1><p>Pilih topik untuk melihat ringkasan pembelajaran.</p></div>
+      <label class="search-box"><span>⌕</span><input id="materiSearch" type="search" placeholder="Cari materi, misalnya sistem bahan bakar..." aria-label="Cari materi"></label>
+      <div class="topic-grid" id="topicGrid">
+        <article class="topic-card" data-search="dasar otomotif pengenalan kendaraan"><span class="topic-number">01</span><span class="topic-tag">DASAR</span><h3>Dasar Otomotif</h3><p>Jenis kendaraan, prinsip kerja, keselamatan kerja, dan pengenalan sistem mobil.</p><button class="text-btn" data-topic="dasar">Pelajari topik →</button></article>
+        <article class="topic-card" data-search="mesin pembakaran piston silinder katup"><span class="topic-number">02</span><span class="topic-tag">MESIN</span><h3>Mesin Kendaraan</h3><p>Komponen utama, langkah kerja 4-tak, pelumasan, pendinginan, dan kompresi.</p><button class="text-btn" data-topic="mesin">Pelajari topik →</button></article>
+        <article class="topic-card" data-search="pemindah tenaga transmisi kopling diferensial"><span class="topic-number">03</span><span class="topic-tag">DRIVETRAIN</span><h3>Pemindah Tenaga</h3><p>Kopling, transmisi, poros propeller, diferensial, dan poros penggerak.</p><button class="text-btn" data-topic="tenaga">Pelajari topik →</button></article>
+        <article class="topic-card" data-search="kelistrikan aki baterai starter alternator sensor"><span class="topic-number">04</span><span class="topic-tag">ELEKTRIKAL</span><h3>Kelistrikan Mobil</h3><p>Aki, starter, alternator, sekring, relay, sensor, dan dasar membaca diagram.</p><button class="text-btn" data-topic="listrik">Pelajari topik →</button></article>
+        <article class="topic-card" data-search="bahan bakar injeksi EFI udara pembakaran"><span class="topic-number">05</span><span class="topic-tag">BAHAN BAKAR</span><h3>Sistem Bahan Bakar</h3><p>Aliran udara dan bahan bakar, injektor, throttle body, serta sensor EFI.</p><button class="text-btn" data-topic="bahanbakar">Pelajari topik →</button></article>
+        <article class="topic-card" data-search="tools alat ukur multimeter jangka sorong mikrometer"><span class="topic-number">06</span><span class="topic-tag">PERALATAN</span><h3>Tools & Alat Ukur</h3><p>Penggunaan kunci, torque wrench, multimeter, jangka sorong, dan mikrometer.</p><button class="text-btn" data-topic="tools">Pelajari topik →</button></article>
+        <article class="topic-card" data-search="rem suspensi kemudi roda kaki kaki"><span class="topic-number">07</span><span class="topic-tag">CHASSIS</span><h3>Rem, Kemudi & Suspensi</h3><p>Prinsip kerja sistem pengereman, steering, roda, dan suspensi.</p><button class="text-btn" data-topic="chassis">Pelajari topik →</button></article>
+        <article class="topic-card" data-search="diagnosis kerusakan troubleshooting OBD-II"><span class="topic-number">08</span><span class="topic-tag">DIAGNOSIS</span><h3>Diagnosis Kerusakan</h3><p>Keluhan pelanggan, inspeksi awal, pengukuran, dan penentuan penyebab.</p><button class="text-btn" data-topic="diagnosis">Pelajari topik →</button></article>
+      </div>
+      <div class="lesson-panel" id="lessonPanel" hidden>
+        <button class="text-btn back-btn" id="closeLesson">← Kembali ke daftar materi</button>
+        <p class="eyebrow" id="lessonTag">RINGKASAN MATERI</p><h2 id="lessonTitle"></h2><div id="lessonBody"></div>
+      </div>
+    </section>
+
+    <section class="page" id="kalkulator">
+      <div class="page-intro"><p class="eyebrow">ALAT BANTU PERHITUNGAN</p><h1>Kalkulator <span>Teknik</span></h1><p>Masukkan nilai untuk menghitung hasil secara otomatis.</p></div>
+      <div class="calculator-grid">
+        <article class="tool-panel">
+          <span class="topic-tag">KALKULATOR 01</span><h2>Kapasitas Mesin</h2><p class="muted">Menghitung volume satu silinder dan total kapasitas mesin.</p>
+          <div class="field-row"><label>Diameter silinder / bore (mm)<input id="bore" type="number" min="0" step="0.1" value="80"></label><label>Langkah piston / stroke (mm)<input id="stroke" type="number" min="0" step="0.1" value="90"></label></div>
+          <label>Jumlah silinder<input id="cylinders" type="number" min="1" step="1" value="4"></label>
+          <div class="result-box"><span>Total kapasitas mesin</span><strong id="ccResult">— cc</strong><small id="literResult">— liter</small></div>
+          <p class="formula">Rumus: π ÷ 4 × bore² × stroke × jumlah silinder</p>
+        </article>
+        <article class="tool-panel">
+          <span class="topic-tag">KALKULATOR 02</span><h2>Rasio Kompresi</h2><p class="muted">Menghitung rasio dari volume langkah dan volume ruang bakar.</p>
+          <label>Volume langkah per silinder (cc)<input id="swept" type="number" min="0" step="0.1" value="400"></label>
+          <label>Volume ruang bakar (cc)<input id="chamber" type="number" min="0" step="0.1" value="40"></label>
+          <div class="result-box"><span>Rasio kompresi</span><strong id="compressionResult">— : 1</strong><small>(volume langkah + volume ruang bakar) ÷ volume ruang bakar</small></div>
+          <p class="formula">Hasil adalah estimasi matematis; gunakan spesifikasi pabrikan untuk servis.</p>
+        </article>
+        <article class="tool-panel">
+          <span class="topic-tag">KALKULATOR 03</span><h2>Konversi Tekanan</h2><p class="muted">Konversi nilai bar ke kilopascal (kPa) dan psi.</p>
+          <label>Tekanan (bar)<input id="barValue" type="number" min="0" step="0.1" value="2.2"></label>
+          <div class="conversion-results"><div><span>kPa</span><strong id="kpaResult">220</strong></div><div><span>psi</span><strong id="psiResult">31.9</strong></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="simulasi">
+      <div class="page-intro"><p class="eyebrow">LATIHAN INTERAKTIF</p><h1>Simulasi <span>Diagnosis</span></h1><p>Pilih gejala kendaraan, tentukan pemeriksaan awal, lalu lihat pembahasannya.</p></div>
+      <div class="simulation-layout">
+        <div class="simulation-main">
+          <div class="simulation-step"><span>STUDI KASUS 01</span><span class="step-pill">Pemula</span></div>
+          <h2>Mesin tidak bisa distarter</h2>
+          <p class="muted">Pengemudi memutar kunci ke posisi START, tetapi mesin tidak berputar. Lampu indikator dashboard terlihat redup.</p>
+          <div class="case-visual"><div class="battery-icon"><span>+</span><span>−</span></div><div><strong>Petunjuk gejala</strong><p>Periksa sumber daya listrik sebelum membongkar komponen lain.</p></div></div>
+          <h3>Apa pemeriksaan pertama yang paling tepat?</h3>
+          <div class="answer-list" id="answerList">
+            <button class="answer-option" data-answer="a"><span>A</span> Langsung mengganti motor starter</button>
+            <button class="answer-option" data-answer="b"><span>B</span> Memeriksa kondisi aki dan kekencangan terminal</button>
+            <button class="answer-option" data-answer="c"><span>C</span> Membongkar kepala silinder</button>
+            <button class="answer-option" data-answer="d"><span>D</span> Mengganti busi tanpa pemeriksaan</button>
+          </div>
+          <div class="feedback" id="feedback" aria-live="polite" hidden></div>
+          <button class="primary-btn" id="resetSimulation">Ulangi simulasi</button>
+        </div>
+        <aside class="safety-panel"><span class="feature-icon">⚠</span><h3>Ingat keselamatan</h3><p>Simulasi ini untuk pembelajaran. Saat praktik, aktifkan rem parkir, pilih posisi P atau netral, jauhkan tangan dari komponen bergerak, dan ikuti prosedur pabrikan.</p><div class="safety-divider"></div><strong>Urutan diagnosis dasar</strong><ol><li>Konfirmasi keluhan</li><li>Inspeksi visual</li><li>Lakukan pengukuran</li><li>Bandingkan spesifikasi</li><li>Perbaiki dan uji ulang</li></ol></aside>
+      </div>
+    </section>
+  </main>
+
+  <footer><span class="footer-brand">AB GARAGE</span><span>Belajar otomotif, selangkah demi selangkah.</span><span>© <span id="year"></span> AB Garage</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
