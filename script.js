@@ -248,18 +248,14 @@ const lessons = {
   },
 
   mesin: {
-    title: 'MEMBACA GAMBAR TEKNIK,
+    title: 'Judul Modul Baru 02',
     tag: 'MODUL 02',
     sections: [
       {
-        heading: 'A. Pengetahuan yang di perrlukan dalam membaca gambar teknik',
-        content: `
-        <h3> 1. Identifikasi produk/sistem/komponen,</h3>
-        <p>Untuk menampilkan gambar-gambar tiga dimensi pada sebuah bidang dua dimens, dapat dilakukan dengan cara proyeksi pandangan sesuai dengan aturan menggambar.</p>
-      <p>Beberapa macam cara proyeksi antara lain sebagai berikut : </p>
- 
-    `
-    },
+        heading: 'JUDUL SUB-MATERI',
+        content: '<p>Tuliskan isi materi baru di sini...</p>'
+      }
+    ],
     task: 'Tuliskan tugas/aktivitas di sini...'
   },
 
@@ -478,113 +474,4 @@ function calculatePressure() {
       ? (bar * 100).toFixed(1)
       : '—';
 
-  document.getElementById('psiResult').textContent =
-    bar >= 0 && Number.isFinite(bar)
-      ? (bar * 14.5038).toFixed(2)
-      : '—';
-}
-
-['bore', 'stroke', 'cylinders'].forEach(id => {
-  document.getElementById(id).addEventListener('input', calculateDisplacement);
-});
-
-['swept', 'chamber'].forEach(id => {
-  document.getElementById(id).addEventListener('input', calculateCompression);
-});
-
-document.getElementById('barValue').addEventListener('input', calculatePressure);
-
-calculateDisplacement();
-calculateCompression();
-calculatePressure();
-
-// KUIS DIAGNOSIS STARTER
-const answers = document.querySelectorAll('.answer-option');
-
-answers.forEach(button => {
-  button.addEventListener('click', () => {
-    answers.forEach(option => {
-      option.disabled = true;
-      option.classList.remove('correct', 'wrong');
-    });
-
-    const feedback = document.getElementById('feedback');
-    feedback.hidden = false;
-
-    if (button.dataset.answer === 'b') {
-      button.classList.add('correct');
-      feedback.className = 'feedback';
-      feedback.textContent =
-        'Benar! Aki lemah atau terminal longgar dapat menyebabkan lampu redup dan starter tidak berputar. Periksa kondisi aki, terminal, dan tegangan sesuai prosedur.';
-    } else {
-      button.classList.add('wrong');
-
-      document.querySelector('[data-answer="b"]').classList.add('correct');
-
-      feedback.className = 'feedback incorrect';
-      feedback.textContent =
-        'Belum tepat. Mulailah dari pemeriksaan kondisi aki dan terminal. Lanjutkan ke rangkaian starter bila sumber daya dan sambungan sudah dipastikan baik.';
-    }
-  });
-});
-
-document.getElementById('resetSimulation').addEventListener('click', () => {
-  answers.forEach(option => {
-    option.disabled = false;
-    option.classList.remove('correct', 'wrong');
-  });
-
-  const feedback = document.getElementById('feedback');
-  feedback.hidden = true;
-  feedback.className = 'feedback';
-  feedback.textContent = '';
-});
-
-// SIMULASI RANGKAIAN STARTER
-function updateCircuit() {
-  const battery = document.getElementById('batterySwitch').checked;
-  const fuse = document.getElementById('fuseSwitch').checked;
-  const start = document.getElementById('startSwitch').checked;
-  const active = battery && fuse && start;
-
-  document.getElementById('nodeBattery')
-    .classList.toggle('powered', battery);
-
-  document.getElementById('nodeFuse')
-    .classList.toggle('powered', battery && fuse);
-
-  document.getElementById('nodeStarter')
-    .classList.toggle('powered', active);
-
-  document.querySelectorAll('.circuit-wire').forEach((wire, index) => {
-    wire.classList.toggle(
-      'powered',
-      index === 0 ? battery && fuse : active
-    );
-  });
-
-  const status = document.getElementById('circuitStatus');
-
-  if (!battery) {
-    status.textContent =
-      'Sumber daya tidak tersedia. Periksa aki dan sambungan utama.';
-  } else if (!fuse) {
-    status.textContent =
-      'Jalur terputus pada sekring. Cari penyebab sekring putus sebelum menggantinya.';
-  } else if (!start) {
-    status.textContent =
-      'Daya tersedia pada model rangkaian. Aktifkan sakelar START untuk melihat starter bekerja.';
-  } else {
-    status.textContent =
-      'Alur daya aktif pada model ini. Kendaraan nyata dapat memiliki relay, interlock, dan kontrol ECU.';
-  }
-}
-
-['batterySwitch', 'fuseSwitch', 'startSwitch'].forEach(id => {
-  document.getElementById(id).addEventListener('change', updateCircuit);
-});
-
-updateCircuit();
-
-// TAHUN FOOTER
-document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('psi
