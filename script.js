@@ -248,12 +248,174 @@ const lessons = {
   },
 
   mesin: {
-    title: 'Judul Modul Baru 02',
+    title: 'MEMBACA GAMBAR TEKNIK,
     tag: 'MODUL 02',
     sections: [
       {
-        heading: 'JUDUL SUB-MATERI',
-        content: '<p>Tuliskan isi materi baru di sini...</p>'
+        heading: 'A. Pengetahuan yang di perrlukan dalam membaca gambar teknik',
+        content: `
+        <h3> 1. Identifikasi produk/sistem/komponen,</h3>
+        <p>Untuk menampilkan gambar-gambar tiga dimensi pada sebuah bidang dua dimens, dapat dilakukan dengan cara proyeksi pandangan sesuai dengan aturan menggambar.</p>
+      <p>Beberapa macam cara proyeksi antara lain sebagai berikut : </p>
+  const materiProyeksiEropa = {
+    judul: "Proyeksi Eropa dalam Gambar Teknik",
+
+    pengertian: `
+        Proyeksi Eropa adalah metode menggambar benda tiga dimensi
+        ke dalam bidang dua dimensi menggunakan proyeksi ortogonal.
+        Proyeksi Eropa juga dikenal sebagai First Angle Projection
+        atau proyeksi sudut pertama.
+    `,
+
+    tujuan: [
+        "Menampilkan bentuk benda secara dua dimensi.",
+        "Menunjukkan ukuran dan bentuk benda dengan jelas.",
+        "Mempermudah proses pembuatan atau manufaktur benda.",
+        "Memudahkan pembacaan gambar teknik.",
+        "Menampilkan beberapa pandangan benda secara sistematis."
+    ],
+
+    prinsip: [
+        "Benda berada di antara pengamat dan bidang proyeksi.",
+        "Pandangan atas berada di bawah pandangan depan.",
+        "Pandangan kanan berada di sebelah kiri pandangan depan.",
+        "Pandangan kiri berada di sebelah kanan pandangan depan."
+    ],
+
+    susunanPandangan: `
+        <div class="proyeksi">
+            <div class="pandangan kosong"></div>
+            <div class="pandangan depan">PANDANGAN<br>DEPAN</div>
+            <div class="pandangan kosong"></div>
+
+            <div class="pandangan kanan">PANDANGAN<br>KANAN</div>
+            <div class="pandangan atas">PANDANGAN<br>ATAS</div>
+            <div class="pandangan kiri">PANDANGAN<br>KIRI</div>
+        </div>
+    `,
+
+    garis: [
+        {
+            nama: "Garis kontinu tebal",
+            fungsi: "Menunjukkan bagian benda yang terlihat."
+        },
+        {
+            nama: "Garis putus-putus",
+            fungsi: "Menunjukkan bagian benda yang tidak terlihat."
+        },
+        {
+            nama: "Garis sumbu",
+            fungsi: "Menunjukkan pusat atau sumbu benda."
+        },
+        {
+            nama: "Garis ukuran",
+            fungsi: "Menunjukkan ukuran benda."
+        }
+    ],
+
+    langkah: [
+        "Amati bentuk benda.",
+        "Tentukan pandangan depan.",
+        "Gambar pandangan depan.",
+        "Buat pandangan atas di bawah pandangan depan.",
+        "Buat pandangan samping sesuai aturan proyeksi Eropa.",
+        "Tambahkan garis tersembunyi.",
+        "Tambahkan garis sumbu.",
+        "Tambahkan ukuran benda."
+    ],
+
+    kelebihan: [
+        "Sistematis dan mudah digunakan.",
+        "Menggambarkan benda secara akurat.",
+        "Memudahkan proses produksi.",
+        "Menampilkan benda dari beberapa arah.",
+        "Cocok untuk gambar kerja teknik."
+    ],
+
+    kesimpulan: `
+        Proyeksi Eropa adalah First Angle Projection atau proyeksi sudut
+        pertama. Ciri utamanya adalah posisi pandangan berada berlawanan
+        dengan arah pandang.
+    `
+};
+
+
+// Menampilkan materi ke dalam halaman HTML
+function tampilkanMateri() {
+    const container = document.getElementById("materi-proyeksi");
+
+    container.innerHTML = `
+        <h1>${materiProyeksiEropa.judul}</h1>
+
+        <h2>1. Pengertian</h2>
+        <p>${materiProyeksiEropa.pengertian}</p>
+
+        <h2>2. Tujuan</h2>
+        <ul>
+            ${materiProyeksiEropa.tujuan
+                .map(item => `<li>${item}</li>`)
+                .join("")}
+        </ul>
+
+        <h2>3. Prinsip Dasar</h2>
+        <ul>
+            ${materiProyeksiEropa.prinsip
+                .map(item => `<li>${item}</li>`)
+                .join("")}
+        </ul>
+
+        <h2>4. Susunan Pandangan</h2>
+        ${materiProyeksiEropa.susunanPandangan}
+
+        <h2>5. Jenis Garis</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Jenis Garis</th>
+                    <th>Fungsi</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${materiProyeksiEropa.garis
+                    .map(item => `
+                        <tr>
+                            <td>${item.nama}</td>
+                            <td>${item.fungsi}</td>
+                        </tr>
+                    `)
+                    .join("")}
+            </tbody>
+        </table>
+
+        <h2>6. Langkah Menggambar</h2>
+        <ol>
+            ${materiProyeksiEropa.langkah
+                .map(item => `<li>${item}</li>`)
+                .join("")}
+        </ol>
+
+        <h2>7. Kelebihan</h2>
+        <ul>
+            ${materiProyeksiEropa.kelebihan
+                .map(item => `<li>${item}</li>`)
+                .join("")}
+        </ul>
+
+        <h2>8. Kesimpulan</h2>
+        <p>${materiProyeksiEropa.kesimpulan}</p>
+
+        <div class="catatan">
+            <strong>💡 Cara mudah mengingat:</strong><br>
+            Eropa = berlawanan.<br>
+            Atas → bawah<br>
+            Bawah → atas<br>
+            Kanan → kiri<br>
+            Kiri → kanan
+        </div>
+    `;
+}
+
+document.addEventListener("DOMContentLoaded", tampilkanMateri);      
       }
     ],
     task: 'Tuliskan tugas/aktivitas di sini...'
