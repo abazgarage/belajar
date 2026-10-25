@@ -65,10 +65,7 @@
     box.querySelectorAll('[data-progress-module]').forEach(btn=>btn.addEventListener('click',()=>{
       const id=btn.dataset.progressModule;
       const topic=[...document.querySelectorAll('[data-topic]')].find(x=>{
-        const key={
-          'MODUL 01':'dasar','MODUL 02':'mesin','MODUL 03':'tenaga','MODUL 04':'listrik',
-          'MODUL 05':'bahanbakar','MODUL 06':'tools','MODUL 07':'chassis','MODUL 08':'diagnosis'
-        }[id];
+        const key={'MODUL 01':'dasar','MODUL 02':'mesin','MODUL 03':'tenaga','MODUL 04':'listrik','MODUL 05':'bahanbakar','MODUL 06':'tools','MODUL 07':'chassis','MODUL 08':'diagnosis'}[id];
         return x.dataset.topic===key;
       });
       if(topic)topic.click();
@@ -79,18 +76,21 @@
     const body=document.getElementById('lessonBody');
     const tag=document.getElementById('lessonTag')?.textContent.trim();
     if(!body||!modules.some(m=>m.id===tag))return;
+    const done=!!read()[tag]?.done;
     let panel=body.querySelector('.progress-lesson-panel');
+    if(panel&&panel.dataset.tag===tag&&panel.dataset.done===String(done))return;
     if(!panel){
       panel=document.createElement('div');
       panel.className='progress-lesson-panel';
       body.prepend(panel);
     }
-    const done=!!read()[tag]?.done;
+    panel.dataset.tag=tag;
+    panel.dataset.done=String(done);
     panel.innerHTML=`<div><span class="progress-label">STATUS BELAJAR</span><strong>${done?'✓ Modul selesai':'Belum selesai'}</strong><p>${done?'Progres modul ini sudah tercatat di perangkat.':'Pelajari materi, kerjakan job sheet dan evaluasi, lalu tandai modul sebagai selesai.'}</p></div><button type="button" class="progress-complete ${done?'is-done':''}" ${done?'disabled':''}>${done?'✓ Sudah selesai':'Tandai modul selesai'}</button>`;
     panel.querySelector('button')?.addEventListener('click',()=>markDone(tag));
   }
 
-  function renderAll(){updateDashboard();renderLesson();}
+  function renderAll(){updateDashboard();renderLesson()}
   window.ABProgress={markDone,reset,percent,completed};
 
   renderDashboard();
