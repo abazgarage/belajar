@@ -30,7 +30,7 @@ form?.addEventListener('submit', async (event) => {
       password,
       options: {
         data: { full_name: fullName, nis, class_name: className },
-        emailRedirectTo: `${window.location.origin}${window.location.pathname.replace('register.html', 'login.html')}`
+        emailRedirectTo: 'https://abazgarage.github.io/belajar/login.html'
       }
     });
     if (error) throw error;
