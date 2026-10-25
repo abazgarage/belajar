@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" role="img" aria-labelledby="title desc">
+<title id="title">Peralatan gambar teknik</title>
+<desc id="desc">Ilustrasi pensil, penggaris, dan jangka untuk pembelajaran gambar teknik.</desc>
+<rect width="720" height="260" rx="18" fill="#353535"/>
+<g stroke="#f34b1b" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none">
+<path d="M120 178 L282 48 L318 91 L156 221 Z"/>
+<path d="M282 48 L306 28 L342 71 L318 91"/>
+<path d="M120 178 L156 221 L96 242 Z" fill="#c7f36a" stroke="#c7f36a"/>
+<path d="M386 52 L608 52 L608 212 L386 212 Z" stroke="#f7f4f0"/>
+<path d="M410 52 V78 M440 52 V68 M470 52 V78 M500 52 V68 M530 52 V78 M560 52 V68 M590 52 V78" stroke="#f34b1b" stroke-width="4"/>
+<path d="M380 220 Q450 252 520 220" stroke="#c7f36a"/>
+<circle cx="450" cy="220" r="10" fill="#c7f36a" stroke="#c7f36a"/>
+</g>
+<text x="360" y="246" fill="#f7f4f0" font-family="Arial,sans-serif" font-size="16" text-anchor="middle">ALAT GAMBAR TEKNIK</text>
+</svg>

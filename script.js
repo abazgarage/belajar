@@ -5,7 +5,7 @@ navButtons.forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));do
 const diagramFiles={'Alur energi mesin':'images/diagram-modul-02.svg','Siklus mesin 4-tak':'images/diagram-modul-02.svg','Alur pemindah tenaga':'images/diagram-modul-03.svg','Sistem start dan pengisian':'images/diagram-modul-04.svg','Alur bahan bakar':'images/diagram-modul-05.svg','Metode pengukuran':'images/diagram-modul-06.svg','Hubungan chassis':'images/diagram-modul-07.svg','Alur diagnosis':'images/diagram-modul-08.svg'};
 const diagram=(title)=>{const src=diagramFiles[title];return src?`<figure class="lesson-diagram"><img src="${src}" alt="${title}" loading="lazy"><figcaption>${title} — diagram pembelajaran AB Garage</figcaption></figure>`:''};
 const lessons={
-dasar:{title:'MENYIAPKAN GAMBAR TEKNIK',tag:'MODUL 01',sections:[{heading:'A. Tujuan Pembelajaran',content:'<p>Peserta mampu memahami fungsi gambar teknik, mengenali standar dan peralatan, serta menyiapkan gambar secara rapi, teliti, dan sesuai aturan.</p>'},{heading:'B. Fungsi dan Standar Gambar Teknik',content:'<p>Gambar teknik merupakan bahasa komunikasi teknis. Informasi harus dapat dibaca oleh perancang, teknisi, pemeriksa, dan pihak produksi. Standar seperti ISO dan standar nasional/industri membantu menyeragamkan simbol, garis, ukuran, dan penyajian.</p>'},{heading:'C. Peralatan dan Teknik Dasar',content:'<ul><li>Kertas gambar dan meja/papan gambar.</li><li>Pensil, penghapus, penggaris, jangka, busur, dan mal.</li><li>Gunakan alat sesuai fungsi dan jaga kebersihannya.</li><li>Garis harus konsisten, ukuran terbaca, dan bidang kerja rapi.</li></ul><div class="materi-image-box"><img src="images/pensil.jpg" alt="Contoh peralatan gambar teknik" class="responsive-img" loading="lazy"><p class="img-caption">Contoh peralatan gambar teknik</p></div>'},{heading:'D. Prosedur Kerja',content:'<ol><li>Siapkan tempat kerja dan alat.</li><li>Tentukan ukuran serta skala.</li><li>Buat garis bantu dengan tipis.</li><li>Pertegas garis sesuai jenisnya.</li><li>Periksa ukuran, simbol, dan kerapian.</li></ol>'},{heading:'E. K3 dan Sikap Kerja',content:'<p>Jaga meja kerja tetap rapi, gunakan alat tajam dengan hati-hati, dan simpan alat setelah digunakan. Ketelitian, disiplin, kebersihan, dan tanggung jawab merupakan sikap kerja utama.</p>'}],task:'<p><strong>Evaluasi:</strong> Jelaskan fungsi gambar teknik, lima alat gambar, serta langkah menyiapkan lembar gambar.</p>'},
+dasar:{title:'MENYIAPKAN GAMBAR TEKNIK',tag:'MODUL 01',sections:[{heading:'A. Tujuan Pembelajaran',content:'<p>Peserta mampu memahami fungsi gambar teknik, mengenali standar dan peralatan, serta menyiapkan gambar secara rapi, teliti, dan sesuai aturan.</p>'},{heading:'B. Fungsi dan Standar Gambar Teknik',content:'<p>Gambar teknik merupakan bahasa komunikasi teknis. Informasi harus dapat dibaca oleh perancang, teknisi, pemeriksa, dan pihak produksi. Standar seperti ISO dan standar nasional/industri membantu menyeragamkan simbol, garis, ukuran, dan penyajian.</p>'},{heading:'C. Peralatan dan Teknik Dasar',content:'<ul><li>Kertas gambar dan meja/papan gambar.</li><li>Pensil, penghapus, penggaris, jangka, busur, dan mal.</li><li>Gunakan alat sesuai fungsi dan jaga kebersihannya.</li><li>Garis harus konsisten, ukuran terbaca, dan bidang kerja rapi.</li></ul><div class="materi-image-box"><img src="images/pensil.svg" alt="Contoh peralatan gambar teknik" class="responsive-img" loading="lazy"><p class="img-caption">Contoh peralatan gambar teknik</p></div>'},{heading:'D. Prosedur Kerja',content:'<ol><li>Siapkan tempat kerja dan alat.</li><li>Tentukan ukuran serta skala.</li><li>Buat garis bantu dengan tipis.</li><li>Pertegas garis sesuai jenisnya.</li><li>Periksa ukuran, simbol, dan kerapian.</li></ol>'},{heading:'E. K3 dan Sikap Kerja',content:'<p>Jaga meja kerja tetap rapi, gunakan alat tajam dengan hati-hati, dan simpan alat setelah digunakan. Ketelitian, disiplin, kebersihan, dan tanggung jawab merupakan sikap kerja utama.</p>'}],task:'<p><strong>Evaluasi:</strong> Jelaskan fungsi gambar teknik, lima alat gambar, serta langkah menyiapkan lembar gambar.</p>'},
 mesin:{title:'MESIN KENDARAAN',tag:'MODUL 02',sections:[{heading:'A. Tujuan Pembelajaran',content:'<p>Peserta mampu menjelaskan prinsip mesin pembakaran dalam, mengidentifikasi komponen utama, menjelaskan siklus 4-tak, serta memahami dasar pelumasan, pendinginan, dan diagnosis mekanis.</p>'},{heading:'B. Dasar Mesin Pembakaran Dalam',content:'<p>Mesin mengubah energi kimia bahan bakar menjadi energi mekanis. Pada mesin bensin, campuran dinyalakan oleh busi; pada mesin diesel, pembakaran dimulai melalui temperatur udara hasil kompresi dan injeksi bahan bakar.</p>'+diagram('Alur energi mesin')},{heading:'C. Komponen Utama',content:'<p>Blok silinder, kepala silinder, piston, ring piston, connecting rod, crankshaft, camshaft, katup, flywheel, oil pan, dan mekanisme timing bekerja sebagai satu sistem. Ring piston membantu sealing, kontrol oli, dan perpindahan panas.</p>'},{heading:'D. Siklus 4-Tak',content:'<ol><li><strong>Hisap:</strong> piston turun, katup masuk terbuka.</li><li><strong>Kompresi:</strong> piston naik, katup tertutup.</li><li><strong>Usaha:</strong> pembakaran mendorong piston turun.</li><li><strong>Buang:</strong> piston naik, katup buang terbuka.</li></ol><p>Satu siklus berlangsung selama dua putaran crankshaft atau 720°.</p>'+diagram('Siklus mesin 4-tak')},{heading:'E. Pelumasan',content:'<p>Oli mengurangi gesekan, membantu pendinginan, membawa kontaminan menuju filter, dan melindungi permukaan komponen. Pemeriksaan dasar meliputi level, kebocoran, kondisi oli, dan indikator tekanan sesuai manual.</p>'},{heading:'F. Pendinginan',content:'<p>Sistem pendinginan menjaga temperatur kerja. Komponen umum meliputi water pump, thermostat, radiator, coolant, dan selang. Overheating dapat berkaitan dengan kebocoran, sirkulasi buruk, thermostat, radiator, atau kipas.</p>'},{heading:'G. Kompresi dan Diagnosis',content:'<p>Kompresi rendah dapat berkaitan dengan ring piston, katup, gasket kepala silinder, atau keausan. Gunakan compression test/leak-down test sesuai prosedur. Jangan mengganti komponen hanya berdasarkan gejala.</p>'},{heading:'H. Praktik Bengkel',content:'<ol><li>Identifikasi mesin dan spesifikasinya.</li><li>Periksa level oli dan coolant.</li><li>Inspeksi kebocoran.</li><li>Amati suara, asap, temperatur, dan idle.</li><li>Catat hasil sebelum menentukan tindakan.</li></ol>'}],task:'<p><strong>Evaluasi:</strong> Jelaskan siklus 4-tak, fungsi ring piston, fungsi thermostat, dan tiga kemungkinan penyebab kompresi rendah.</p>'},
 tenaga:{title:'PEMINDAH TENAGA',tag:'MODUL 03',sections:[{heading:'A. Tujuan Pembelajaran',content:'<p>Peserta mampu menjelaskan aliran tenaga dari mesin ke roda, fungsi kopling, transmisi, diferensial, serta pemeriksaan dasar drivetrain.</p>'},{heading:'B. Aliran Tenaga',content:'<p>Tenaga mesin diteruskan dan diatur sebelum mencapai roda. Rasio transmisi memengaruhi hubungan torsi dan putaran. Diferensial memungkinkan roda kiri dan kanan memiliki kecepatan berbeda ketika berbelok.</p>'+diagram('Alur pemindah tenaga')},{heading:'C. Kopling',content:'<p>Kopling manual terdiri antara lain dari flywheel, clutch disc, pressure plate, dan release bearing. <strong>Selip</strong> terjadi ketika tenaga tidak tersalurkan penuh; <strong>drag</strong> terjadi ketika kopling tidak terlepas sempurna.</p>'},{heading:'D. Transmisi',content:'<p>Gigi rendah memberikan keuntungan torsi untuk mulai bergerak dan beban berat. Gigi lebih tinggi digunakan saat kendaraan melaju. Pada transmisi manual, synchronizer membantu menyamakan kecepatan sebelum penguncian gigi.</p><p>Transmisi otomatis memiliki desain berbeda, misalnya torque converter, gear set, clutch/brake, hydraulic control, dan kontrol elektronik.</p>'},{heading:'E. Diferensial dan Poros',content:'<p>Diferensial membagi torsi sekaligus memungkinkan perbedaan kecepatan roda. Periksa kebocoran, suara, getaran, kondisi poros, sambungan, dan pelumas sesuai spesifikasi.</p>'},{heading:'F. Praktik Bengkel',content:'<ol><li>Konfirmasi keluhan saat akselerasi/perpindahan gigi.</li><li>Periksa kebocoran dan kondisi sambungan.</li><li>Amati suara dan getaran.</li><li>Periksa mekanisme pengoperasian.</li><li>Bandingkan hasil dengan manual.</li></ol>'}],task:'<p><strong>Evaluasi:</strong> Jelaskan fungsi kopling, manfaat rasio gigi rendah, dan alasan diferensial diperlukan saat berbelok.</p>'},
 listrik:{title:'KELISTRIKAN MOBIL',tag:'MODUL 04',sections:[{heading:'A. Tujuan Pembelajaran',content:'<p>Peserta mampu mengenali sumber, penghantar, pengaman, pengendali, dan beban serta melakukan pemeriksaan dasar sistem starter dan pengisian.</p>'},{heading:'B. Dasar Rangkaian',content:'<p>Rangkaian membutuhkan sumber tegangan, jalur penghantar, beban, dan jalur kembali. Diagnosis harus memperhatikan tegangan, arus, resistansi, koneksi, dan kondisi pengaman.</p>'},{heading:'C. Starter dan Pengisian',content:'<p>Aki memasok energi besar saat starting. Rangkaian kontrol mengaktifkan starter untuk memutar crankshaft. Setelah mesin hidup, alternator memasok kebutuhan listrik dan mengisi aki melalui sistem pengaturan.</p>'+diagram('Sistem start dan pengisian')},{heading:'D. Sekring, Relay, Sensor',content:'<p>Sekring melindungi rangkaian dari arus berlebih. Relay memungkinkan beban dikendalikan oleh rangkaian kontrol. Sensor mengubah kondisi fisik menjadi sinyal; aktuator menjalankan perintah sistem kontrol.</p>'},{heading:'E. Multimeter',content:'<ol><li>Tentukan parameter.</li><li>Pilih terminal dan mode yang benar.</li><li>Untuk tegangan, ukur pada dua titik rangkaian.</li><li>Untuk resistansi, pastikan rangkaian tidak bertegangan.</li><li>Catat hasil dan bandingkan spesifikasi.</li></ol>'},{heading:'F. K3 Kelistrikan',content:'<p>Hindari hubungan singkat, jangan mengganti sekring dengan kapasitas sembarang, dan jauhkan sumber api dari baterai. Ikuti prosedur pabrikan ketika melepas konektor atau sistem elektronik.</p>'}],task:'<p><strong>Evaluasi:</strong> Susun diagnosis ketika starter tidak berputar dan lampu dashboard redup. Jelaskan fungsi sekring, relay, dan aki.</p>'},
@@ -26,3 +26,65 @@ const bs=document.getElementById('batterySwitch'),fs=document.getElementById('fu
   addCss('smk.css');
   addScript('smk-modules.js',()=>addScript('evaluasi-smk.js'));
 })();
+
+
+// Audit hardening: consistent navigation, browser history, and circuit visualization.
+function showTab(id, options = {}) {
+  const requested = document.getElementById(id);
+  if (!requested) return false;
+  pages.forEach(page => page.classList.toggle('active', page.id === id));
+  const activeNavId = id === 'detail-materi' ? 'materi' : id;
+  navButtons.forEach(button => {
+    const active = button.dataset.tab === activeNavId;
+    button.classList.toggle('active', active);
+    if (active) button.setAttribute('aria-current', 'page');
+    else button.removeAttribute('aria-current');
+  });
+  if (!options.fromHistory && location.hash !== '#' + id) {
+    history.pushState({ tab: id }, '', '#' + id);
+  }
+  window.scrollTo({
+    top: 0,
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+  });
+  return true;
+}
+function restoreTabFromLocation() {
+  const id = decodeURIComponent(location.hash.replace(/^#/, ''));
+  if (id && document.getElementById(id)?.classList.contains('page')) {
+    showTab(id, { fromHistory: true });
+  }
+}
+window.addEventListener('popstate', restoreTabFromLocation);
+window.addEventListener('hashchange', restoreTabFromLocation);
+restoreTabFromLocation();
+
+// Show the active electrical path in the starter-circuit exercise.
+function updateCircuitWires() {
+  const battery = document.getElementById('batterySwitch')?.checked;
+  const fuse = document.getElementById('fuseSwitch')?.checked;
+  const start = document.getElementById('startSwitch')?.checked;
+  const wires = [...document.querySelectorAll('.circuit-wire')];
+  wires[0]?.classList.toggle('powered', Boolean(battery && fuse));
+  wires[1]?.classList.toggle('powered', Boolean(battery && fuse && start));
+}
+[bs, fs, ss].forEach(control => control?.addEventListener('change', updateCircuitWires));
+updateCircuitWires();
+
+// Keep broken optional lesson images from leaving an empty image frame.
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('error', () => {
+    if (img.dataset.fallbackHandled) return;
+    img.dataset.fallbackHandled = 'true';
+    img.alt = img.alt || 'Ilustrasi tidak tersedia';
+    img.hidden = true;
+  });
+});
+
+// Make the selected simulation answer available to assistive technology.
+opts.forEach(option => {
+  option.setAttribute('aria-pressed', 'false');
+  option.addEventListener('click', () => {
+    opts.forEach(item => item.setAttribute('aria-pressed', String(item === option)));
+  });
+});
