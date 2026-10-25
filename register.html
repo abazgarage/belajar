@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f34b1b">
+  <title>Daftar Siswa - AB Garage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-card">
+      <p class="eyebrow">AB GARAGE</p>
+      <h1>Daftar Siswa</h1>
+      <p>Buat akun belajar AB Garage dengan data siswa yang benar.</p>
+      <form id="registerForm">
+        <label>Nama Lengkap<input id="fullName" type="text" required autocomplete="name"></label>
+        <label>NIS<input id="nis" type="text" required autocomplete="off"></label>
+        <label>Kelas<input id="className" type="text" required autocomplete="organization-title" placeholder="Contoh: XI TKRO 1"></label>
+        <label>Email<input id="email" type="email" required autocomplete="email"></label>
+        <label>Password<input id="password" type="password" required minlength="8" autocomplete="new-password"></label>
+        <label>Ulangi Password<input id="passwordConfirm" type="password" required minlength="8" autocomplete="new-password"></label>
+        <button class="primary-btn" type="submit">Buat Akun</button>
+        <p id="registerMessage" class="muted" role="alert"></p>
+      </form>
+      <a class="text-btn" href="login.html">← Sudah punya akun? Login</a>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="register.js"></script>
+</body>
+</html>
