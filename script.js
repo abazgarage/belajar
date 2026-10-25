@@ -259,8 +259,7 @@ const lessons = {
       <p>Beberapa macam cara proyeksi antara lain sebagai berikut : </p>
  
     `
-    }
-    ],
+    },
     task: 'Tuliskan tugas/aktivitas di sini...'
   },
 
