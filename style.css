@@ -956,3 +956,129 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Responsiveness and accessibility hardening */
+:where(button, input, a, [tabindex]):focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: 3px;
+}
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: .6;
+}
+img, svg, video {
+  max-width: 100%;
+}
+.lesson-diagram,
+.smk-diagram,
+.materi-image-box {
+  max-width: 100%;
+  overflow: hidden;
+}
+.lesson-diagram img,
+.smk-diagram img,
+.responsive-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.lesson-diagram figcaption,
+.smk-diagram figcaption,
+.img-caption {
+  color: var(--muted);
+  font-size: .78rem;
+  overflow-wrap: anywhere;
+}
+.page-intro p,
+.topic-card p,
+.tool-panel p,
+.lesson-content-box p,
+.task-box,
+.safety-panel,
+.dashboard-card {
+  overflow-wrap: anywhere;
+}
+.main-nav {
+  row-gap: 8px;
+}
+.nav-btn {
+  white-space: nowrap;
+}
+.circuit-wire.powered {
+  background: var(--lime);
+  box-shadow: 0 0 8px #c7f36a55;
+}
+@media (max-width: 720px) {
+  .site-header {
+    position: sticky;
+    padding-inline: max(10px, env(safe-area-inset-left));
+  }
+  .main-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    padding: 10px 0 14px;
+  }
+  .nav-btn {
+    width: 100%;
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+  .lesson-content-box,
+  .lesson-container,
+  .tool-panel,
+  .simulation-main,
+  .safety-panel,
+  .learning-path,
+  .circuit-panel {
+    padding: clamp(14px, 4vw, 22px);
+  }
+  .field-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .circuit-flow {
+    width: 100%;
+  }
+  .circuit-node {
+    min-width: 0;
+    flex: 1 1 0;
+    padding: 10px 4px;
+    overflow-wrap: anywhere;
+  }
+  .circuit-wire {
+    flex: 0 1 28px;
+    width: auto;
+  }
+}
+@media (max-width: 380px) {
+  .container {
+    width: calc(100% - 24px);
+  }
+  .hero {
+    padding: 26px 18px;
+  }
+  .hero h1 {
+    letter-spacing: -1px;
+  }
+  .feature-card,
+  .topic-card {
+    padding: 18px;
+  }
+  .conversion-results strong,
+  .result-box strong {
+    font-size: clamp(22px, 7vw, 30px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
