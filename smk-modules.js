@@ -13,12 +13,14 @@ const diagramMap={'MODUL 02':'images/diagram-modul-02.svg','MODUL 03':'images/di
 function enhanceSMKModule(){const tag=document.getElementById('lessonTag')?.textContent.trim();const body=document.getElementById('lessonBody');const info=smkModules[tag];if(!body||!info)return;if(body.dataset.smkTag===tag)return;body.dataset.smkTag=tag;const box=document.createElement('div');box.className='smk-module-header';box.innerHTML=`<div class="smk-meta"><span>LEVEL ${info.level}</span><span>ALOKASI ${info.alokasi}</span></div><h3>Kompetensi Pembelajaran</h3><p>${info.cp}</p><div class="smk-grid"><div><strong>Prasyarat</strong><p>${info.prasyarat}</p></div><div><strong>Produk Akhir</strong><p>${info.produk}</p></div></div><h3>Kompetensi Dasar / Elemen Kompetensi</h3><ol>${info.kd.map(x=>`<li>${x}</li>`).join('')}</ol>${diagramMap[tag]?`<figure class="smk-diagram"><img src="${diagramMap[tag]}" alt="Diagram pembelajaran ${tag}" loading="lazy"><figcaption>Diagram konsep ${tag}. Gunakan manual servis sebagai acuan ketika melakukan pekerjaan pada kendaraan nyata.</figcaption></figure>`:''}<div class="smk-practice"><h3>Praktik / Job Sheet</h3><p>${info.praktik}</p><h4>Langkah umum</h4><ol><li>Siapkan APD, tools, dan area kerja.</li><li>Baca job sheet dan identifikasi objek kerja.</li><li>Lakukan inspeksi awal sebelum pembongkaran.</li><li>Ukur atau periksa sesuai prosedur.</li><li>Catat hasil dan bandingkan dengan spesifikasi.</li><li>Lakukan verifikasi dan rapikan area kerja.</li></ol></div><div class="smk-assessment"><h3>Asesmen</h3><p>${info.asesmen}</p></div>`;body.prepend(box)}
 const lessonBodyObserver=new MutationObserver(()=>enhanceSMKModule());const lessonBodyEl=document.getElementById('lessonBody');if(lessonBodyEl)lessonBodyObserver.observe(lessonBodyEl,{childList:true});setTimeout(enhanceSMKModule,0);
 
-// Memuat sistem progres dan nilai siswa.
+// Memuat sistem siswa: progres, nilai, serta pre-test/post-test.
 (function loadStudentSystems(){
   const addCss=href=>{if(document.querySelector(`link[href="${href}"]`))return;const link=document.createElement('link');link.rel='stylesheet';link.href=href;document.head.appendChild(link)};
   const addScript=src=>{if(document.querySelector(`script[src="${src}"]`))return;const s=document.createElement('script');s.src=src;s.onerror=()=>console.warn('Gagal memuat',src);document.body.appendChild(s)};
   addCss('progress.css');
   addCss('nilai.css');
+  addCss('prepost.css');
   addScript('progress.js');
   addScript('nilai-smk.js');
+  addScript('prepost-smk.js');
 })();
