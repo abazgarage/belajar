@@ -1,53 +1,59 @@
-name: Integrasi Modul SMK
+name: Validasi Website AB Garage
 
 on:
   push:
+    branches: [main, "fix/**"]
+  pull_request:
     branches: [main]
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  integrate:
-    if: !contains(github.event.head_commit.message, '[smk-integrated]')
+  validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Integrasikan CSS dan JavaScript SMK
+      - name: Periksa sintaks JavaScript
         shell: bash
         run: |
-          python - <<'PY'
+          set -e
+          for file in ./*.js; do
+            echo "Memeriksa $file"
+            node --check "$file"
+          done
+      - name: Periksa referensi aset lokal dan ID HTML
+        shell: python
+        run: |
+          from html.parser import HTMLParser
           from pathlib import Path
-          p = Path('index.html')
-          text = p.read_text(encoding='utf-8')
+          from urllib.parse import urlparse
+          import sys
 
-          css = '  <link rel="stylesheet" href="smk.css">\n'
-          scripts = '  <script src="smk-modules.js"></script>\n  <script src="evaluasi-smk.js"></script>\n'
-
-          if 'href="smk.css"' not in text:
-              text = text.replace('  <link rel="stylesheet" href="style.css">\n', '  <link rel="stylesheet" href="style.css">\n' + css, 1)
-
-          if 'src="smk-modules.js"' not in text:
-              marker = '  <script src="script.js"></script>'
-              if marker in text:
-                  text = text.replace(marker, marker + '\n' + scripts, 1)
-              else:
-                  text = text.replace('</body>', scripts + '</body>', 1)
-
-          p.write_text(text, encoding='utf-8')
-          PY
-
-      - name: Commit hasil integrasi
-        shell: bash
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html
-          if git diff --cached --quiet; then
-            echo "Tidak ada perubahan yang perlu di-commit."
-          else
-            git commit -m "Integrasikan modul SMK ke index.html [smk-integrated]"
-            git push
-          fi
+          root = Path(".")
+          html = (root / "index.html").read_text(encoding="utf-8")
+          class Audit(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.ids = []
+                  self.assets = []
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if "id" in attrs:
+                      self.ids.append(attrs["id"])
+                  for key in ("src", "href"):
+                      value = attrs.get(key, "")
+                      if value and tag in ("script", "img", "link") and not value.startswith(("#", "data:", "http:", "https:", "//", "mailto:")):
+                          self.assets.append(value.split("?")[0])
+          parser = Audit()
+          parser.feed(html)
+          duplicates = sorted({item for item in parser.ids if parser.ids.count(item) > 1})
+          missing = sorted({asset for asset in parser.assets if not (root / asset).is_file()})
+          if duplicates:
+              print("ID HTML duplikat:", ", ".join(duplicates))
+          if missing:
+              print("Aset lokal tidak ditemukan:", ", ".join(missing))
+          if duplicates or missing:
+              sys.exit(1)
+          print("Pemeriksaan HTML dan aset lokal lulus.")
