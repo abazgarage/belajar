@@ -4,28 +4,84 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#f34b1b">
-  <title>Daftar Siswa - AB Garage</title>
+  <meta name="description" content="Pendaftaran akun siswa AB Garage untuk mengakses materi belajar otomotif.">
+  <title>Daftar Siswa — AB Garage</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="auth.css">
 </head>
 <body>
   <main class="auth-page">
-    <section class="auth-card">
-      <p class="eyebrow">AB GARAGE</p>
-      <h1>Daftar Siswa</h1>
-      <p>Buat akun belajar AB Garage dengan data siswa yang benar.</p>
-      <form id="registerForm">
-        <label>Nama Lengkap<input id="fullName" type="text" required autocomplete="name"></label>
-        <label>NIS<input id="nis" type="text" required autocomplete="off"></label>
-        <label>Kelas<input id="className" type="text" required autocomplete="organization-title" placeholder="Contoh: XI TKRO 1"></label>
-        <label>Email<input id="email" type="email" required autocomplete="email"></label>
-        <label>Password<input id="password" type="password" required minlength="8" autocomplete="new-password"></label>
-        <label>Ulangi Password<input id="passwordConfirm" type="password" required minlength="8" autocomplete="new-password"></label>
-        <button class="primary-btn" type="submit">Buat Akun</button>
-        <p id="registerMessage" class="muted" role="alert"></p>
-      </form>
-      <a class="text-btn" href="login.html">← Sudah punya akun? Login</a>
+    <section class="auth-shell" aria-label="Pendaftaran siswa">
+      <aside class="auth-brand">
+        <div>
+          <p class="eyebrow">AB GARAGE</p>
+          <h1>Mulai belajar otomotif.</h1>
+          <p>Buat akun siswa untuk membuka materi, kalkulator teknik, dan simulasi diagnosis.</p>
+        </div>
+        <ul class="auth-benefits">
+          <li>Akses 8 modul pembelajaran</li>
+          <li>Progres belajar tersimpan</li>
+          <li>Nilai evaluasi tercatat di akun</li>
+          <li>Bisa digunakan lewat HP</li>
+        </ul>
+      </aside>
+
+      <section class="auth-card">
+        <p class="eyebrow">AKUN SISWA</p>
+        <h1>Daftar sekarang</h1>
+        <p class="auth-subtitle">Isi data sesuai identitas siswa. Setelah akun aktif, gunakan email dan password untuk masuk.</p>
+
+        <form id="registerForm" class="auth-form">
+          <label>
+            Nama Lengkap
+            <input id="fullName" type="text" required autocomplete="name" placeholder="Nama lengkap siswa">
+          </label>
+
+          <label>
+            NIS
+            <input id="nis" type="text" required autocomplete="off" inputmode="numeric" placeholder="Nomor induk siswa">
+          </label>
+
+          <label>
+            Kelas
+            <input id="className" type="text" required autocomplete="organization-title" placeholder="Contoh: XI TKRO 1">
+          </label>
+
+          <label>
+            Email
+            <span class="auth-help">Gunakan email yang bisa menerima pesan konfirmasi.</span>
+            <input id="email" type="email" required autocomplete="email" placeholder="nama@email.com">
+          </label>
+
+          <label>
+            Password
+            <span class="auth-help">Minimal 8 karakter.</span>
+            <input id="password" type="password" required minlength="8" autocomplete="new-password" placeholder="Minimal 8 karakter">
+          </label>
+
+          <label>
+            Ulangi Password
+            <input id="passwordConfirm" type="password" required minlength="8" autocomplete="new-password" placeholder="Ketik ulang password">
+          </label>
+
+          <div class="auth-actions">
+            <button class="primary-btn" type="submit">Buat Akun Siswa →</button>
+            <p id="registerMessage" class="auth-message" role="alert"></p>
+          </div>
+        </form>
+
+        <div class="auth-note">
+          Dengan mendaftar, pastikan data nama, NIS, dan kelas yang dimasukkan sudah benar. Jangan bagikan password kepada orang lain.
+        </div>
+
+        <div class="auth-links">
+          <a href="login.html">Sudah punya akun? Login</a>
+          <a href="index.html">← Kembali ke website AB Garage</a>
+        </div>
+      </section>
     </section>
   </main>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="register.js"></script>
 </body>
