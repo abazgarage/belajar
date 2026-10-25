@@ -1,5 +1,28 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Login - AB Garage</title><link rel="stylesheet" href="style.css">
-</head><body><main class="auth-page"><section class="auth-card"><p class="eyebrow">AB GARAGE</p><h1>Login</h1><p>Masuk sebagai siswa atau admin.</p><form id="loginForm"><label>Email<input id="email" type="email" required autocomplete="username"></label><label>Password<input id="password" type="password" required autocomplete="current-password"></label><button class="primary-btn" type="submit">Masuk</button><p id="loginMessage" class="muted" role="alert"></p></form><a class="text-btn" href="index.html">← Kembali ke website</a></section></main><script src="auth.js"></script></body></html>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f34b1b">
+  <title>Login - AB Garage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-card">
+      <p class="eyebrow">AB GARAGE</p>
+      <h1>Login</h1>
+      <p>Masuk sebagai siswa atau admin.</p>
+      <form id="loginForm">
+        <label>Email<input id="email" type="email" required autocomplete="username"></label>
+        <label>Password<input id="password" type="password" required autocomplete="current-password"></label>
+        <button class="primary-btn" type="submit">Masuk</button>
+        <p id="loginMessage" class="muted" role="alert"></p>
+      </form>
+      <a class="text-btn" href="index.html">← Kembali ke website</a>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="auth.js"></script>
+</body>
+</html>
