@@ -1,304 +1,85 @@
 // ================================
 // AB GARAGE - BELAJAR OTOMOTIF
 // ================================
-
 const navButtons = [...document.querySelectorAll('.nav-btn')];
 const pages = [...document.querySelectorAll('.page')];
+function showTab(tabId){const target=document.getElementById(tabId);if(!target)return;pages.forEach(p=>p.classList.toggle('active',p.id===tabId));navButtons.forEach(b=>{const a=b.dataset.tab===tabId;b.classList.toggle('active',a);b.setAttribute('aria-current',a?'page':'false')});window.scrollTo({top:0,behavior:'smooth'})}
+navButtons.forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.go)));
+document.querySelectorAll('[data-tab-link]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();showTab(b.dataset.tabLink)}));
 
-function showTab(tabId) {
-  const target = document.getElementById(tabId);
-  if (!target) return;
-
-  pages.forEach(page => page.classList.toggle('active', page.id === tabId));
-  navButtons.forEach(button => {
-    const active = button.dataset.tab === tabId;
-    button.classList.toggle('active', active);
-    button.setAttribute('aria-current', active ? 'page' : 'false');
-  });
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-navButtons.forEach(button => button.addEventListener('click', () => showTab(button.dataset.tab)));
-document.querySelectorAll('[data-go]').forEach(button => button.addEventListener('click', () => showTab(button.dataset.go)));
-document.querySelectorAll('[data-tab-link]').forEach(link => link.addEventListener('click', event => {
-  event.preventDefault();
-  showTab(link.dataset.tabLink);
-}));
-
-// ================================
-// DATA MATERI PEMBELAJARAN
-// ================================
-const lessons = {
-  dasar: {
-    title: 'MENYIAPKAN GAMBAR TEKNIK', tag: 'MODUL 01',
-    sections: [
-      { heading: 'A. Pengetahuan yang Diperlukan dalam Membaca Gambar Teknik', content: `
-        <h3>1. Fungsi Gambar Teknik</h3>
-        <p>Gambar teknik merupakan media untuk menyatakan maksud bagi orang-orang teknik dan sering disebut sebagai bahasa teknik. Gambar harus menyampaikan informasi secara tepat, jelas, dan objektif.</p>
-        <ul><li><strong>Penyampaian informasi:</strong> meneruskan maksud perancang kepada pihak lain.</li><li><strong>Pengawetan dan penyimpanan:</strong> menjadi data teknis atau blueprint.</li><li><strong>Penuangan gagasan dan pengembangan:</strong> membantu mengembangkan rancangan dari sketsa sampai gambar yang lebih sempurna.</li></ul>
-        <h3>2. Standar Industri</h3><p>Standar gambar teknik dibuat agar komunikasi teknik tidak menimbulkan salah pengertian. Contoh standar yang dikenal adalah JIS, NEN, DIN, SII, dan ISO.</p>
-        <h3>3. Peralatan Gambar</h3><p>Peralatan antara lain kertas gambar, pensil, pena gambar, jangka, penggaris, mal, mistar skala, busur derajat, penghapus, papan/meja gambar, dan mesin gambar.</p>
-        <h3>4. Cara Menggunakan Peralatan</h3><p>Kertas harus rata dan sejajar dengan papan gambar. Ukuran dipindahkan dengan teliti. Garis horizontal ditarik dari kiri ke kanan dan garis vertikal dari bawah ke atas. Saat menggambar lingkaran, kaki jangka dijaga tegak lurus terhadap kertas.</p>
-        <h3>5. Garis, Angka, dan Huruf</h3><p>Jenis garis, angka, huruf, dan lambang mempunyai arti tertentu. Penulisannya harus jelas, seragam, dan mudah direproduksi agar tidak menimbulkan salah baca.</p>
-        <div class="materi-image-box"><img src="images/pensil.jpg" alt="Jenis pensil" class="responsive-img"><p class="img-caption">Contoh peralatan gambar</p></div>` },
-      { heading: 'B. Keterampilan yang diperlukan', content: `<ul><li>Memilih peralatan gambar.</li><li>Menggunakan peralatan gambar.</li><li>Mengidentifikasi produk, sistem, atau komponen.</li><li>Menyajikan produk, sistem, atau komponen.</li></ul>` },
-      { heading: 'C. Sikap Kerja', content: `<ul><li>Cermat dan teliti dalam memilih alat.</li><li>Rapi dan taat asas saat menggunakan alat.</li><li>Teliti saat mengidentifikasi komponen.</li><li>Rapi dan sistematis saat menyajikan gambar.</li></ul>` }
-    ],
-    task: `<p><strong>Latihan:</strong> Sebutkan tiga fungsi utama gambar teknik. Jelaskan mengapa ketelitian dan kerapian penting dalam gambar teknik.</p>`
-  },
-
-  mesin: {
-    title: 'MESIN KENDARAAN', tag: 'MODUL 02',
-    sections: [
-      { heading: 'A. Tujuan Pembelajaran', content: `<p>Setelah mempelajari modul ini, peserta dapat mengenali komponen utama mesin, menjelaskan prinsip kerja mesin 4-tak, serta memahami fungsi sistem pelumasan, pendinginan, dan kompresi.</p>` },
-      { heading: 'B. Komponen Utama Mesin', content: `<p>Mesin pembakaran dalam mengubah energi kimia bahan bakar menjadi energi mekanis. Komponen utama meliputi blok silinder, kepala silinder, piston, connecting rod, crankshaft, camshaft, katup, dan flywheel.</p><ul><li><strong>Piston:</strong> bergerak naik-turun di dalam silinder.</li><li><strong>Connecting rod:</strong> meneruskan gaya piston ke crankshaft.</li><li><strong>Crankshaft:</strong> mengubah gerak bolak-balik menjadi putaran.</li><li><strong>Camshaft:</strong> mengatur pembukaan dan penutupan katup.</li><li><strong>Katup:</strong> mengatur masuknya campuran/udara dan keluarnya gas buang.</li></ul>` },
-      { heading: 'C. Siklus Mesin 4-Tak', content: `<ol><li><strong>Hisap:</strong> piston bergerak turun dan katup masuk terbuka.</li><li><strong>Kompresi:</strong> piston bergerak naik dengan katup tertutup.</li><li><strong>Usaha:</strong> pembakaran mendorong piston turun.</li><li><strong>Buang:</strong> piston bergerak naik dan gas sisa keluar melalui katup buang.</li></ol><p>Satu siklus lengkap membutuhkan dua putaran crankshaft.</p>` },
-      { heading: 'D. Pelumasan dan Pendinginan', content: `<p>Sistem pelumasan mengurangi gesekan, membantu pendinginan, membersihkan komponen, dan melindungi permukaan dari keausan. Sistem pendinginan menjaga temperatur kerja agar mesin tidak terlalu panas maupun terlalu dingin.</p><p>Komponen pendinginan cair umumnya meliputi radiator, water pump, thermostat, selang, dan coolant.</p>` },
-      { heading: 'E. Kompresi dan Gejala Gangguan', content: `<p>Kompresi diperlukan agar proses pembakaran berlangsung efektif. Kompresi rendah dapat disebabkan oleh kebocoran katup, ring piston aus, gasket kepala silinder rusak, atau masalah lain pada ruang bakar. Diagnosis harus dilakukan melalui pemeriksaan dan pengukuran, bukan langsung mengganti komponen.</p>` }
-    ],
-    task: `<p><strong>Latihan:</strong> Urutkan empat langkah mesin 4-tak dan jelaskan fungsi piston, connecting rod, serta crankshaft.</p>`
-  },
-
-  tenaga: {
-    title: 'PEMINDAH TENAGA', tag: 'MODUL 03',
-    sections: [
-      { heading: 'A. Fungsi Sistem Pemindah Tenaga', content: `<p>Sistem pemindah tenaga meneruskan dan mengatur torsi dari mesin menuju roda penggerak. Sistem ini juga memungkinkan perubahan perbandingan putaran dan torsi sesuai kondisi kendaraan.</p>` },
-      { heading: 'B. Kopling', content: `<p>Kopling menghubungkan dan memutuskan tenaga mesin dengan transmisi. Pada kendaraan manual, pengemudi menggunakan pedal kopling untuk mengatur perpindahan tenaga.</p><ul><li>Flywheel menyediakan permukaan gesek.</li><li>Clutch disc meneruskan torsi.</li><li>Pressure plate menekan clutch disc.</li><li>Release bearing membantu proses pembebasan kopling.</li></ul><p>Gejala seperti kopling selip, pedal bergetar, atau sulit masuk gigi memerlukan pemeriksaan sesuai prosedur.</p>` },
-      { heading: 'C. Transmisi', content: `<p>Transmisi menyediakan berbagai rasio gigi. Gigi rendah menghasilkan torsi roda lebih besar dan cocok untuk mulai bergerak atau beban berat. Gigi lebih tinggi digunakan untuk kecepatan kendaraan yang lebih tinggi dengan putaran mesin yang lebih rendah.</p>` },
-      { heading: 'D. Diferensial dan Poros Penggerak', content: `<p>Diferensial memungkinkan roda kiri dan kanan berputar dengan kecepatan berbeda ketika kendaraan berbelok. Poros penggerak meneruskan putaran dari diferensial ke roda.</p>` },
-      { heading: 'E. Pemeriksaan Dasar', content: `<p>Periksa kebocoran oli, kondisi sambungan, suara abnormal, getaran, dan kelancaran perpindahan gigi. Gunakan spesifikasi pabrikan untuk menentukan batas keausan dan jenis pelumas.</p>` }
-    ],
-    task: `<p><strong>Latihan:</strong> Jelaskan fungsi kopling dan mengapa diferensial diperlukan saat kendaraan berbelok.</p>`
-  },
-
-  listrik: {
-    title: 'KELISTRIKAN MOBIL', tag: 'MODUL 04',
-    sections: [
-      { heading: 'A. Dasar Sistem Kelistrikan', content: `<p>Sistem kelistrikan kendaraan menggunakan sumber tegangan, penghantar, beban, pengaman, dan pengendali. Sumber utama saat mesin mati adalah baterai, sedangkan alternator memasok dan mengisi baterai ketika mesin bekerja.</p>` },
-      { heading: 'B. Baterai / Aki', content: `<p>Baterai menyimpan energi listrik dan menyediakan arus besar untuk starter. Pemeriksaan dasar mencakup kondisi terminal, kebersihan, kekencangan koneksi, dan tegangan sesuai prosedur pabrikan.</p>` },
-      { heading: 'C. Sistem Starter', content: `<p>Rangkaian starter pada dasarnya mengalirkan daya dari baterai melalui pengaman dan pengendali menuju motor starter. Motor starter memutar crankshaft agar mesin dapat mulai bekerja.</p><p>Jika starter tidak berputar, diagnosis dilakukan berurutan: konfirmasi keluhan, periksa baterai dan terminal, periksa pengaman/kabel, periksa sinyal kontrol, kemudian periksa motor starter.</p>` },
-      { heading: 'D. Alternator dan Pengisian', content: `<p>Alternator menghasilkan energi listrik ketika mesin berputar. Regulator menjaga tegangan pengisian dalam rentang yang sesuai. Lampu indikator pengisian yang menyala dapat menjadi petunjuk adanya masalah pada sistem pengisian.</p>` },
-      { heading: 'E. Sekring, Relay, dan Sensor', content: `<p>Sekring melindungi rangkaian dari arus berlebih. Relay memungkinkan beban dikendalikan oleh rangkaian kontrol dengan arus lebih kecil. Sensor mengubah kondisi fisik seperti temperatur, posisi, tekanan, atau kecepatan menjadi sinyal yang dapat dibaca sistem kontrol.</p>` },
-      { heading: 'F. Keselamatan', content: `<p>Jangan mengganti sekring dengan kapasitas lebih besar tanpa dasar spesifikasi. Hindari hubungan singkat terminal baterai. Saat mengukur kelistrikan, gunakan mode dan rentang multimeter yang benar.</p>` }
-    ],
-    task: `<p><strong>Latihan:</strong> Buat urutan pemeriksaan ketika starter tidak berputar tetapi lampu dashboard redup.</p>`
-  },
-
-  bahanbakar: {
-    title: 'SISTEM BAHAN BAKAR', tag: 'MODUL 05',
-    sections: [
-      { heading: 'A. Prinsip Dasar', content: `<p>Mesin memerlukan campuran udara dan bahan bakar yang sesuai agar pembakaran berlangsung baik. Pada sistem injeksi elektronik, jumlah bahan bakar dikendalikan berdasarkan berbagai input sensor dan strategi ECU.</p>` },
-      { heading: 'B. Aliran Bahan Bakar', content: `<p>Secara umum bahan bakar mengalir dari tangki melalui pompa, penyaring, saluran, kemudian menuju injektor. Komponen dan susunan dapat berbeda menurut desain kendaraan.</p>` },
-      { heading: 'C. Throttle dan Udara Masuk', content: `<p>Throttle mengatur jumlah udara yang masuk ke mesin. Sistem modern dapat menggunakan throttle elektronik. Sensor posisi throttle dan sensor lain membantu ECU menentukan kebutuhan mesin.</p>` },
-      { heading: 'D. Injektor dan ECU', content: `<p>Injektor menyemprotkan bahan bakar sesuai perintah ECU. ECU menggunakan informasi seperti putaran mesin, temperatur, posisi throttle, tekanan udara, dan sensor oksigen untuk mengatur strategi kerja mesin.</p>` },
-      { heading: 'E. Gejala Gangguan', content: `<ul><li>Mesin sulit hidup.</li><li>Idle tidak stabil.</li><li>Akselerasi tersendat.</li><li>Konsumsi bahan bakar meningkat.</li><li>Tenaga mesin menurun.</li></ul><p>Diagnosis harus dimulai dari keluhan, inspeksi visual, pemeriksaan data atau pengukuran, lalu dibandingkan dengan spesifikasi.</p>` }
-    ],
-    task: `<p><strong>Latihan:</strong> Mengapa diagnosis sistem bahan bakar tidak sebaiknya langsung mengganti injektor ketika mesin brebet?</p>`
-  },
-
-  tools: {
-    title: 'TOOLS DAN ALAT UKUR', tag: 'MODUL 06',
-    sections: [
-      { heading: 'A. Alat Tangan', content: `<p>Alat tangan dasar meliputi kunci pas, ring, soket, obeng, tang, kunci momen, dan alat khusus sesuai pekerjaan. Pilih alat berdasarkan ukuran dan jenis pengikat agar tidak merusak komponen.</p>` },
-      { heading: 'B. Kunci Momen', content: `<p>Kunci momen digunakan untuk mengencangkan pengikat sesuai nilai torsi. Nilai torsi harus mengikuti spesifikasi pabrikan. Jangan menggunakan kunci momen sebagai alat untuk membuka baut kecuali alat tersebut memang dirancang untuk itu.</p>` },
-      { heading: 'C. Multimeter', content: `<p>Multimeter dapat digunakan untuk mengukur tegangan, resistansi, dan arus sesuai kemampuan alat. Saat mengukur tegangan, probe dipasang paralel terhadap titik ukur. Saat mengukur resistansi, rangkaian harus dalam kondisi tidak bertegangan.</p>` },
-      { heading: 'D. Jangka Sorong dan Mikrometer', content: `<p>Jangka sorong digunakan untuk mengukur dimensi luar, dalam, dan kedalaman. Mikrometer digunakan untuk pengukuran yang memerlukan ketelitian lebih tinggi. Bersihkan permukaan ukur sebelum melakukan pengukuran.</p>` },
-      { heading: 'E. Prinsip Pengukuran', content: `<ol><li>Pastikan alat sesuai dengan pekerjaan.</li><li>Periksa kondisi dan nol alat.</li><li>Lakukan pengukuran dengan posisi benar.</li><li>Catat hasil dan satuannya.</li><li>Bandingkan dengan spesifikasi.</li></ol>` }
-    ],
-    task: `<p><strong>Latihan:</strong> Jelaskan perbedaan cara menggunakan multimeter untuk mengukur tegangan dan resistansi.</p>`
-  },
-
-  chassis: {
-    title: 'REM, KEMUDI DAN SUSPENSI', tag: 'MODUL 07',
-    sections: [
-      { heading: 'A. Sistem Pengereman', content: `<p>Sistem rem mengubah energi gerak menjadi panas melalui gesekan sehingga kendaraan dapat diperlambat atau dihentikan. Komponen dapat meliputi pedal, master cylinder, saluran, kaliper, disc, pad, wheel cylinder, dan drum tergantung desain.</p>` },
-      { heading: 'B. Pemeriksaan Rem', content: `<p>Periksa ketebalan kampas, kondisi disc atau drum, kebocoran, level fluida, selang, dan fungsi pedal. Pedal yang terasa tidak normal memerlukan pemeriksaan segera sebelum kendaraan digunakan.</p>` },
-      { heading: 'C. Kemudi', content: `<p>Sistem kemudi mengubah gerakan pengemudi menjadi arah roda. Periksa free play, sambungan, tie rod, ball joint, steering rack, dan komponen bantuan kemudi sesuai desain kendaraan.</p>` },
-      { heading: 'D. Suspensi', content: `<p>Suspensi membantu menjaga kontak ban dengan permukaan jalan serta mengontrol gerakan bodi. Komponen umum meliputi spring, shock absorber/strut, arm, bushing, dan ball joint.</p>` },
-      { heading: 'E. Ban dan Keselamatan', content: `<p>Periksa tekanan ban, keausan telapak, kerusakan fisik, dan kesesuaian ukuran. Kondisi ban, rem, kemudi, dan suspensi berhubungan langsung dengan keselamatan kendaraan.</p>` }
-    ],
-    task: `<p><strong>Latihan:</strong> Sebutkan pemeriksaan awal yang harus dilakukan ketika kendaraan terasa menarik ke satu sisi.</p>`
-  },
-
-  diagnosis: {
-    title: 'DIAGNOSIS KERUSAKAN', tag: 'MODUL 08',
-    sections: [
-      { heading: 'A. Prinsip Diagnosis', content: `<p>Diagnosis adalah proses sistematis untuk menemukan penyebab gangguan. Tujuan diagnosis bukan sekadar menemukan komponen yang rusak, tetapi membuktikan penyebab berdasarkan gejala, pemeriksaan, dan pengukuran.</p>` },
-      { heading: 'B. Urutan Diagnosis Dasar', content: `<ol><li><strong>Konfirmasi keluhan:</strong> pahami kapan dan bagaimana gangguan terjadi.</li><li><strong>Inspeksi visual:</strong> cari kabel lepas, kebocoran, kerusakan, atau kondisi abnormal.</li><li><strong>Tentukan pemeriksaan:</strong> pilih alat dan titik ukur yang relevan.</li><li><strong>Lakukan pengukuran:</strong> ukur tegangan, tekanan, temperatur, resistansi, atau parameter lain sesuai sistem.</li><li><strong>Bandingkan spesifikasi:</strong> jangan menilai hasil tanpa referensi.</li><li><strong>Perbaiki dan uji ulang:</strong> pastikan keluhan hilang setelah perbaikan.</li></ol>` },
-      { heading: 'C. Five Why dan Penyebab Dasar', content: `<p>Teknik bertanya “mengapa” beberapa kali dapat membantu mencari penyebab dasar, tetapi tetap harus didukung bukti pemeriksaan. Hindari asumsi seperti “komponen ini sering rusak berarti pasti itu penyebabnya”.</p>` },
-      { heading: 'D. OBD dan Data Diagnostik', content: `<p>Pada kendaraan yang mendukung OBD, alat scan dapat membantu membaca DTC dan data. DTC adalah petunjuk untuk mengarahkan pemeriksaan, bukan otomatis berarti komponen yang disebut harus diganti.</p>` },
-      { heading: 'E. Dokumentasi', content: `<p>Catat keluhan, kondisi saat gangguan terjadi, hasil pengukuran, komponen yang diperiksa, tindakan perbaikan, dan hasil uji ulang. Dokumentasi membuat proses diagnosis dapat ditelusuri dan diulang.</p>` },
-      { heading: 'F. Keselamatan', content: `<p>Gunakan prosedur keselamatan, alat pelindung, dan prosedur pabrikan. Saat bekerja pada kendaraan, amankan kendaraan agar tidak bergerak dan hindari menyentuh bagian panas atau bergerak tanpa perlindungan.</p>` }
-    ],
-    task: `<p><strong>Studi kasus:</strong> Mesin sulit hidup pada pagi hari. Susun minimal lima langkah diagnosis dari konfirmasi keluhan sampai uji ulang.</p>`
-  }
+const lessons={
+ dasar:{title:'MENYIAPKAN GAMBAR TEKNIK',tag:'MODUL 01',sections:[{heading:'A. Pengetahuan yang Diperlukan dalam Membaca Gambar Teknik',content:`<h3>1. Fungsi Gambar Teknik</h3><p>Gambar teknik merupakan media untuk menyatakan maksud bagi orang-orang teknik dan sering disebut sebagai bahasa teknik. Gambar harus menyampaikan informasi secara tepat, jelas, dan objektif.</p><ul><li><strong>Penyampaian informasi:</strong> meneruskan maksud perancang kepada pihak lain.</li><li><strong>Pengawetan dan penyimpanan:</strong> menjadi data teknis atau blueprint.</li><li><strong>Penuangan gagasan dan pengembangan:</strong> membantu mengembangkan rancangan.</li></ul><h3>2. Standar Industri</h3><p>Standar gambar teknik dibuat agar komunikasi teknik tidak menimbulkan salah pengertian. Contoh standar yang dikenal adalah JIS, NEN, DIN, SII, dan ISO.</p><h3>3. Peralatan Gambar</h3><p>Peralatan antara lain kertas gambar, pensil, pena gambar, jangka, penggaris, mal, mistar skala, busur derajat, penghapus, papan/meja gambar, dan mesin gambar.</p><h3>4. Cara Menggunakan Peralatan</h3><p>Kertas harus rata dan sejajar dengan papan gambar. Ukuran dipindahkan dengan teliti. Garis horizontal ditarik dari kiri ke kanan dan garis vertikal dari bawah ke atas. Saat menggambar lingkaran, kaki jangka dijaga tegak lurus terhadap kertas.</p><h3>5. Garis, Angka, dan Huruf</h3><p>Jenis garis, angka, huruf, dan lambang mempunyai arti tertentu. Penulisannya harus jelas, seragam, dan mudah direproduksi.</p><div class="materi-image-box"><img src="images/pensil.jpg" alt="Jenis pensil" class="responsive-img"><p class="img-caption">Contoh peralatan gambar</p></div>`},{heading:'B. Keterampilan yang diperlukan',content:`<ul><li>Memilih peralatan gambar.</li><li>Menggunakan peralatan gambar.</li><li>Mengidentifikasi produk, sistem, atau komponen.</li><li>Menyajikan produk, sistem, atau komponen.</li></ul>`},{heading:'C. Sikap Kerja',content:`<ul><li>Cermat dan teliti dalam memilih alat.</li><li>Rapi dan taat asas saat menggunakan alat.</li><li>Teliti saat mengidentifikasi komponen.</li><li>Rapi dan sistematis saat menyajikan gambar.</li></ul>`}],task:`<p><strong>Latihan:</strong> Sebutkan tiga fungsi utama gambar teknik. Jelaskan mengapa ketelitian dan kerapian penting.</p>`},
+ mesin:{title:'MESIN KENDARAAN',tag:'MODUL 02',sections:[
+ {heading:'A. Pengantar Mesin Pembakaran Dalam',content:`<p>Mesin kendaraan mengubah energi kimia bahan bakar menjadi energi mekanis melalui proses pembakaran. Mesin harus mampu menghasilkan tenaga, membuang panas, melumasi bagian bergerak, dan mempertahankan kompresi.</p><h3>Jenis Mesin</h3><ul><li><strong>Bensin:</strong> campuran udara-bahan bakar dinyalakan oleh busi.</li><li><strong>Diesel:</strong> udara dikompresi hingga temperatur tinggi lalu bahan bakar diinjeksikan.</li><li><strong>4-tak:</strong> satu siklus terdiri dari hisap, kompresi, usaha, dan buang.</li></ul>`},
+ {heading:'B. Komponen Utama Mesin',content:`<p><strong>Blok silinder</strong> menjadi struktur utama dan rumah silinder. <strong>Kepala silinder</strong> menutup bagian atas silinder dan dapat memuat katup, camshaft, serta saluran masuk/buang. <strong>Piston</strong> menerima tekanan pembakaran. <strong>Ring piston</strong> membantu menjaga kompresi, mengontrol oli, dan membantu perpindahan panas. <strong>Connecting rod</strong> meneruskan gaya piston. <strong>Crankshaft</strong> mengubah gerak bolak-balik menjadi putaran. <strong>Flywheel</strong> membantu menjaga kestabilan putaran.</p>`},
+ {heading:'C. Siklus Mesin 4-Tak',content:`<ol><li><strong>Hisap:</strong> piston bergerak turun dan katup masuk terbuka.</li><li><strong>Kompresi:</strong> piston bergerak naik dengan katup tertutup.</li><li><strong>Usaha:</strong> pembakaran menghasilkan tekanan yang mendorong piston.</li><li><strong>Buang:</strong> piston bergerak naik dan gas sisa keluar.</li></ol><p>Satu siklus memerlukan dua putaran crankshaft atau 720°.</p>`},
+ {heading:'D. Mekanisme Katup',content:`<p>Katup masuk mengatur masuknya udara atau campuran, sedangkan katup buang mengatur keluarnya gas. Camshaft menentukan waktu pembukaan dan penutupan. Timing belt atau timing chain menjaga hubungan posisi crankshaft dan camshaft. Kesalahan timing dapat menyebabkan performa buruk bahkan kerusakan pada mesin tertentu.</p>`},
+ {heading:'E. Sistem Pelumasan',content:`<p>Oli membentuk lapisan di antara permukaan bergerak sehingga mengurangi gesekan dan keausan. Oli juga membantu membawa panas dan kotoran menuju area penyaringan. Komponen umum meliputi oil pan, oil pump, oil filter, saluran oli, dan relief valve.</p><p>Pemeriksaan dasar meliputi level oli, kebocoran, kondisi oli, dan indikator tekanan oli sesuai prosedur pabrikan.</p>`},
+ {heading:'F. Sistem Pendinginan',content:`<p>Sistem pendinginan menjaga temperatur kerja mesin. Pada sistem cair, coolant bersirkulasi melalui water jacket, water pump, thermostat, radiator, dan selang. Thermostat membantu mesin mencapai temperatur kerja dan mempertahankannya. Kekurangan coolant, radiator tersumbat, water pump bermasalah, atau thermostat macet dapat menyebabkan overheating.</p>`},
+ {heading:'G. Kompresi',content:`<p>Kompresi diperlukan agar proses pembakaran berlangsung efektif. Kompresi rendah dapat berkaitan dengan ring piston, katup, gasket kepala silinder, atau kondisi mekanis lain. Pemeriksaan compression test atau leak-down test harus mengikuti prosedur dan spesifikasi kendaraan.</p>`},
+ {heading:'H. Gejala Gangguan Mesin',content:`<ul><li>Sulit hidup.</li><li>Idle tidak stabil.</li><li>Asap tidak normal.</li><li>Suara mesin abnormal.</li><li>Tenaga berkurang.</li><li>Temperatur terlalu tinggi.</li><li>Konsumsi oli atau bahan bakar meningkat.</li></ul><p>Gejala bukan diagnosis akhir. Lakukan pemeriksaan sistematis sebelum mengganti komponen.</p>`}],task:`<p><strong>Evaluasi:</strong> Jelaskan empat langkah mesin 4-tak, fungsi ring piston, fungsi thermostat, dan minimal tiga penyebab kompresi rendah.</p>`},
+ tenaga:{title:'PEMINDAH TENAGA',tag:'MODUL 03',sections:[
+ {heading:'A. Fungsi Sistem Pemindah Tenaga',content:`<p>Sistem pemindah tenaga meneruskan tenaga dan torsi dari mesin menuju roda penggerak. Sistem harus mampu mengatur rasio putaran dan torsi serta mengakomodasi perubahan kondisi kendaraan.</p>`},
+ {heading:'B. Kopling',content:`<p>Kopling menghubungkan dan memutuskan tenaga mesin dengan transmisi. Komponen utama kopling manual meliputi flywheel, clutch disc, pressure plate, release bearing, dan mekanisme penggerak.</p><ul><li><strong>Selip:</strong> putaran mesin naik tetapi percepatan kendaraan tidak sebanding.</li><li><strong>Drag:</strong> kopling tidak terlepas sempurna sehingga perpindahan gigi sulit.</li><li><strong>Getar:</strong> dapat berkaitan dengan permukaan gesek atau komponen pendukung.</li></ul>`},
+ {heading:'C. Transmisi Manual',content:`<p>Transmisi menyediakan beberapa rasio. Gigi rendah memberikan keuntungan torsi untuk mulai bergerak dan beban berat. Gigi tinggi membantu efisiensi saat kendaraan melaju.</p><p>Perpindahan gigi menggunakan synchronizer pada banyak transmisi manual untuk menyamakan kecepatan bagian yang akan dikopel.</p>`},
+ {heading:'D. Transmisi Otomatis',content:`<p>Transmisi otomatis menggunakan kombinasi komponen seperti torque converter, gear set, clutch, brake, valve body, dan kontrol elektronik tergantung desain. Pelumas transmisi juga berperan dalam pelumasan dan pengendalian hidrolik.</p>`},
+ {heading:'E. Diferensial',content:`<p>Diferensial memungkinkan roda penggerak kiri dan kanan memiliki kecepatan berbeda saat kendaraan berbelok. Tanpa fungsi ini, ban dapat mengalami slip dan beban pada sistem meningkat.</p>`},
+ {heading:'F. Pemeriksaan Dasar',content:`<p>Periksa kebocoran, level dan kondisi pelumas sesuai spesifikasi, suara, getaran, perpindahan gigi, serta kondisi sambungan dan poros. Diagnosis harus mempertimbangkan gejala dan kondisi operasi kendaraan.</p>`}],task:`<p><strong>Evaluasi:</strong> Jelaskan fungsi kopling, manfaat gigi rendah, dan alasan diferensial diperlukan saat berbelok.</p>`},
+ listrik:{title:'KELISTRIKAN MOBIL',tag:'MODUL 04',sections:[
+ {heading:'A. Dasar Kelistrikan',content:`<p>Rangkaian kelistrikan terdiri dari sumber, penghantar, pengaman, pengendali, dan beban. Baterai menyimpan energi dan menyediakan daya, sedangkan alternator menghasilkan listrik ketika mesin berputar.</p><p>Konsep dasar yang perlu dipahami adalah tegangan, arus, resistansi, dan hubungan dasarnya. Dalam diagnosis, gunakan alat ukur dan titik ukur yang benar.</p>`},
+ {heading:'B. Aki',content:`<p>Aki menyediakan arus besar untuk starter dan menyuplai sistem saat kebutuhan listrik melebihi kemampuan alternator. Periksa terminal, kebersihan, kekencangan koneksi, kondisi fisik, dan tegangan sesuai spesifikasi.</p>`},
+ {heading:'C. Sistem Starter',content:`<p>Ketika sistem starter diaktifkan, arus dari aki menggerakkan rangkaian kontrol dan motor starter. Motor starter memutar crankshaft agar mesin dapat mulai beroperasi.</p><p>Jika starter tidak berputar, urutan diagnosis yang aman adalah konfirmasi keluhan → aki/terminal → sekring/kabel → sinyal kontrol → motor starter.</p>`},
+ {heading:'D. Alternator dan Pengisian',content:`<p>Alternator menghasilkan energi listrik saat mesin berputar. Regulator mengendalikan tegangan pengisian. Pemeriksaan dapat mencakup tegangan sistem, kondisi belt, konektor, dan indikator pengisian sesuai prosedur.</p>`},
+ {heading:'E. Sekring dan Relay',content:`<p>Sekring melindungi rangkaian dari arus berlebih. Relay memungkinkan arus beban besar dikendalikan oleh rangkaian kontrol. Sekring tidak boleh diganti dengan kapasitas lebih besar tanpa spesifikasi yang benar.</p>`},
+ {heading:'F. Sensor dan Aktuator',content:`<p>Sensor mengubah kondisi seperti temperatur, tekanan, posisi, atau kecepatan menjadi sinyal. Aktuator melakukan tindakan berdasarkan perintah sistem kontrol, misalnya injektor, motor, solenoid, atau throttle actuator.</p>`},
+ {heading:'G. Multimeter dan Keselamatan',content:`<p>Gunakan mode multimeter yang sesuai. Pengukuran tegangan umumnya dilakukan paralel, sedangkan pengukuran resistansi dilakukan pada rangkaian yang tidak bertegangan. Hindari hubungan singkat dan ikuti prosedur pabrikan.</p>`}],task:`<p><strong>Evaluasi:</strong> Buat langkah diagnosis starter tidak berputar tetapi lampu dashboard redup. Jelaskan fungsi sekring dan relay.</p>`},
+ bahanbakar:{title:'SISTEM BAHAN BAKAR',tag:'MODUL 05',sections:[
+ {heading:'A. Prinsip Pembakaran',content:`<p>Mesin memerlukan udara, bahan bakar, kompresi, dan sumber penyalaan yang sesuai menurut jenis mesin. Kualitas pembakaran dipengaruhi jumlah udara-bahan bakar, tekanan, waktu penyalaan/injeksi, dan kondisi ruang bakar.</p>`},
+ {heading:'B. Sistem Bahan Bakar',content:`<p>Secara umum aliran bahan bakar dapat meliputi tangki → pompa → filter → saluran → rail → injektor. Susunan aktual berbeda menurut kendaraan. Sistem harus menjaga suplai bahan bakar sesuai kebutuhan mesin.</p>`},
+ {heading:'C. Throttle dan Udara Masuk',content:`<p>Throttle mengatur udara masuk. Pada sistem elektronik, throttle actuator dikendalikan ECU berdasarkan permintaan pengemudi dan strategi kontrol. Kebocoran udara setelah throttle dapat mengganggu perhitungan campuran.</p>`},
+ {heading:'D. Injektor dan ECU',content:`<p>Injektor menyemprotkan bahan bakar sesuai perintah ECU. ECU menggunakan input seperti putaran, temperatur, posisi throttle, tekanan udara, dan sensor oksigen untuk menentukan strategi pengendalian.</p>`},
+ {heading:'E. Rasio Campuran dan Efeknya',content:`<p>Campuran yang tidak sesuai dapat menyebabkan mesin sulit hidup, idle tidak stabil, tenaga turun, konsumsi bahan bakar meningkat, atau emisi meningkat. Nilai dan strategi pengendalian harus dinilai berdasarkan desain kendaraan.</p>`},
+ {heading:'F. Diagnosis Gangguan',content:`<ol><li>Konfirmasi gejala.</li><li>Periksa kondisi visual dan koneksi.</li><li>Periksa suplai bahan bakar sesuai spesifikasi.</li><li>Periksa sinyal dan data sensor.</li><li>Periksa injektor dan pengendalian.</li><li>Bandingkan hasil dengan spesifikasi.</li></ol><p>Jangan langsung mengganti injektor hanya karena mesin brebet.</p>`}],task:`<p><strong>Evaluasi:</strong> Jelaskan aliran bahan bakar, fungsi injektor, dan langkah diagnosis awal ketika mesin brebet.</p>`},
+ tools:{title:'TOOLS DAN ALAT UKUR',tag:'MODUL 06',sections:[
+ {heading:'A. Pemilihan Alat',content:`<p>Pilih alat sesuai ukuran, bentuk pengikat, material, dan pekerjaan. Alat yang tepat mengurangi risiko kerusakan baut, komponen, dan cedera.</p>`},
+ {heading:'B. Kunci Momen',content:`<p>Kunci momen digunakan untuk mengencangkan baut sesuai torsi yang ditentukan. Bersihkan ulir dan gunakan prosedur pengencangan yang benar. Nilai torsi harus mengacu pada spesifikasi kendaraan.</p>`},
+ {heading:'C. Multimeter',content:`<p>Multimeter dapat mengukur tegangan, resistansi, dan arus tergantung desain. Saat mengukur tegangan, probe dipasang pada dua titik yang dibandingkan. Saat mengukur resistansi, sumber listrik harus diputus.</p><p>Kesalahan pemilihan terminal atau mode dapat menyebabkan pembacaan salah bahkan merusak alat.</p>`},
+ {heading:'D. Jangka Sorong',content:`<p>Jangka sorong digunakan untuk pengukuran dimensi luar, dalam, dan kedalaman. Pastikan rahang bersih, posisi alat tegak terhadap benda, dan pembacaan dilakukan tanpa tekanan berlebihan.</p>`},
+ {heading:'E. Mikrometer',content:`<p>Mikrometer digunakan untuk pengukuran dengan ketelitian lebih tinggi. Gunakan ratchet atau mekanisme yang disediakan agar gaya ukur konsisten dan hindari mengunci alat secara berlebihan.</p>`},
+ {heading:'F. Alat Bengkel Lain',content:`<p>Alat dapat mencakup dongkrak, jack stand, kunci roda, puller, compression tester, pressure gauge, scan tool, dan alat khusus. Alat penopang harus digunakan pada titik yang ditentukan kendaraan.</p>`},
+ {heading:'G. Prosedur Pengukuran',content:`<ol><li>Identifikasi parameter.</li><li>Pilih alat dan rentang.</li><li>Periksa kondisi alat.</li><li>Tentukan titik ukur.</li><li>Lakukan pengukuran.</li><li>Catat satuan dan hasil.</li><li>Bandingkan dengan spesifikasi.</li></ol>`}],task:`<p><strong>Evaluasi:</strong> Jelaskan perbedaan pengukuran tegangan dan resistansi dengan multimeter serta langkah penggunaan kunci momen.</p>`},
+ chassis:{title:'REM, KEMUDI DAN SUSPENSI',tag:'MODUL 07',sections:[
+ {heading:'A. Sistem Pengereman',content:`<p>Rem mengubah energi gerak menjadi panas melalui gesekan sehingga kendaraan dapat diperlambat atau dihentikan. Sistem dapat menggunakan disc brake, drum brake, atau kombinasi sesuai desain.</p>`},
+ {heading:'B. Komponen Rem',content:`<p>Komponen dapat meliputi pedal, brake booster, master cylinder, brake fluid, pipa/selang, caliper, disc, pad, wheel cylinder, dan drum. ABS menambahkan sensor roda, hydraulic control unit, dan kontrol elektronik pada kendaraan yang menggunakannya.</p>`},
+ {heading:'C. Pemeriksaan Rem',content:`<p>Periksa ketebalan kampas, kondisi disc/drum, kebocoran, level fluida, selang, dan rasa pedal. Pedal terlalu dalam, lembek, atau kendaraan menarik ke satu sisi memerlukan diagnosis sebelum kendaraan digunakan normal.</p>`},
+ {heading:'D. Kemudi',content:`<p>Sistem kemudi mengarahkan roda sesuai input pengemudi. Pemeriksaan mencakup steering wheel free play, tie rod, ball joint, steering rack, bearing, dan sistem bantuan kemudi sesuai desain.</p>`},
+ {heading:'E. Suspensi',content:`<p>Suspensi menjaga kontak ban dengan jalan dan mengontrol gerakan bodi. Komponen umum meliputi spring, shock absorber/strut, control arm, bushing, dan ball joint. Shock absorber yang lemah dapat menyebabkan kendaraan memantul berlebihan.</p>`},
+ {heading:'F. Ban dan Wheel Alignment',content:`<p>Periksa tekanan, keausan, kerusakan fisik, ukuran, dan pola keausan ban. Alignment yang tidak sesuai dapat menyebabkan kendaraan menarik ke satu sisi dan keausan ban tidak merata.</p>`},
+ {heading:'G. Keselamatan',content:`<p>Gunakan jack stand ketika kendaraan perlu ditopang. Jangan bekerja di bawah kendaraan yang hanya ditahan dongkrak. Ikuti titik angkat dan prosedur keselamatan pabrikan.</p>`}],task:`<p><strong>Evaluasi:</strong> Sebutkan pemeriksaan awal ketika kendaraan menarik ke satu sisi dan jelaskan fungsi shock absorber.</p>`},
+ diagnosis:{title:'DIAGNOSIS KERUSAKAN',tag:'MODUL 08',sections:[
+ {heading:'A. Konsep Diagnosis',content:`<p>Diagnosis adalah proses sistematis untuk menemukan penyebab gangguan berdasarkan keluhan, inspeksi, pengukuran, dan pembuktian. Komponen yang memiliki gejala sama belum tentu memiliki penyebab yang sama.</p>`},
+ {heading:'B. Urutan Diagnosis',content:`<ol><li><strong>Konfirmasi keluhan:</strong> pahami kapan dan bagaimana gangguan terjadi.</li><li><strong>Inspeksi:</strong> cari kabel lepas, kebocoran, kerusakan, dan kondisi abnormal.</li><li><strong>Tentukan hipotesis:</strong> susun kemungkinan penyebab.</li><li><strong>Ukur:</strong> pilih alat dan titik ukur yang tepat.</li><li><strong>Bandingkan:</strong> gunakan spesifikasi atau data pembanding.</li><li><strong>Perbaiki:</strong> lakukan tindakan berdasarkan bukti.</li><li><strong>Verifikasi:</strong> uji ulang dan pastikan keluhan hilang.</li></ol>`},
+ {heading:'C. Five Why dan Root Cause',content:`<p>Metode bertanya “mengapa” berulang kali dapat membantu menelusuri penyebab dasar. Hasilnya tetap harus dibuktikan melalui pemeriksaan. Jangan menganggap komponen yang sering rusak pasti menjadi penyebab.</p>`},
+ {heading:'D. OBD dan DTC',content:`<p>Scan tool dapat membaca diagnostic trouble code pada kendaraan yang mendukung OBD. DTC merupakan petunjuk arah diagnosis, bukan perintah otomatis untuk mengganti komponen yang disebut.</p><p>Data live dapat membantu membandingkan kondisi aktual sensor atau sistem terhadap kondisi yang diharapkan.</p>`},
+ {heading:'E. Studi Kasus: Starter Tidak Berputar',content:`<ol><li>Konfirmasi bahwa starter benar-benar tidak berputar.</li><li>Amati apakah lampu dashboard redup.</li><li>Periksa aki dan terminal.</li><li>Periksa sekring, kabel, dan koneksi.</li><li>Periksa sinyal kontrol starter.</li><li>Periksa motor starter jika suplai dan kontrol tersedia.</li></ol>`},
+ {heading:'F. Studi Kasus: Mesin Sulit Hidup',content:`<p>Periksa keluhan dan kondisi saat terjadi. Lanjutkan dengan pemeriksaan dasar: sumber listrik, putaran cranking, suplai bahan bakar, udara, kompresi, dan sistem penyalaan/injeksi sesuai jenis mesin. Gunakan hasil pengukuran untuk mempersempit kemungkinan.</p>`},
+ {heading:'G. Dokumentasi',content:`<p>Catat keluhan, kondisi saat gangguan, kode kesalahan bila ada, hasil pengukuran, komponen yang diperiksa, tindakan perbaikan, dan hasil uji ulang. Dokumentasi membantu memastikan proses diagnosis dapat ditelusuri.</p>`},
+ {heading:'H. Keselamatan Kerja',content:`<p>Gunakan alat pelindung, amankan kendaraan dari gerakan tidak sengaja, hindari komponen panas/berputar, dan ikuti prosedur pabrikan. Diagnosis yang baik harus tetap mengutamakan keselamatan.</p>`}],task:`<p><strong>Studi kasus:</strong> Mesin sulit hidup pada pagi hari. Susun minimal tujuh langkah diagnosis dari konfirmasi keluhan sampai verifikasi hasil perbaikan.</p>`}
 };
 
-// ================================
-// FILTER DAN PENCARIAN MATERI
-// ================================
-let currentLevel = 'pemula';
-const learningLevels = {
-  pemula: 'Mulai dari dasar otomotif, fungsi komponen, alat kerja, dan keselamatan.',
-  menengah: 'Pelajari sistem kendaraan, cara kerja, pengukuran, dan pemeriksaan dasar.',
-  lanjut: 'Latih diagnosis, analisis gejala, pengukuran, dan pengambilan keputusan teknis.'
-};
+let currentLevel='pemula';
+const learningLevels={pemula:'Mulai dari dasar otomotif, fungsi komponen, alat kerja, dan keselamatan.',menengah:'Pelajari sistem kendaraan, cara kerja, pengukuran, dan pemeriksaan dasar.',lanjut:'Latih diagnosis, analisis gejala, pengukuran, dan pengambilan keputusan teknis.'};
+function filterTopics(){const q=(document.getElementById('materiSearch')?.value||'').toLowerCase().trim();document.querySelectorAll('.topic-card').forEach(card=>{const text=((card.dataset.search||'')+' '+card.innerText).toLowerCase();card.hidden=!(card.dataset.level===currentLevel&&text.includes(q))})}
+document.querySelectorAll('.path-step[data-level]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.path-step[data-level]').forEach(x=>x.classList.toggle('selected',x===b));currentLevel=b.dataset.level;const d=document.getElementById('pathDescription');if(d)d.textContent=learningLevels[currentLevel];filterTopics()}));
+document.getElementById('materiSearch')?.addEventListener('input',filterTopics);
+document.querySelectorAll('[data-topic]').forEach(b=>b.addEventListener('click',()=>{const l=lessons[b.dataset.topic];if(!l)return;document.getElementById('lessonTag').textContent=l.tag;document.getElementById('lessonTitle').textContent=l.title;const body=document.getElementById('lessonBody');body.replaceChildren();l.sections.forEach(s=>{const h=document.createElement('h3');h.textContent=s.heading;const c=document.createElement('div');c.innerHTML=s.content;body.append(h,c)});const task=document.getElementById('lessonTask');task.replaceChildren();const t=document.createElement('strong');t.textContent='Aktivitas & Evaluasi Belajar:';const c=document.createElement('div');c.innerHTML=l.task;task.append(t,c);showTab('detail-materi')}));
+document.getElementById('backToMateri')?.addEventListener('click',()=>showTab('materi'));filterTopics();
 
-function filterTopics() {
-  const query = (document.getElementById('materiSearch')?.value || '').toLowerCase().trim();
-  document.querySelectorAll('.topic-card').forEach(card => {
-    const text = `${card.dataset.search || ''} ${card.innerText}`.toLowerCase();
-    card.hidden = !(card.dataset.level === currentLevel && text.includes(query));
-  });
-}
-
-document.querySelectorAll('.path-step[data-level]').forEach(button => button.addEventListener('click', () => {
-  document.querySelectorAll('.path-step[data-level]').forEach(item => item.classList.toggle('selected', item === button));
-  currentLevel = button.dataset.level;
-  const description = document.getElementById('pathDescription');
-  if (description) description.textContent = learningLevels[currentLevel];
-  filterTopics();
-}));
-
-document.getElementById('materiSearch')?.addEventListener('input', filterTopics);
-
-// ================================
-// DETAIL MATERI
-// ================================
-document.querySelectorAll('[data-topic]').forEach(button => button.addEventListener('click', () => {
-  const lesson = lessons[button.dataset.topic];
-  if (!lesson) return;
-
-  document.getElementById('lessonTag').textContent = lesson.tag;
-  document.getElementById('lessonTitle').textContent = lesson.title;
-
-  const body = document.getElementById('lessonBody');
-  body.replaceChildren();
-  lesson.sections.forEach(section => {
-    const heading = document.createElement('h3');
-    heading.textContent = section.heading;
-    const content = document.createElement('div');
-    content.innerHTML = section.content;
-    body.append(heading, content);
-  });
-
-  const task = document.getElementById('lessonTask');
-  task.replaceChildren();
-  const title = document.createElement('strong');
-  title.textContent = 'Aktivitas & Evaluasi Belajar:';
-  const content = document.createElement('div');
-  content.innerHTML = lesson.task;
-  task.append(title, content);
-
-  showTab('detail-materi');
-}));
-
-document.getElementById('backToMateri')?.addEventListener('click', () => showTab('materi'));
-filterTopics();
-
-// ================================
-// KALKULATOR
-// ================================
-function numberFrom(id) {
-  const element = document.getElementById(id);
-  return element ? Number.parseFloat(element.value) : NaN;
-}
-
-function calculateDisplacement() {
-  const bore = numberFrom('bore');
-  const stroke = numberFrom('stroke');
-  const cylinders = numberFrom('cylinders');
-  const valid = bore > 0 && stroke > 0 && Number.isInteger(cylinders) && cylinders > 0;
-  const cc = valid ? Math.PI / 4 * bore ** 2 * stroke * cylinders / 1000 : NaN;
-  document.getElementById('ccResult')?.replaceChildren(document.createTextNode(Number.isFinite(cc) ? `${cc.toFixed(1)} cc` : 'Periksa input'));
-  document.getElementById('literResult')?.replaceChildren(document.createTextNode(Number.isFinite(cc) ? `${(cc / 1000).toFixed(3)} liter` : 'Masukkan nilai positif'));
-}
-
-function calculateCompression() {
-  const swept = numberFrom('swept');
-  const chamber = numberFrom('chamber');
-  const ratio = swept > 0 && chamber > 0 ? (swept + chamber) / chamber : NaN;
-  const result = document.getElementById('compressionResult');
-  if (result) result.textContent = Number.isFinite(ratio) ? `${ratio.toFixed(2)} : 1` : 'Periksa input';
-}
-
-function calculatePressure() {
-  const bar = numberFrom('barValue');
-  const valid = bar >= 0 && Number.isFinite(bar);
-  document.getElementById('kpaResult')?.replaceChildren(document.createTextNode(valid ? (bar * 100).toFixed(1) : '—'));
-  document.getElementById('psiResult')?.replaceChildren(document.createTextNode(valid ? (bar * 14.5038).toFixed(1) : '—'));
-}
-
-['bore','stroke','cylinders'].forEach(id => document.getElementById(id)?.addEventListener('input', calculateDisplacement));
-['swept','chamber'].forEach(id => document.getElementById(id)?.addEventListener('input', calculateCompression));
-document.getElementById('barValue')?.addEventListener('input', calculatePressure);
-calculateDisplacement();
-calculateCompression();
-calculatePressure();
-
-// ================================
-// SIMULASI DIAGNOSIS
-// ================================
-const answerOptions = [...document.querySelectorAll('.answer-option')];
-const feedback = document.getElementById('feedback');
-
-function showSimulationFeedback(answer) {
-  if (!feedback) return;
-  const correct = answer === 'b';
-  feedback.hidden = false;
-  feedback.className = `feedback ${correct ? 'correct' : 'incorrect'}`;
-  feedback.innerHTML = correct
-    ? '<strong>Benar.</strong> Periksa aki dan terminal terlebih dahulu. Lampu dashboard yang redup mengarah pada kemungkinan suplai listrik lemah atau koneksi buruk.'
-    : '<strong>Belum tepat.</strong> Mulailah dari pemeriksaan paling dasar dan aman. Periksa aki, terminal, dan koneksi sebelum membongkar komponen lain.';
-}
-
-answerOptions.forEach(option => option.addEventListener('click', () => {
-  answerOptions.forEach(item => item.classList.remove('selected','correct','wrong','incorrect'));
-  const answer = option.dataset.answer;
-  option.classList.add('selected', answer === 'b' ? 'correct' : 'wrong');
-  if (answer !== 'b') document.querySelector('.answer-option[data-answer="b"]')?.classList.add('correct');
-  showSimulationFeedback(answer);
-}));
-
-document.getElementById('resetSimulation')?.addEventListener('click', () => {
-  answerOptions.forEach(item => item.classList.remove('selected','correct','wrong','incorrect'));
-  if (feedback) {
-    feedback.hidden = true;
-    feedback.className = 'feedback';
-    feedback.textContent = '';
-  }
-});
-
-// ================================
-// SIMULASI RANGKAIAN STARTER
-// ================================
-const batterySwitch = document.getElementById('batterySwitch');
-const fuseSwitch = document.getElementById('fuseSwitch');
-const startSwitch = document.getElementById('startSwitch');
-const nodeBattery = document.getElementById('nodeBattery');
-const nodeFuse = document.getElementById('nodeFuse');
-const nodeStarter = document.getElementById('nodeStarter');
-const circuitStatus = document.getElementById('circuitStatus');
-
-function updateCircuit() {
-  if (!batterySwitch || !fuseSwitch || !startSwitch || !circuitStatus) return;
-  const batteryOn = batterySwitch.checked;
-  const fuseOn = fuseSwitch.checked;
-  const startOn = startSwitch.checked;
-  nodeBattery?.classList.toggle('powered', batteryOn);
-  nodeFuse?.classList.toggle('powered', batteryOn && fuseOn);
-  nodeStarter?.classList.toggle('powered', batteryOn && fuseOn && startOn);
-
-  if (!batteryOn) circuitStatus.textContent = 'Aki terputus. Tidak ada sumber tegangan yang mengalir.';
-  else if (!fuseOn) circuitStatus.textContent = 'Sekring putus. Aliran daya berhenti sebelum mencapai starter.';
-  else if (!startOn) circuitStatus.textContent = 'Sistem siap. Tekan sakelar START untuk melihat alur daya.';
-  else circuitStatus.textContent = 'Aliran daya aktif: AKI → SEKRING → STARTER. Starter mendapat suplai.';
-}
-
-[batterySwitch, fuseSwitch, startSwitch].forEach(control => control?.addEventListener('change', updateCircuit));
-updateCircuit();
-
-// FOOTER
-const yearElement = document.getElementById('year');
-if (yearElement) yearElement.textContent = new Date().getFullYear();
+function numberFrom(id){const e=document.getElementById(id);return e?Number.parseFloat(e.value):NaN}
+function calculateDisplacement(){const b=numberFrom('bore'),s=numberFrom('stroke'),c=numberFrom('cylinders');const valid=b>0&&s>0&&Number.isInteger(c)&&c>0;const cc=valid?Math.PI/4*b*b*s*c/1000:NaN;document.getElementById('ccResult')?.replaceChildren(document.createTextNode(Number.isFinite(cc)?`${cc.toFixed(1)} cc`:'Periksa input'));document.getElementById('literResult')?.replaceChildren(document.createTextNode(Number.isFinite(cc)?`${(cc/1000).toFixed(3)} liter`:'Masukkan nilai positif'))}
+function calculateCompression(){const s=numberFrom('swept'),ch=numberFrom('chamber');const r=s>0&&ch>0?(s+ch)/ch:NaN;const e=document.getElementById('compressionResult');if(e)e.textContent=Number.isFinite(r)?`${r.toFixed(2)} : 1`:'Periksa input'}
+function calculatePressure(){const b=numberFrom('barValue');const v=b>=0&&Number.isFinite(b);document.getElementById('kpaResult')?.replaceChildren(document.createTextNode(v?(b*100).toFixed(1):'—'));document.getElementById('psiResult')?.replaceChildren(document.createTextNode(v?(b*14.5038).toFixed(1):'—'))}
+['bore','stroke','cylinders'].forEach(id=>document.getElementById(id)?.addEventListener('input',calculateDisplacement));['swept','chamber'].forEach(id=>document.getElementById(id)?.addEventListener('input',calculateCompression));document.getElementById('barValue')?.addEventListener('input',calculatePressure);calculateDisplacement();calculateCompression();calculatePressure();
+const answerOptions=[...document.querySelectorAll('.answer-option')],feedback=document.getElementById('feedback');function showSimulationFeedback(a){if(!feedback)return;const ok=a==='b';feedback.hidden=false;feedback.className=`feedback ${ok?'correct':'incorrect'}`;feedback.innerHTML=ok?'<strong>Benar.</strong> Periksa aki dan terminal terlebih dahulu.':'<strong>Belum tepat.</strong> Mulailah dari pemeriksaan aki, terminal, dan koneksi.'}answerOptions.forEach(o=>o.addEventListener('click',()=>{answerOptions.forEach(x=>x.classList.remove('selected','correct','wrong','incorrect'));const a=o.dataset.answer;o.classList.add('selected',a==='b'?'correct':'wrong');if(a!=='b')document.querySelector('.answer-option[data-answer="b"]')?.classList.add('correct');showSimulationFeedback(a)}));document.getElementById('resetSimulation')?.addEventListener('click',()=>{answerOptions.forEach(x=>x.classList.remove('selected','correct','wrong','incorrect'));if(feedback){feedback.hidden=true;feedback.className='feedback';feedback.textContent=''}});
+const batterySwitch=document.getElementById('batterySwitch'),fuseSwitch=document.getElementById('fuseSwitch'),startSwitch=document.getElementById('startSwitch'),nodeBattery=document.getElementById('nodeBattery'),nodeFuse=document.getElementById('nodeFuse'),nodeStarter=document.getElementById('nodeStarter'),circuitStatus=document.getElementById('circuitStatus');function updateCircuit(){if(!batterySwitch||!fuseSwitch||!startSwitch||!circuitStatus)return;const b=batterySwitch.checked,f=fuseSwitch.checked,s=startSwitch.checked;nodeBattery?.classList.toggle('powered',b);nodeFuse?.classList.toggle('powered',b&&f);nodeStarter?.classList.toggle('powered',b&&f&&s);circuitStatus.textContent=!b?'Aki terputus. Tidak ada sumber tegangan yang mengalir.':!f?'Sekring putus. Aliran daya berhenti sebelum starter.':!s?'Sistem siap. Tekan START untuk melihat alur daya.':'Aliran daya aktif: AKI → SEKRING → STARTER.'} [batterySwitch,fuseSwitch,startSwitch].forEach(x=>x?.addEventListener('change',updateCircuit));updateCircuit();const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
