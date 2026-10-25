@@ -1,0 +1,53 @@
+name: Integrasi Modul SMK
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    if: !contains(github.event.head_commit.message, '[smk-integrated]')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Integrasikan CSS dan JavaScript SMK
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          text = p.read_text(encoding='utf-8')
+
+          css = '  <link rel="stylesheet" href="smk.css">\n'
+          scripts = '  <script src="smk-modules.js"></script>\n  <script src="evaluasi-smk.js"></script>\n'
+
+          if 'href="smk.css"' not in text:
+              text = text.replace('  <link rel="stylesheet" href="style.css">\n', '  <link rel="stylesheet" href="style.css">\n' + css, 1)
+
+          if 'src="smk-modules.js"' not in text:
+              marker = '  <script src="script.js"></script>'
+              if marker in text:
+                  text = text.replace(marker, marker + '\n' + scripts, 1)
+              else:
+                  text = text.replace('</body>', scripts + '</body>', 1)
+
+          p.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit hasil integrasi
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "Tidak ada perubahan yang perlu di-commit."
+          else
+            git commit -m "Integrasikan modul SMK ke index.html [smk-integrated]"
+            git push
+          fi
