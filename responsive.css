@@ -18,119 +18,126 @@
   margin: 0 auto 12px;
 }
 
-.header-logo { max-width: min(300px, 100%); }
+.header-logo {
+  max-width: min(300px, 100%);
+}
 
-/* Menu akun: titik tiga di kanan atas pada desktop */
 .site-auth-links {
   grid-area: auth;
   position: static;
   justify-self: end;
   align-self: start;
   display: flex;
-  width: 42px;
-  height: 42px;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  height: auto;
   margin: 0 0 12px;
   padding: 0;
   z-index: 50;
 }
 
 .site-auth-links::before {
-  content: "⋮";
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(255,255,255,.9);
-  border-radius: 11px;
-  background: rgba(0,0,0,.12);
-  color: #fff;
-  font-size: 28px;
-  line-height: 1;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 3px 10px rgba(0,0,0,.12);
+  display: none !important;
 }
 
-.site-auth-links a {
-  position: absolute;
-  right: 0;
-  top: 49px;
-  display: block;
-  width: 145px;
+.site-auth-links a,
+.site-auth-links a.secondary {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 78px;
   min-height: 40px;
-  padding: 9px 14px;
-  border: 1px solid rgba(255,255,255,.8);
+  padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,.95);
   border-radius: 10px;
   background: #fff;
   color: var(--orange, #f34b1b);
   text-decoration: none;
   box-sizing: border-box;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(-5px);
-  transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
-  box-shadow: 0 10px 25px rgba(0,0,0,.2);
-  font-size: 13px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.site-auth-links a:last-child { top: 96px; background: var(--orange, #f34b1b); color: #fff; }
-.site-auth-links:hover a,
-.site-auth-links:focus-within a {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateY(0);
+  transform: none;
+  box-shadow: 0 3px 10px rgba(0,0,0,.12);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: .2s ease;
 }
-.site-auth-links a:hover { filter: brightness(1.06); }
 
-.main-nav { grid-area: nav; width: 100%; min-width: 0; }
+.site-auth-links a:hover,
+.site-auth-links a.secondary:hover {
+  background: #fff;
+  color: var(--orange-dark, #d93b12);
+  border-color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(0,0,0,.18);
+}
 
-/* Mobile: titik tiga dipindahkan ke kiri atas */
+.site-auth-links a:first-child {
+  background: #fff;
+  color: var(--orange, #f34b1b);
+}
+
+.site-auth-links a:last-child {
+  background: rgba(0,0,0,.16);
+  color: #fff;
+  border-color: rgba(255,255,255,.8);
+}
+
+.site-auth-links a:last-child:hover {
+  background: #fff;
+  color: var(--orange, #f34b1b);
+}
+
+.main-nav {
+  grid-area: nav;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Mobile: titik tiga / menu akun tetap di kanan atas */
 @media (max-width: 720px) {
   .site-header {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto;
     grid-template-areas:
-      "auth"
-      "brand"
-      "nav";
+      "brand auth"
+      "nav nav";
     row-gap: 0;
     padding: 10px 12px 0;
   }
 
+  .brand {
+    justify-self: center;
+    width: auto;
+    margin: 0 auto 8px;
+  }
+
   .site-auth-links {
-    justify-self: start;
+    grid-area: auth;
+    justify-self: end;
     align-self: start;
-    width: 38px;
-    height: 38px;
-    margin: 0 0 4px;
+    margin: 0 0 8px;
+    gap: 6px;
   }
 
-  .site-auth-links::before {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    font-size: 25px;
-  }
-
-  .site-auth-links a {
-    left: 0;
-    right: auto;
-    top: 44px;
-    width: 132px;
-    min-height: 36px;
-    padding: 8px 11px;
+  .site-auth-links a,
+  .site-auth-links a.secondary {
+    min-width: 68px;
+    min-height: 34px;
+    padding: 6px 11px;
+    border-radius: 9px;
     font-size: 12px;
   }
 
-  .site-auth-links a:last-child { top: 87px; }
-
-  .brand { width: auto; margin: 0 auto 8px; }
-  .header-logo { width: auto; height: 58px; max-width: min(210px, 72vw); }
+  .header-logo {
+    width: auto;
+    height: 58px;
+    max-width: min(210px, 72vw);
+  }
 
   .main-nav {
     display: grid;
@@ -148,25 +155,81 @@
     white-space: normal;
   }
 
-  .container { width: min(94%, 1120px); }
-  .page { padding-top: 28px; }
-  .feature-grid, .topic-grid, .calculator-grid, .simulation-layout { grid-template-columns: 1fr; }
-  .path-steps, .circuit-controls, .field-row { grid-template-columns: 1fr; }
+  .container {
+    width: min(94%, 1120px);
+  }
+
+  .page {
+    padding-top: 28px;
+  }
+
+  .feature-grid,
+  .topic-grid,
+  .calculator-grid,
+  .simulation-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .path-steps,
+  .circuit-controls,
+  .field-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 380px) {
-  .site-header { padding-left: 8px; padding-right: 8px; }
-  .site-auth-links, .site-auth-links::before { width: 36px; height: 36px; }
-  .site-auth-links::before { font-size: 24px; }
-  .site-auth-links a { width: 124px; min-height: 34px; padding: 7px 10px; font-size: 11px; }
-  .site-auth-links a:last-child { top: 82px; }
-  .header-logo { height: 52px; max-width: 62vw; }
-  .main-nav { gap: 6px; padding-bottom: 13px; }
-  .nav-btn { padding: 9px 5px; font-size: 12px; }
+  .site-header {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .site-auth-links {
+    gap: 5px;
+  }
+
+  .site-auth-links a,
+  .site-auth-links a.secondary {
+    min-width: 62px;
+    min-height: 32px;
+    padding: 5px 9px;
+    font-size: 11px;
+  }
+
+  .header-logo {
+    height: 52px;
+    max-width: 62vw;
+  }
+
+  .main-nav {
+    gap: 6px;
+    padding-bottom: 13px;
+  }
+
+  .nav-btn {
+    padding: 9px 5px;
+    font-size: 12px;
+  }
 }
 
 @media (min-width: 721px) {
-  .site-header { padding-top: 18px; }
-  .site-auth-links { justify-self: end; margin-left: 0; margin-right: 0; }
-  .main-nav { padding-top: 10px; padding-bottom: 20px; }
+  .site-header {
+    padding-top: 18px;
+  }
+
+  .site-auth-links {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .site-auth-links a,
+  .site-auth-links a.secondary {
+    min-height: 40px;
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .main-nav {
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
 }
