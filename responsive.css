@@ -1,0 +1,177 @@
+/* AB Garage responsive header/layout fixes */
+
+.site-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-areas:
+    "spacer brand auth"
+    "nav nav nav";
+  align-items: center;
+  column-gap: 18px;
+}
+
+.brand {
+  grid-area: brand;
+  width: auto;
+  min-width: 0;
+  margin: 0 auto 12px;
+}
+
+.header-logo {
+  max-width: min(300px, 100%);
+}
+
+.site-auth-links {
+  grid-area: auth;
+  position: static;
+  justify-self: end;
+  min-width: 0;
+  margin: 0 0 12px;
+}
+
+.main-nav {
+  grid-area: nav;
+  width: 100%;
+  min-width: 0;
+}
+
+.site-auth-links a {
+  white-space: nowrap;
+}
+
+/* Tablet and mobile */
+@media (max-width: 720px) {
+  .site-header {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "brand"
+      "auth"
+      "nav";
+    row-gap: 0;
+    padding: 14px 12px 0;
+  }
+
+  .brand {
+    width: auto;
+    margin: 0 auto 8px;
+  }
+
+  .header-logo {
+    width: auto;
+    height: 58px;
+    max-width: min(210px, 72vw);
+  }
+
+  .site-auth-links {
+    position: static;
+    justify-self: center;
+    margin: 0 auto 8px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 8px;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .site-auth-links a {
+    min-height: 36px;
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+
+  .main-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px 10px;
+    padding: 8px 0 16px;
+  }
+
+  .nav-btn {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 8px;
+    font-size: 13px;
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  .container {
+    width: min(94%, 1120px);
+  }
+
+  .page {
+    padding-top: 28px;
+  }
+
+  .feature-grid,
+  .topic-grid,
+  .calculator-grid,
+  .simulation-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .path-steps,
+  .circuit-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .site-header {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .header-logo {
+    height: 52px;
+    max-width: 62vw;
+  }
+
+  .site-auth-links {
+    gap: 6px;
+  }
+
+  .site-auth-links a {
+    min-height: 34px;
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .main-nav {
+    gap: 6px;
+    padding-bottom: 13px;
+  }
+
+  .nav-btn {
+    padding: 9px 5px;
+    font-size: 12px;
+  }
+}
+
+/* Desktop: keep account buttons away from the centered logo */
+@media (min-width: 721px) {
+  .site-header {
+    padding-top: 18px;
+  }
+
+  .site-auth-links {
+    gap: 8px;
+  }
+
+  .site-auth-links a {
+    min-height: 40px;
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .main-nav {
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+}
